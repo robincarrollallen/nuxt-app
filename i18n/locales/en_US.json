@@ -1,0 +1,21 @@
+{
+  "common": {
+    "login": "Login",
+    "register": "Register",
+    "chooseLanguage": "Choose Language",
+    "install": "Install"
+  },
+  "pwa": {
+    "downloadTitle": "Download Our APP, Win Super Prizes!",
+    "install": "Install"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Learn more about us"
+  },
+  "profile": {
+    "title": "Personal Information",
+    "accountSettings": "Account Settings",
+    "privacySettings": "Privacy Settings"
+  }
+}

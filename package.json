@@ -1,0 +1,39 @@
+{
+  "name": "nuxt-app",
+  "dependencies": {
+    "@micro-zoe/micro-app": "^1.0.0-rc.26",
+    "@nuxtjs/i18n": "^9.5.6",
+    "@pinia/nuxt": "^0.11.1",
+    "clipboard-polyfill": "^4.1.1",
+    "nuxt": "^3.17.6",
+    "pinia": "^3.0.3",
+    "swiper": "^11.2.10",
+    "vant": "^4.9.20",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
+  },
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@nuxt/icon": "^1.15.0",
+    "@nuxtjs/eslint-config": "^12.0.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "@vant/nuxt": "^1.0.7",
+    "eslint": "^8.56.0",
+    "eslint-plugin-jsonc": "^2.20.1",
+    "eslint-plugin-vue": "^9.20.1",
+    "jsonc-eslint-parser": "^2.4.0",
+    "less": "^4.2.0"
+  }
+}

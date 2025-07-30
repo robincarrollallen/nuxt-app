@@ -79,6 +79,9 @@ web_modules/
 out
 
 # Nuxt.js build / generate output
+.output
+.data
+.nitro
 .nuxt
 dist
 
@@ -137,3 +140,11 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Node dependencies
+node_modules
+
+# Misc
+.DS_Store
+.fleet
+.idea

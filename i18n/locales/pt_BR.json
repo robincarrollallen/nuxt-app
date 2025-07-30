@@ -1,0 +1,21 @@
+{
+  "common": {
+    "login": "Entrar",
+    "register": "Registrar",
+    "chooseLanguage": "Escolher Idioma",
+    "install": "Instalar"
+  },
+  "pwa": {
+    "downloadTitle": "Baixe Nosso APP, Ganhe Prêmios Incríveis!",
+    "install": "Instalar"
+  },
+  "about": {
+    "title": "Sobre Nós",
+    "subtitle": "Saiba mais sobre nós"
+  },
+  "profile": {
+    "title": "Informações Pessoais",
+    "accountSettings": "Configurações da Conta",
+    "privacySettings": "Configurações de Privacidade"
+  }
+}
