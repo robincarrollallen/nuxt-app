@@ -2,7 +2,7 @@ import { themeManager } from "~/theme"
 import { ThemeSupport } from "~/common/enum/theme"
 import { LanguageSupport } from "~/common/enum/language"
 
-// 全局插件，用于设置网站信息<页面初次加载时执行一次>
+// Global plugin for setting site information <executed once on initial page load>
 export default defineNuxtPlugin(async (to) => {
 	const { $i18n } = useNuxtApp()
 	const cookieLocale = useCookie('lang')

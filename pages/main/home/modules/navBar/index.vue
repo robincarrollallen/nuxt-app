@@ -45,7 +45,7 @@ const changeLanguage = (lang: any) => {
         </template>
       </van-popover>
     </div>
-		<!-- 左侧抽屉 -->
+		<!-- Left drawer -->
 		<ClientOnly>
 			<van-popup
 				round

@@ -1,6 +1,6 @@
 import microApp from '@micro-zoe/micro-app'
 
-// 微前端插件<页面初次加载时执行一次>
+// Micro frontend plugin <executed once on initial page load>
 export default defineNuxtPlugin(() => {
 	microApp.start()
 })

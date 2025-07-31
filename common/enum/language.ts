@@ -1,11 +1,11 @@
-// 支持的语言枚举
+// Supported language enum
 export enum LanguageEnum {
   "en-US" = 'English',
   "pt-BR" = 'Português',
 }
 
-// 支持的语言类型
+// Supported language type
 export type LanguageType = keyof typeof LanguageEnum;
 
-// 支持的语言数组
+// Supported languages array
 export const LanguageSupport = Object.keys(LanguageEnum) as LanguageType[]

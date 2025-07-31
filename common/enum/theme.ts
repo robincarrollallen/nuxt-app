@@ -1,4 +1,4 @@
-// 主题类型枚举
+// Theme type enum
 export enum ThemeTypeEnum {
   DEFAULT = 'default',
   DARK = 'dark',
@@ -7,8 +7,8 @@ export enum ThemeTypeEnum {
   PURPLE = 'purple'
 }
 
-// 主题类型
+// Theme type
 export type ThemeType = `${ThemeTypeEnum}`
 
-// 支持的主题数组
+// Supported themes array
 export const ThemeSupport = Object.values(ThemeTypeEnum) as ThemeType[]

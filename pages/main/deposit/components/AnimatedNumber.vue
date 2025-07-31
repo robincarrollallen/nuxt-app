@@ -3,72 +3,72 @@ import { ref, watch, onMounted } from 'vue'
 
 const props = defineProps({
 	value: {
-		type: Number, // 传入显示值
+		type: Number, // Input display value
 		required: true
 	},
 	duration: {
 		type: Number,
-		default: 1000 // 动画持续时间，毫秒
+		default: 1000 // Animation duration in milliseconds
 	},
 	decimals: {
 		type: Number,
-		default: 0 // 小数位数
+		default: 0 // Number of decimal places
 	}
 })
 
-let animationFrameId = null // 用于存储 requestAnimationFrame 的 ID，方便取消
+let animationFrameId = null // Store requestAnimationFrame ID for cancellation
 
-const displayValue = ref(props.value) // 组件内部用于显示的响应式数值
+const displayValue = ref(props.value) // Internal reactive value for display
 
 const formattedDisplayValue = computed(() => displayValue.value.toFixed(props.decimals))
 
 /**
- * 启动数字动画
- * @param {number} startVal - 动画起始值
- * @param {number} endVal - 动画目标值
- * @param {number} duration - 动画持续时间（毫秒）
+ * Start number animation
+ * @param {number} startVal - Animation start value
+ * @param {number} endVal - Animation target value
+ * @param {number} duration - Animation duration (milliseconds)
  */
 const animateValue = (startVal, endVal, duration) => {
-	const startTime = performance.now() // 动画开始时间
+	const startTime = performance.now() // Animation start time
 
 	const step = (currentTime) => {
-		const elapsedTime = currentTime - startTime // 已经过去的时间
-		const progress = Math.min(elapsedTime / duration, 1) // 动画进度 (0到1之间, 确保不会超过)
+		const elapsedTime = currentTime - startTime // Elapsed time
+		const progress = Math.min(elapsedTime / duration, 1) // Animation progress (0 to 1, ensure no overflow)
 
-		// 根据进度计算当前应该显示的值
+		// Calculate current value to display based on progress
 		const currentValue = startVal + (endVal - startVal) * progress
 		displayValue.value = currentValue
 
-		// 如果动画未结束，继续下一帧
+		// If animation not finished, continue next frame
 		if (progress < 1) {
 			animationFrameId = requestAnimationFrame(step)
 		} else {
-			// 动画结束时确保显示最终值
+			// Ensure final value is displayed when animation ends
 			displayValue.value = endVal
 		}
 	}
 
-	// 如果之前有动画正在进行，先取消它
+	// If previous animation is running, cancel it first
 	if (animationFrameId) {
 		cancelAnimationFrame(animationFrameId)
 	}
-	// 启动动画
+	// Start animation
 	animationFrameId = requestAnimationFrame(step)
 }
 
-// 监听 value prop 的变化，触发动画
+// Listen for value prop changes and trigger animation
 watch(() => props.value, (newValue, oldValue) => {
 	animateValue(oldValue === undefined ? props.value : oldValue, newValue, props.duration)
 }, { immediate: true })
 
-// 组件挂载时如果需要从0开始动画到初始值，这里可以处理
+// Handle animation from 0 to initial value on component mount if needed
 onMounted(() => {
-	if (props.value !== 0) { // 首次渲染时，如果 value 不是初始值（例如0），则从0开始动画, 否则，直接显示 value
+	if (props.value !== 0) { // On first render, if value is not initial (e.g., 0), animate from 0, otherwise display value directly
 		animateValue(0, props.value, props.duration)
 	}
 })
 
-// 在组件卸载时清理动画帧，避免内存泄漏
+// Clean up animation frame on component unmount to avoid memory leaks
 onUnmounted(() => {
 	if (animationFrameId) {
 		cancelAnimationFrame(animationFrameId)

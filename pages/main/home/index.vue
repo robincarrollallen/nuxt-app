@@ -17,8 +17,8 @@ definePageMeta({
 
 const gameStore = useGameStore()
 
-const homeHotList = computed(() => gameStore.homeHotList) // 首页热门游戏列表
-const homePlatformList = computed(() => { // 首页平台列表
+const homeHotList = computed(() => gameStore.homeHotList) // Home page hot games list
+const homePlatformList = computed(() => { // Home page platform list
 	const platformList = [...gameStore.homePlatformList]
 
 	platformList.unshift({
@@ -36,11 +36,11 @@ const homePlatformList = computed(() => { // 首页平台列表
 
 const active = ref(0)
 
-// 使用 computed 缓存每个平台的游戏列表
+// Use computed to cache game list for each platform
 const platformGamesMap = computed(() => {
 	const map = new Map<number, any[]>()
 
-	// 预处理所有平台的游戏列表
+	// Preprocess game lists for all platforms
 	homePlatformList.value.forEach(platform => {
 		if (platform.id === 0) {
 			map.set(0, homeHotList.value)

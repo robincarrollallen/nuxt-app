@@ -13,9 +13,9 @@ const agentStore = useAgentStore()
 <template>
 	<div class="about-page">
 		<ClientOnly>
-			<NavigateBar title="我的团队" left-arrow/>
+			<NavigateBar title="My Team" left-arrow/>
 			<main class="main-container">
-				<!-- 我的团队 -->
+				<!-- My Team -->
 				<TeamLevel />
 			</main>
 		</ClientOnly>

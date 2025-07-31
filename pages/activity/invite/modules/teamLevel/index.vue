@@ -8,7 +8,7 @@ const { data } = await useFetch('/api/agency/info')
 const agentStore = useAgentStore()
 const tenantStore = useTenantStore()
 
-const merchantCy = computed(() => tenantStore.tenantInfo?.merchantCy) // 当前商户货币
+const merchantCy = computed(() => tenantStore.tenantInfo?.merchantCy) // Current merchant currency
 const currentLevel = computed(() => data.value.info?.agencyLevel || 1)
 const totalTeamBet = computed(() => Number(data.value.info?.histBet || 0) / 100)
 const totalTeamCount = computed(() => (data.value.info?.histDirectCnt || 0) + (data.value.info?.histTeamCnt || 0))
@@ -29,7 +29,7 @@ const totalComm = computed(() => {
 })
 
 /**
- * 计算首充返点
+ * Calculate first recharge commission
  */
 function computeFirstRechargeComm(level: number) {
 	const config = agentStore.agencyConfig.inviteConfig?.firstRechargeRebateLevelConfig

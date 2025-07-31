@@ -3,27 +3,27 @@ const tabbarList = [
 	{
 		path: '/main/home',
 		icon: 'https://zhu-1.w-x-2-c.com/assets/inicio-2-Yv8wOcPh.png',
-		label: '首页',
+		label: 'Home',
 	},
 	{
 		path: '/main/activity',
 		icon: 'https://zhu-1.w-x-2-c.com/assets/promo-2-NH0VS4wJ.png',
-		label: '活动',
+		label: 'Activity',
 	},
 	{
 		path: '/activity/invite',
 		icon: 'https://zhu-1.w-x-2-c.com/assets/agency-2-CpUFH4JT.png',
-		label: '邀请',
+		label: 'Invite',
 	},
 	{
 		path: '/main/deposit',
 		icon: 'https://zhu-1.w-x-2-c.com/assets/entrar-2-DD5Q0vEm.png',
-		label: '存款',
+		label: 'Deposit',
 	},
 	{
 		path: '/main/profile',
 		icon: 'https://zhu-1.w-x-2-c.com/assets/perfil-2-BpUdZ6ap.png',
-		label: '我的',
+		label: 'Profile',
 	}
 ]
 </script>
@@ -53,7 +53,7 @@ const tabbarList = [
 <style scoped lang="less">
 .main-content {
 	flex: 1;
-	padding-bottom: 60px; /* 为tabbar留出空间 */
+	padding-bottom: 60px; /* Reserve space for tabbar */
 	position: relative;
 	height: 100%;
 }

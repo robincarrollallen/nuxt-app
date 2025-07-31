@@ -19,9 +19,9 @@ onMounted(async () => {
 			const response = await fetch(props.url)
 			const contentType = response.headers.get('content-type')
 			if (contentType && contentType.includes('image/svg+xml')) {
-				svgContent.value = await response.text() // SVG 文件
+				svgContent.value = await response.text() // SVG file
 			} else {
-				svgContent.value = `<img src="${props.url}" />`// 非 SVG 文件，使用 img 标签
+				svgContent.value = `<img src="${props.url}" />`// Non-SVG file, use img tag
 			}
 		} else if (props.type) {
 			const iconModule = await import(`~/assets/svg/${props.type}/${props.name}.svg?raw`)

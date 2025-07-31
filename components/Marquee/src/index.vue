@@ -10,13 +10,13 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const animationDuration = computed(() => { // 计算动画持续时间
-	const timePerChar = 0.2 // 假设每个字符需要0.2秒
-	let totalChars = props.content.reduce((total, item) => total + item.content.length + 32, 0) // 计算所有内容的总字符数
-	return totalChars * timePerChar // 返回动画持续时间
+const animationDuration = computed(() => { // Calculate animation duration
+	const timePerChar = 0.2 // Assume each character takes 0.2 seconds
+	let totalChars = props.content.reduce((total, item) => total + item.content.length + 32, 0) // Calculate total character count of all content
+	return totalChars * timePerChar // Return animation duration
 })
 
-// 点击跑马灯内容
+// Click marquee content
 async function marqueeHandle() {
 
 }
@@ -31,23 +31,23 @@ async function marqueeHandle() {
 </template>
 
 <style>
-.marquee__wrap { /* 跑马灯盒子 */
+.marquee__wrap { /* Marquee container */
 	width: 100%;
 	overflow: hidden;
 }
 
-.marquee__content { /* 跑马灯内容 */
+.marquee__content { /* Marquee content */
 	width: max-content;
 	display: flex;
 	animation: marquee var(--animation-duration) linear infinite;
 }
 
-.marquee__item { /* 跑马灯单项 */
+.marquee__item { /* Marquee item */
 	white-space: nowrap;
 	margin-right: 24.375rem;
 }
 
-@keyframes marquee { /* 跑马灯动画 */
+@keyframes marquee { /* Marquee animation */
 0% {
 		transform: translate3d(24.375rem, 0 , 0);
 	}

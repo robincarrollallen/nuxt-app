@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import AnimatedNumber from './components/AnimatedNumber.vue' // 确保路径正确
+import AnimatedNumber from './components/AnimatedNumber.vue' // Ensure path is correct
 
-// 使用 main 布局
+// Use main layout
 definePageMeta({
 	layout: 'main'
 })
@@ -41,24 +41,24 @@ const removeProduct = (amount) => {
 			<h1>Vue 3 Animated Number</h1>
 
 			<div class="counter-section">
-				<p class="label">账户余额:</p>
+				<p class="label">Account Balance:</p>
 				<div class="animated-value amount">
 					$<AnimatedNumber :value="accountBalance" :decimals="2" :duration="1500" />
 				</div>
-				<button @click="deposit(50.75)">存入 $50.75</button>
-				<button @click="withdraw(20.30)">取出 $20.30</button>
-				<button @click="resetBalance">重置余额</button>
+				<button @click="deposit(50.75)">Deposit $50.75</button>
+				<button @click="withdraw(20.30)">Withdraw $20.30</button>
+				<button @click="resetBalance">Reset Balance</button>
 			</div>
 
 			<hr>
 
 			<div class="counter-section">
-				<p class="label">商品数量:</p>
+				<p class="label">Product Quantity:</p>
 				<div class="animated-value quantity">
-					<AnimatedNumber :value="productQuantity" :decimals="0" :duration="800" /> 件
+					<AnimatedNumber :value="productQuantity" :decimals="0" :duration="800" /> items
 				</div>
-				<button @click="addProduct(100)">增加 100 件</button>
-				<button @click="removeProduct(100)">减少 100 件</button>
+				<button @click="addProduct(100)">Add 100 items</button>
+				<button @click="removeProduct(100)">Remove 100 items</button>
 			</div>
 		</ClientOnly>
   </div>
@@ -101,18 +101,18 @@ h1 {
 .animated-value {
   font-size: 3em;
   font-weight: bold;
-  color: #007bff; /* 默认颜色 */
+  color: #007bff; /* Default color */
   margin: 15px 0;
-  min-height: 1.5em; /* 防止高度跳动 */
-  display: inline-block; /* 确保能应用内联样式 */
+  min-height: 1.5em; /* Prevent height jumping */
+  display: inline-block; /* Ensure inline styles can be applied */
 }
 
 .animated-value.amount {
-  color: #28a745; /* 金额专用绿色 */
+  color: #28a745; /* Green for amounts */
 }
 
 .animated-value.quantity {
-  color: #ffc107; /* 数量专用黄色 */
+  color: #ffc107; /* Yellow for quantities */
 }
 
 button {

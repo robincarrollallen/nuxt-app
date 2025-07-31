@@ -3,11 +3,11 @@ import { setFontSize } from '~/common/variable'
 
 export const useSystemStore = defineStore('system', () => {
 	const fontSize = ref(16)
-	const screenWidth = ref(window.innerWidth) // 屏幕宽度
-	const screenHeight = ref(window.innerHeight) // 屏幕高度
+	const screenWidth = ref(window.innerWidth) // Screen width
+	const screenHeight = ref(window.innerHeight) // Screen height
 
 	/**
-	 * 更新屏幕信息
+	 * Update screen size information
 	 */
 	const updateScreenSize = () => {
 		screenWidth.value = window.innerWidth
@@ -16,10 +16,10 @@ export const useSystemStore = defineStore('system', () => {
 	}
 
 	/**
-	 * 设置rem基准
+	 * Set rem base value
 	 */
 	function setRemBase() {
-		const baseWidth = 390 // 设计稿宽度
+		const baseWidth = 390 // Design width
 		const html = document.documentElement
 		let width = html.clientWidth
 		if (486 < width && width < 769) {

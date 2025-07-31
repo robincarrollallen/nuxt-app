@@ -8,7 +8,7 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-// 使用 main 布局
+// Use main layout
 definePageMeta({
 	layout: 'main'
 })
@@ -24,11 +24,11 @@ const modules = [EffectCoverflow, Pagination, Navigation]
       :centeredSlides="true"
       :slidesPerView="'auto'"
       :coverflowEffect="{
-        rotate: 0, // 旋转角度，0表示不旋转
-        stretch: -20, // 幻灯片之间的拉伸/偏移量
-        depth: 100, // 景深，影响 3D 效果的深度
-        modifier: 1, // 效果的乘数
-        slideShadows: false, // 是否显示幻灯片阴影
+        rotate: 0, // Rotation angle, 0 means no rotation
+        stretch: -20, // Stretch/offset between slides
+        depth: 100, // Depth, affects 3D effect depth
+        modifier: 1, // Effect multiplier
+        slideShadows: false, // Whether to show slide shadows
       }"
       :pagination="{ clickable: true }"
       :navigation="true"
@@ -46,31 +46,31 @@ const modules = [EffectCoverflow, Pagination, Navigation]
 <style scoped>
 .swiper-container-wrapper {
   width: 100%;
-  height: 12.5rem; /* 或者你希望的容器高度 */
+  height: 12.5rem; /* Or your desired container height */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* 防止溢出 */
+  overflow: hidden; /* Prevent overflow */
 }
 
 .mySwiper {
   width: 100%;
-  height: 100%; /* 确保 Swiper 本身也占满父容器的高度 */
-  padding-top: 1rem; /* 为了给阴影和顶部一些空间，可以根据需要调整 */
-  padding-bottom: 1rem; /* 为了给阴影和底部一些空间，可以根据需要调整 */
+  height: 100%; /* Ensure Swiper fills parent container height */
+  padding-top: 1rem; /* Space for shadows and top, adjust as needed */
+  padding-bottom: 1rem; /* Space for shadows and bottom, adjust as needed */
 }
 
 .mySwiper .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 60%; /* 主横幅的宽度 */
-  height: 80%; /* 主横幅的高度，相对父容器 */
+  width: 60%; /* Main banner width */
+  height: 80%; /* Main banner height, relative to parent container */
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0; /* 示例背景色 */
-  border-radius: 8px; /* 圆角 */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  background-color: #f0f0f0; /* Example background color */
+  border-radius: 8px; /* Border radius */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Shadow effect */
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
 }
 
@@ -82,26 +82,26 @@ const modules = [EffectCoverflow, Pagination, Navigation]
   border-radius: 8px;
 }
 
-/* 缩小和下沉效果的关键 */
+/* Key for shrinking and sinking effect */
 .mySwiper .swiper-slide-prev,
 .mySwiper .swiper-slide-next {
-  width: 50%; /* 左右两边缩小后的宽度 */
-  height: 70%; /* 左右两边缩小后的高度 */
-  transform: scale(0.8) translateY(20px) !important; /* 缩小并向下移动 */
-  opacity: 0.7; /* 降低透明度 */
-  /* Swiper 的 Coverflow 效果会处理大部分的 3D 变换，
-     这里我们只做额外的缩小和下沉 */
+  width: 50%; /* Width after shrinking on left and right sides */
+  height: 70%; /* Height after shrinking on left and right sides */
+  transform: scale(0.8) translateY(20px) !important; /* Shrink and move down */
+  opacity: 0.7; /* Reduce opacity */
+  /* Swiper's Coverflow effect handles most 3D transforms,
+     here we only do additional shrinking and sinking */
 }
 
-/* 确保当前活动横幅不被 transform 影响 */
+/* Ensure current active banner is not affected by transform */
 .mySwiper .swiper-slide-active {
   transform: scale(1) translateY(0) !important;
   opacity: 1;
-  width: 80%; /* 确保活动横幅的宽度 */
-  height: 100%; /* 确保活动横幅的高度 */
+  width: 80%; /* Ensure active banner width */
+  height: 100%; /* Ensure active banner height */
 }
 
-/* 调整 pagination 和 navigation 样式 */
+/* Adjust pagination and navigation styles */
 .mySwiper .swiper-pagination-bullet {
   background: #333;
 }

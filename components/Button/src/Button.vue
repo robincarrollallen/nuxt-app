@@ -11,28 +11,28 @@ function startRipple(event) {
 
 	isPressed = true
 
-	// 计算涟漪位置
+	// Calculate ripple position
 	const rect = buttonRef.value.getBoundingClientRect()
 	const size = Math.max(rect.width, rect.height)
 
-	// 获取触摸/点击位置
+	// Get touch/click position
 	const clientX = event.touches ? event.touches[0].clientX : event.clientX
 	const clientY = event.touches ? event.touches[0].clientY : event.clientY
 
 	const x = clientX - rect.left - size / 2
 	const y = clientY - rect.top - size / 2
 
-	// 设置涟漪样式
+	// Set ripple styles
 	ripple.style.left = x + 'px'
 	ripple.style.top = y + 'px'
 	ripple.style.width = size + 'px'
 	ripple.style.height = size + 'px'
 
-	// 开始动画
+	// Start animation
 	ripple.style.transform = 'scale(0)'
 	ripple.style.opacity = '1'
 
-	// 强制重绘后开始扩散动画
+	// Force repaint then start spreading animation
 	ripple.offsetHeight
 	ripple.style.transition = 'transform 0.3s ease-out'
 	ripple.style.transform = 'scale(2)'
@@ -45,11 +45,11 @@ function endRipple() {
 	const ripple = rippleRef.value
 	if (!ripple) return
 
-	// 取消涟漪动画
+	// Cancel ripple animation
 	ripple.style.transition = 'opacity 0.2s ease-out'
 	ripple.style.opacity = '0'
 
-	// 动画结束后重置
+	// Reset after animation ends
 	setTimeout(() => {
 		ripple.style.transform = 'scale(0)'
 		ripple.style.transition = 'none'

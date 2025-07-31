@@ -1,7 +1,7 @@
 import * as clipboard from "clipboard-polyfill"
 
 /**
- * 复制文本
+ * Copy text
  */
 export async function copy(text: any, isShowSuccessToast = true) {
 	const { $i18n } = useNuxtApp()
@@ -17,30 +17,30 @@ export async function copy(text: any, isShowSuccessToast = true) {
 }
 
 /**
- * 深拷贝
+ * Deep clone
  */
 export function deepClone<T>(obj: T): T {
-	// 处理基本类型和 null
+	// Handle primitive types and null
 	if (obj === null || typeof obj !== 'object') {
 		return obj
 	}
 
-	// 处理 Date
+	// Handle Date
 	if (obj instanceof Date) {
 		return new Date(obj.getTime()) as T
 	}
 
-	// 处理 Array
+	// Handle Array
 	if (Array.isArray(obj)) {
 		return obj.map(item => deepClone(item)) as T
 	}
 
-	// 处理 RegExp
+	// Handle RegExp
 	if (obj instanceof RegExp) {
 		return new RegExp(obj.source, obj.flags) as T
 	}
 
-	// 处理 Map
+	// Handle Map
 	if (obj instanceof Map) {
 		const newMap = new Map()
 		obj.forEach((value, key) => {
@@ -49,7 +49,7 @@ export function deepClone<T>(obj: T): T {
 		return newMap as T
 	}
 
-	// 处理 Set
+	// Handle Set
 	if (obj instanceof Set) {
 		const newSet = new Set()
 		obj.forEach(value => {
@@ -58,7 +58,7 @@ export function deepClone<T>(obj: T): T {
 		return newSet as T
 	}
 
-	// 处理普通对象
+	// Handle plain objects
 	if (typeof obj === 'object') {
 		const clonedObj = {} as T
 		for (const key in obj) {
@@ -73,7 +73,7 @@ export function deepClone<T>(obj: T): T {
 }
 
 /**
- * 计算分页
+ * Calculate pagination
  */
 export function paginate(array: any[], pageSize?: number, pageNumber?: number) {
 	const totalItems = array.length
@@ -83,30 +83,30 @@ export function paginate(array: any[], pageSize?: number, pageNumber?: number) {
 		pageSize = totalItems
 	}
 
-	if (!pageNumber) { // 不传 pageNumber：返回二维分页数组
+	if (!pageNumber) { // No pageNumber passed: return 2D pagination array
 		const pages = []
 		for (let i = 0; i < totalItems; i += pageSize) {
 			pages.push(array.slice(i, i + pageSize))
 		}
 		return {
-			pages, // 二维数组
-			totalPages, // 总页数
-			totalItems // 总条数
+			pages, // 2D array
+			totalPages, // Total pages
+			totalItems // Total items
 		}
 	}
 
-	const currentPage = Math.max(1, Math.min(pageNumber, totalPages)) // 当前页码(已限制边界)
-	const start = (currentPage - 1) * pageSize // 起始索引
-	const end = start + pageSize // 结束索引
+	const currentPage = Math.max(1, Math.min(pageNumber, totalPages)) // Current page number (boundary limited)
+	const start = (currentPage - 1) * pageSize // Start index
+	const end = start + pageSize // End index
 
 	const items = array.slice(start, end)
 
 	return {
-		items, // 当前页的数据
-		currentPage, // 当前页码
-		totalPages, // 总页数
-		totalItems, // 总条数
-		hasPrev: currentPage > 1, // 是否有上一页
-		hasNext: currentPage < totalPages // 是否有下一页
+		items, // Current page data
+		currentPage, // Current page number
+		totalPages, // Total pages
+		totalItems, // Total items
+		hasPrev: currentPage > 1, // Has previous page
+		hasNext: currentPage < totalPages // Has next page
 	}
 }

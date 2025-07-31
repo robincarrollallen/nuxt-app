@@ -32,7 +32,7 @@ import Sidebar from '~/widgets/sidebar/index.vue'
 		background: var(--ep-color-background-fill-body-default);
 		position: relative;
     overflow: hidden auto;
-    /* 隐藏滚动条 */
+    /* Hide scrollbar */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
   }

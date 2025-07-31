@@ -14,18 +14,18 @@ const props = defineProps({
 
 const systemStore = useSystemStore()
 
-const swiperRef = ref() // 轮播图DOM
-const showAll = ref(false) // 是否显示所有
-const currentSlide = ref(0) // 当前轮播图索引
-const swiperHandler = ref()	// swiper方法
+const swiperRef = ref() // Swiper DOM reference
+const showAll = ref(false) // Whether to show all items
+const currentSlide = ref(0) // Current slide index
+const swiperHandler = ref()	// Swiper instance
 
-const screenWidth = computed(() => systemStore.screenWidth) // 屏幕宽度
-const collapseIconColor = computed(() => { // 折叠图标颜色
+const screenWidth = computed(() => systemStore.screenWidth) // Screen width
+const collapseIconColor = computed(() => { // Collapse icon color
 	return getComputedStyle(document.documentElement).getPropertyValue('--ep-color-background-fill-active-disabled') || ''
 })
 
 const gameCardPaginate = computed(() => {
-	let limit = 16 // 每页显示数量
+	let limit = 16 // Items per page
 
 	if (showAll.value) {
 		limit = props.list.length
@@ -60,7 +60,7 @@ const onSwiper = (swiper: any) => {
 }
 
 /**
- * 轮播图切换事件
+ * Slide change event handler
  */
 const onSlideChange = (e: any) => {
 	currentSlide.value = e.activeIndex

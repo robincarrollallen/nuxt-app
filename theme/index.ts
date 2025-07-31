@@ -6,11 +6,11 @@ class ThemeManager {
 
 	async setTheme(theme: ThemeType) {
 		if (!this.loadedThemes.has(theme)) {
-			const success = await this.loadThemeCSS(theme) // 懒加载主题CSS
+			const success = await this.loadThemeCSS(theme) // Lazy load theme CSS
 			if (success) {
 				this.loadedThemes.add(theme)
 			} else {
-				// 如果加载失败且不是默认主题，回退到默认主题
+				// If loading fails and it's not the default theme, fallback to default theme
 				if (theme !== ThemeTypeEnum.DEFAULT) {
 					console.warn(`Failed to load theme ${theme}, falling back to default`)
 					return this.setTheme(ThemeTypeEnum.DEFAULT)
@@ -19,7 +19,7 @@ class ThemeManager {
 			}
 		}
 
-		this.applyTheme(theme) // 应用主题
+		this.applyTheme(theme) // Apply theme
 
 		this.currentTheme = theme
 		localStorage.setItem('theme', theme)
@@ -27,7 +27,7 @@ class ThemeManager {
 
 	private async loadThemeCSS(theme: ThemeType): Promise<boolean> {
 		try {
-			await import(`~/theme/variables/${theme}.css`) // 修正CSS文件路径
+			await import(`~/theme/variables/${theme}.css`) // Correct CSS file path
 			return true
 		} catch (error) {
 			console.error(`Failed to load theme CSS: ${theme}`, error)
@@ -45,7 +45,7 @@ class ThemeManager {
 		}
 	}
 
-	// 预加载主题
+	// Preload theme
 	async preloadTheme(theme: ThemeType) {
 		if (!this.loadedThemes.has(theme)) {
 			const success = await this.loadThemeCSS(theme)
@@ -55,32 +55,32 @@ class ThemeManager {
 		}
 	}
 
-	// 预加载所有主题
+	// Preload all themes
 	async preloadAllThemes() {
 		await Promise.all(ThemeSupport.map(theme => this.preloadTheme(theme)))
 	}
 
-	// 检查主题是否已加载
+	// Check if theme is loaded
 	isThemeLoaded(theme: ThemeType): boolean {
 		return this.loadedThemes.has(theme)
 	}
 
-	// 获取已加载的主题列表
+	// Get loaded themes list
 	getLoadedThemes(): string[] {
 		return Array.from(this.loadedThemes)
 	}
 
-	// 获取当前主题
+	// Get current theme
 	getCurrentTheme(): ThemeType {
 		return this.currentTheme
 	}
 
-	// 验证主题类型
+	// Validate theme type
 	private isValidTheme(theme: string): theme is ThemeType {
 		return ThemeSupport.includes(theme as ThemeType)
 	}
 
-	// 初始化
+	// Initialize
 	async init() {
 		const savedTheme = localStorage.getItem('theme')
 		if (savedTheme && this.isValidTheme(savedTheme)) {
@@ -91,7 +91,7 @@ class ThemeManager {
 	}
 }
 
-// 工厂函数
+// Factory function
 const createThemeManager = () => {
 	if (import.meta.client) {
 		const manager = new ThemeManager()

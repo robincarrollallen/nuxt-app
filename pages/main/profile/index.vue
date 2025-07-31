@@ -3,7 +3,7 @@ defineOptions({
 	name: 'ProfilePage'
 })
 
-// 使用 main 布局
+// Use main layout
 definePageMeta({
 	layout: 'main'
 })
@@ -18,10 +18,10 @@ definePageMeta({
         </div>
         <div class="user-info">
           <h2 class="user-name">
-            张三
+            John Doe
           </h2>
           <p class="user-email">
-            zhangsan@example.com
+            john.doe@example.com
           </p>
         </div>
       </div>
@@ -30,31 +30,31 @@ definePageMeta({
     <div class="profile-content">
       <div class="section-card">
         <h3 class="section-title">
-          个人信息
+          Personal Information
         </h3>
         <div class="info-list">
           <div class="info-item">
-            <span class="label">姓名</span>
-            <span class="value">张三</span>
+            <span class="label">Name</span>
+            <span class="value">John Doe</span>
           </div>
           <div class="info-item">
-            <span class="label">手机号</span>
+            <span class="label">Phone</span>
             <span class="value">138****5678</span>
           </div>
           <div class="info-item">
-            <span class="label">邮箱</span>
-            <span class="value">zhangsan@example.com</span>
+            <span class="label">Email</span>
+            <span class="value">john.doe@example.com</span>
           </div>
           <div class="info-item">
-            <span class="label">注册时间</span>
-            <span class="value">2024年1月1日</span>
+            <span class="label">Registration Date</span>
+            <span class="value">January 1, 2024</span>
           </div>
         </div>
       </div>
 
       <div class="section-card">
         <h3 class="section-title">
-          账户设置
+          Account Settings
         </h3>
         <div class="setting-list">
           <div class="setting-item">
@@ -62,8 +62,8 @@ definePageMeta({
               🔐
             </div>
             <div class="setting-content">
-              <h4>修改密码</h4>
-              <p>更新您的账户密码</p>
+              <h4>Change Password</h4>
+              <p>Update your account password</p>
             </div>
             <div class="setting-arrow">
               →
@@ -74,8 +74,8 @@ definePageMeta({
               📱
             </div>
             <div class="setting-content">
-              <h4>绑定手机</h4>
-              <p>管理您的手机号码</p>
+              <h4>Bind Phone</h4>
+              <p>Manage your phone number</p>
             </div>
             <div class="setting-arrow">
               →
@@ -86,8 +86,8 @@ definePageMeta({
               📧
             </div>
             <div class="setting-content">
-              <h4>邮箱设置</h4>
-              <p>管理您的邮箱地址</p>
+              <h4>Email Settings</h4>
+              <p>Manage your email address</p>
             </div>
             <div class="setting-arrow">
               →
@@ -98,7 +98,7 @@ definePageMeta({
 
       <div class="section-card">
         <h3 class="section-title">
-          隐私设置
+          Privacy Settings
         </h3>
         <div class="setting-list">
           <div class="setting-item">
@@ -106,8 +106,8 @@ definePageMeta({
               🔒
             </div>
             <div class="setting-content">
-              <h4>隐私政策</h4>
-              <p>查看我们的隐私政策</p>
+              <h4>Privacy Policy</h4>
+              <p>View our privacy policy</p>
             </div>
             <div class="setting-arrow">
               →
@@ -118,8 +118,8 @@ definePageMeta({
               🛡️
             </div>
             <div class="setting-content">
-              <h4>安全设置</h4>
-              <p>管理您的安全选项</p>
+              <h4>Security Settings</h4>
+              <p>Manage your security options</p>
             </div>
             <div class="setting-arrow">
               →

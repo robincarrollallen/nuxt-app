@@ -4,7 +4,7 @@ export const useAppStore = defineStore('app', () => {
 	const locale = ref<LanguageType>(LanguageSupport[0])
 
 	/**
-	 * 设置语言
+	 * Set language
 	 */
 	const setLocale = (language: string) => {
 		const { $i18n } = useNuxtApp()

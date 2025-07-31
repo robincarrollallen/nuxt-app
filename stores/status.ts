@@ -4,7 +4,7 @@ export const useStatusStore = defineStore('status', () => {
 	const showMainLeftDrawer = ref(false)
 
 	/**
-	 * 设置语言
+	 * Set language
 	 */
 	const setShowMainLeftDrawer = (status = false) => {
 		showMainLeftDrawer.value = status

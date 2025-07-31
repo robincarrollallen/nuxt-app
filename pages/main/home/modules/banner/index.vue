@@ -8,7 +8,7 @@ const badgeSrc = new URL('~/assets/svg/badge-banner.svg', import.meta.url).href
 const { bannerList, autoplay } = useBannerLogic()
 
 const systemStore = useSystemStore()
-const screenWidth = computed(() => systemStore.screenWidth) // 屏幕宽度
+const screenWidth = computed(() => systemStore.screenWidth) // Screen width
 const slidesPerView = computed(() => {
 	let perView = 1
 	let spaceBetween = 0
