@@ -48,7 +48,7 @@ const changeLanguage = (lang: any) => {
       </div>
     </div>
 
-    <van-dialog className="language-dialog" teleport="#__nuxt" v-model:show="showLanguage" :title="$t('common.chooseLanguage')" :show-confirm-button="false" close-on-click-overlay>
+    <van-dialog v-if="statusStore.showMainLeftDrawer" className="language-dialog" teleport="#__nuxt" v-model:show="showLanguage" :title="$t('common.chooseLanguage')" :show-confirm-button="false" close-on-click-overlay>
       <div class="language-dialog-list">
         <div v-for="lang in langList" :key="lang" class="change-language-item" @click="changeLanguage(lang)">
           <p class="change-language-item-name">

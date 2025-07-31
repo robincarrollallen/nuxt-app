@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { gameList } from './data'
-import Marquee from './components/marquee/index.vue'
+import Marquee from './modules/marquee/index.vue'
 import GameWarp from '~/widgets/gameWarp/index.vue'
-import Banner from './components/banner/index.vue'
-import PwaBar from './components/pwaBar/index.vue'
-import NavBar from './components/navBar/index.vue'
+import Banner from './modules/banner/index.vue'
+import PwaBar from './modules/pwaBar/index.vue'
+import NavBar from './modules/navBar/index.vue'
 
 defineOptions({
 	name: 'HomePage'
@@ -19,7 +19,7 @@ const gameStore = useGameStore()
 
 const homeHotList = computed(() => gameStore.homeHotList) // 首页热门游戏列表
 const homePlatformList = computed(() => { // 首页平台列表
-	const platformList = deepClone(gameStore.homePlatformList)
+	const platformList = [...gameStore.homePlatformList]
 
 	platformList.unshift({
 		id: 0,
@@ -36,24 +36,38 @@ const homePlatformList = computed(() => { // 首页平台列表
 
 const active = ref(0)
 
+// 使用 computed 缓存每个平台的游戏列表
+const platformGamesMap = computed(() => {
+	const map = new Map<number, any[]>()
+
+	// 预处理所有平台的游戏列表
+	homePlatformList.value.forEach(platform => {
+		if (platform.id === 0) {
+			map.set(0, homeHotList.value)
+		} else {
+			const list = gameList.filter(item => item.gameList[0]?.platformId === platform.id)
+			let result = []
+			if (list.length > 1) {
+				list.forEach(item => {
+					result.push(...item.gameList)
+				})
+			} else if (list.length === 1) {
+				result = list[0].gameList
+			}
+			map.set(platform.id, result)
+		}
+	})
+
+	return map
+})
+
 const getGameListByPlatform = (platformId: number) => {
-	const list = gameList.filter(item => item.gameList[0]?.platformId === platformId)
-
-	let result = []
-	if (list.length > 1) {
-		list.forEach(item => {
-			result.push(...item.gameList)
-		})
-	} else if (list.length === 1) {
-		result = list[0].gameList
-	}
-
-	return result
+	return platformGamesMap.value.get(platformId) || []
 }
 </script>
 
 <template>
-  <div id="__home" class="home-page">
+  <div class="home-page">
 		<ClientOnly>
 			<header>
 				<PwaBar />
@@ -73,8 +87,7 @@ const getGameListByPlatform = (platformId: number) => {
 							</div>
 						</template>
 						<div class="segment-pane-wrap">
-							<GameWarp :platform="platform" :list="homeHotList" v-if="platform.id === 0"/>
-							<GameWarp :platform="platform" :list="getGameListByPlatform(platform.id)" v-else/>
+							<GameWarp :platform="platform" :list="getGameListByPlatform(platform.id)"/>
 						</div>
 					</van-tab>
 				</van-tabs>

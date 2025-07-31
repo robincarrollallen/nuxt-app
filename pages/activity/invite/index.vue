@@ -3,7 +3,7 @@ import { useAgentStore } from '~/stores/agent'
 import TeamLevel from './modules/teamLevel/index.vue'
 
 defineOptions({
-	name: 'AboutPage'
+	name: 'InvitePage'
 })
 
 const agentStore = useAgentStore()

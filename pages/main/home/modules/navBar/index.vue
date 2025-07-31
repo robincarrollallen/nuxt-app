@@ -50,12 +50,12 @@ const changeLanguage = (lang: any) => {
 			<van-popup
 				round
 				position="left"
-				teleport="#__home"
+				teleport="#__main"
 				overlay-class="sidebar-overlay"
 				v-model:show="statusStore.showMainLeftDrawer"
 				:style="{ height: '100%' }"
 			>
-				<Sidebar/>
+				<Sidebar />
 			</van-popup>
 		</ClientOnly>
   </div>

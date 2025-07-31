@@ -11,7 +11,7 @@ const tabbarList = [
 		label: '活动',
 	},
 	{
-		path: '',
+		path: '/activity/invite',
 		icon: 'https://zhu-1.w-x-2-c.com/assets/agency-2-CpUFH4JT.png',
 		label: '邀请',
 	},
@@ -29,15 +29,15 @@ const tabbarList = [
 </script>
 
 <template>
-  <NuxtLayout name="default">
+  <NuxtLayout id="__main" name="default">
 		<div class="main-content">
 			<NuxtPage keepalive />
 		</div>
 		<ClientOnly>
 			<div class="tabbar">
-				<NuxtLink class="tab-item" active-class="active" replace v-for="item in tabbarList" :key="item.path" :to="item.path">
-					<div class="tab-icon-warp" :class="{ 'invite': !item.path }">
-						<div class="invite-icon-warp" v-if="!item.path" @click="navigateTo('/activity/invite')">
+				<NuxtLink class="tab-item" active-class="active" :replace="item.path !== '/activity/invite'" v-for="item in tabbarList" :key="item.path" :to="item.path">
+					<div class="tab-icon-warp" :class="{ 'invite': item.path === '/activity/invite' }">
+						<div class="invite-icon-warp" v-if="item.path === '/activity/invite'">
 							<van-image class="invite-icon-bg" src="https://yo.qu6.xyz/assets/tab-move1-CuSYYZkd.png" :show-loading="false" />
 							<van-image class="invite-icon" src="https://yo.qu6.xyz/assets/flexible-1-BvyCopiC.png" :show-loading="false" />
 						</div>
