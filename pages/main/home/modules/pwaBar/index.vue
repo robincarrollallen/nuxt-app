@@ -8,10 +8,7 @@ const tenantInfo = computed(() => tenantStore.tenantInfo)
 <template>
   <div class="pwa-wrap">
     <div class="close-btn-bg" />
-    <van-icon
-      class="close-icon"
-      name="cross"
-    />
+    <Icon class="close-icon" name="maki:cross" />
     <van-image
       class="pwa-icon"
       :src="tenantInfo.icon"
@@ -23,7 +20,7 @@ const tenantInfo = computed(() => tenantStore.tenantInfo)
     <div class="pwa-btn-wrap">
       <van-image class="pwa-money" src="/images/pwa-money.png" :show-loading="false" />
       <Button class="pwa-btn">
-        <SvgIcon name="download-new" class="download-svg" />
+        <SvgIcon url="~/assets/svg/download-new.svg" class="download-svg" />
         <span class="btn-text">{{ $t('common.install') }}</span>
 			</Button>
     </div>

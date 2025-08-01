@@ -78,8 +78,8 @@ const onSlideChange = (e: any) => {
 				<div class="segment-pane-header-count-text">All</div>
 			</div>
 			<div class="segment-pane-header-more">
-				<SvgIcon class="segment-pane-header-more-icon" :class="{ 'disabled': !hasPrev }" name="arrow-left" @click="swiperHandler.slidePrev()" />
-				<SvgIcon class="segment-pane-header-more-icon" :class="{ 'disabled': !hasNext }" name="arrow-right" @click="swiperHandler.slideNext()" />
+				<SvgIcon class="segment-pane-header-more-icon" :class="{ 'disabled': !hasPrev }" url="~/assets/svg/arrow-left.svg" @click="swiperHandler.slidePrev()" />
+				<SvgIcon class="segment-pane-header-more-icon" :class="{ 'disabled': !hasNext }" url="~/assets/svg/arrow-right.svg" @click="swiperHandler.slideNext()" />
 			</div>
 		</header>
 		<Swiper
@@ -102,7 +102,7 @@ const onSlideChange = (e: any) => {
 			</div>
 			<div class="segment-pane-footer-collapse" @click="showAll = !showAll">
 				{{ showAll ? 'Collapse' : 'Display All' }}
-				<van-icon class="segment-pane-footer-collapse-icon" :color="collapseIconColor" :name="showAll ? 'arrow-up' : 'arrow-down'" />
+				<Icon class="segment-pane-footer-collapse-icon" :color="collapseIconColor" :name="showAll ? 'dashicons:arrow-up-alt2' : 'dashicons:arrow-down-alt2'" />
 			</div>
 		</footer>
 	</div>
@@ -208,17 +208,18 @@ const onSlideChange = (e: any) => {
 	.segment-pane-footer {
 		padding: 1.5rem;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
+		flex-direction: column;
 		justify-content: center;
 
 		.segment-pane-footer-collapse {
-			text-align: center;
-			color: var(--ep-color-text-brand-primary);
+			gap: .25rem;
+			display: flex;
 			cursor: pointer;
+			align-items: center;
+			color: var(--ep-color-text-brand-primary);
 
 			.segment-pane-footer-collapse-icon {
-				margin-left: .25rem;
 				border-radius: 50%;
 				padding: .125rem;
 				background: var(--ep-color-text-brand-primary);

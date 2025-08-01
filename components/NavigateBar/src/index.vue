@@ -14,6 +14,9 @@ const router = useRouter()
     <template v-slot:left v-if="slots.left">
       <slot name="left"></slot>
     </template>
+		<template v-slot:left v-else>
+			<Icon name="subway:left-arrow" />
+		</template>
     <template v-slot:right v-if="slots.right">
       <slot name="right"></slot>
     </template>

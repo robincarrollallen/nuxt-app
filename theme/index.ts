@@ -1,8 +1,8 @@
-import { ThemeSupport, type ThemeType, ThemeTypeEnum } from '~/common/enum/theme'
+import { ThemeSupport, type ThemeType, THEME_TYPE } from '~/enums/theme'
 
 class ThemeManager {
 	private loadedThemes = new Set<string>()
-	private currentTheme: ThemeType = ThemeTypeEnum.DEFAULT
+	private currentTheme: ThemeType = THEME_TYPE.DEFAULT
 
 	async setTheme(theme: ThemeType) {
 		if (!this.loadedThemes.has(theme)) {
@@ -11,9 +11,9 @@ class ThemeManager {
 				this.loadedThemes.add(theme)
 			} else {
 				// If loading fails and it's not the default theme, fallback to default theme
-				if (theme !== ThemeTypeEnum.DEFAULT) {
+				if (theme !== THEME_TYPE.DEFAULT) {
 					console.warn(`Failed to load theme ${theme}, falling back to default`)
-					return this.setTheme(ThemeTypeEnum.DEFAULT)
+					return this.setTheme(THEME_TYPE.DEFAULT)
 				}
 				return
 			}
@@ -38,7 +38,7 @@ class ThemeManager {
 	private applyTheme(theme: ThemeType) {
 		const root = document.documentElement
 
-		if (theme === ThemeTypeEnum.DEFAULT) {
+		if (theme === THEME_TYPE.DEFAULT) {
 			root.removeAttribute('data-theme')
 		} else {
 			root.setAttribute('data-theme', theme)
@@ -86,7 +86,7 @@ class ThemeManager {
 		if (savedTheme && this.isValidTheme(savedTheme)) {
 			await this.setTheme(savedTheme)
 		} else {
-			await this.setTheme(ThemeTypeEnum.DEFAULT)
+			await this.setTheme(THEME_TYPE.DEFAULT)
 		}
 	}
 }

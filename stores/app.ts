@@ -1,4 +1,4 @@
-import { LanguageSupport, type LanguageType } from '~/common/enum/language'
+import { LanguageSupport, type LanguageType } from '~/enums/language'
 
 export const useAppStore = defineStore('app', () => {
 	const locale = ref<LanguageType>(LanguageSupport[0])

@@ -25,7 +25,7 @@ const changeLanguage = (lang: any) => {
 <template>
   <div class="navbar-wrap">
     <div class="left-wrap">
-      <SvgIcon name="menu" class="menu-svg" @click="statusStore.setShowMainLeftDrawer(true)" />
+      <SvgIcon url="~/assets/svg/menu.svg" class="menu-svg" @click="statusStore.setShowMainLeftDrawer(true)" />
       <van-image class="logo" :src="tenantInfo.logo" :show-loading="false" />
     </div>
     <div class="login-btn-wrap">
@@ -41,7 +41,7 @@ const changeLanguage = (lang: any) => {
 					</div>
 				</div>
         <template #reference>
-          <SvgIcon name="earth" class="earth-svg" />
+          <SvgIcon url="~/assets/svg/earth.svg" class="earth-svg" />
         </template>
       </van-popover>
     </div>
@@ -81,12 +81,6 @@ const changeLanguage = (lang: any) => {
       height: 1.5rem;
     }
 
-		@media (min-width: 540px) {
-			.menu-svg {
-				display: none;
-			}
-		}
-
     .logo {
       width: 6.25rem;
       height: 1.875rem;
@@ -120,6 +114,12 @@ const changeLanguage = (lang: any) => {
       height: 1.5rem;
     }
   }
+}
+
+@media (min-width: 540px) {
+	.navbar-wrap {
+		display: none;
+	}
 }
 
 .change-language-wrap {

@@ -1,6 +1,6 @@
 import { themeManager } from "~/theme"
-import { ThemeSupport } from "~/common/enum/theme"
-import { LanguageSupport } from "~/common/enum/language"
+import { ThemeSupport } from "~/enums"
+import { LanguageSupport } from "~/enums"
 
 // Global plugin for setting site information <executed once on initial page load>
 export default defineNuxtPlugin(async (to) => {

@@ -10,9 +10,9 @@ const marqueeList = ref([
 
 <template>
 	<div class="marquee-view">
-		<SvgIcon name="broadcast" class="broadcast-icon" />
+		<SvgIcon url="~/assets/svg/broadcast.svg" class="broadcast-icon" />
 		<Marquee class="marquee-content" :content="marqueeList" />
-		<SvgIcon name="message" class="message-icon" />
+		<SvgIcon url="~/assets/svg/message.svg" class="message-icon" />
 	</div>
 </template>
 

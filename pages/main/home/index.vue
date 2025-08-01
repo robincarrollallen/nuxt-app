@@ -23,7 +23,7 @@ const homePlatformList = computed(() => { // Home page platform list
 
 	platformList.unshift({
 		id: 0,
-		name: 'POPULAR',
+		logo: '~/assets/svg/sort/POPULAR.svg',
 		code: 'POPULAR',
 		status: 'ON',
 		openType: true,
@@ -82,7 +82,7 @@ const getGameListByPlatform = (platformId: number) => {
 					<van-tab class="segment-pane" v-for="platform of homePlatformList" :key="platform.id">
 						<template #title>
 							<div class="segment-tab">
-								<SvgIcon class="segment-tab-icon" :url="platform.logo" :type="platform.type" :name="platform.name" />
+								<SvgIcon class="segment-tab-icon" :url="platform.logo" />
 								<div>{{ platform.name }}</div>
 							</div>
 						</template>

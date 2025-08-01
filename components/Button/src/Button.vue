@@ -60,7 +60,6 @@ function endRipple() {
 <template>
   <button
     ref="buttonRef"
-    class="ripple-button"
     @mousedown="startRipple"
     @mouseup="endRipple"
     @mouseleave="endRipple"
@@ -68,30 +67,27 @@ function endRipple() {
     @touchend="endRipple"
     @touchcancel="endRipple"
   >
-    <span
-      ref="rippleRef"
-      class="ripple-span"
-    />
+    <i ref="rippleRef"/>
     <slot />
   </button>
 </template>
 
 <style>
-.ripple-button {
+button {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer;
-  background-color: #007aff;
-  color: #ffffff;
+  background-color: var(--ep-color-background-fill-active-active);
+  color: var(--ep-color-text-default);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.ripple-span {
+i {
   position: absolute;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);

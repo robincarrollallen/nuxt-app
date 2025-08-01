@@ -1,5 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import { LanguageEnum, LanguageSupport } from './common/enum/language'
+import { LANGUAGE_TYPE, LanguageSupport } from './enums/language'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
 		}
 	},
 	i18n: {
-		locales: Object.entries(LanguageEnum).map(([code, name]) => ({
+		locales: Object.entries(LANGUAGE_TYPE).map(([code, name]) => ({
 			code,
 			name,
 			iso: code,

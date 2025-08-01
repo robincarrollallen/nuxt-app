@@ -27,7 +27,7 @@ const changeLanguage = (lang: any) => {
 <template>
   <div class="side-bar-wrap">
 		<div class="logo-wrap">
-			<van-icon class="close-icon" name="cross" @click="statusStore.setShowMainLeftDrawer()" />
+			<Icon class="close-icon" name="maki:cross" @click="statusStore.setShowMainLeftDrawer()" />
 			<van-image class="logo" :src="tenantInfo.logo" :show-loading="false" />
 		</div>
     <div class="login-btn-wrap">
@@ -44,7 +44,7 @@ const changeLanguage = (lang: any) => {
         <span class="language-text">{{ currentLanguage }}</span>
       </span>
       <div class="language-btn">
-        <van-icon name="arrow-down" />
+				<Icon name="dashicons:arrow-down-alt2" />
       </div>
     </div>
 
@@ -54,7 +54,7 @@ const changeLanguage = (lang: any) => {
           <p class="change-language-item-name">
             {{ getLanguageName(lang, locale) }}
           </p>
-          <van-checkbox v-if="locale.toString() == lang" :checked="true" />
+          <van-checkbox v-if="locale.toString() === lang" :checked="true" />
         </div>
       </div>
     </van-dialog>
@@ -100,6 +100,8 @@ const changeLanguage = (lang: any) => {
       gap: 0.5rem;
 
       .flag-icon {
+				width: 1rem;
+				height: 1rem;
         border-radius: 50%;
       }
 
