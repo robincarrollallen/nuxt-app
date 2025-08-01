@@ -22,7 +22,7 @@ function startRipple(event) {
 	const x = clientX - rect.left - size / 2
 	const y = clientY - rect.top - size / 2
 
-	// Set ripple styles
+	// Set ripple style
 	ripple.style.left = x + 'px'
 	ripple.style.top = y + 'px'
 	ripple.style.width = size + 'px'
@@ -32,7 +32,7 @@ function startRipple(event) {
 	ripple.style.transform = 'scale(0)'
 	ripple.style.opacity = '1'
 
-	// Force repaint then start spreading animation
+	// Force redraw and start diffusion animation
 	ripple.offsetHeight
 	ripple.style.transition = 'transform 0.3s ease-out'
 	ripple.style.transform = 'scale(2)'
@@ -49,7 +49,7 @@ function endRipple() {
 	ripple.style.transition = 'opacity 0.2s ease-out'
 	ripple.style.opacity = '0'
 
-	// Reset after animation ends
+	// After animation, reset
 	setTimeout(() => {
 		ripple.style.transform = 'scale(0)'
 		ripple.style.transition = 'none'
@@ -60,6 +60,7 @@ function endRipple() {
 <template>
   <button
     ref="buttonRef"
+    class="ripple-button"
     @mousedown="startRipple"
     @mouseup="endRipple"
     @mouseleave="endRipple"
@@ -67,27 +68,30 @@ function endRipple() {
     @touchend="endRipple"
     @touchcancel="endRipple"
   >
-    <i ref="rippleRef"/>
+    <span
+      ref="rippleRef"
+      class="ripple-span"
+    />
     <slot />
   </button>
 </template>
 
 <style>
-button {
+.ripple-button {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer;
-  background-color: var(--ep-color-background-fill-active-active);
-  color: var(--ep-color-text-default);
+  background-color: #007aff;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-i {
+.ripple-span {
   position: absolute;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);

@@ -8,7 +8,10 @@ const tenantInfo = computed(() => tenantStore.tenantInfo)
 <template>
   <div class="pwa-wrap">
     <div class="close-btn-bg" />
-    <Icon class="close-icon" name="maki:cross" />
+    <van-icon
+      class="close-icon"
+      name="cross"
+    />
     <van-image
       class="pwa-icon"
       :src="tenantInfo.icon"

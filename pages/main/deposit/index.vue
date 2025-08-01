@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import AnimatedNumber from './components/AnimatedNumber.vue' // Ensure path is correct
+import AnimatedNumber from '~/components/AnimatedNumber/src/index.vue'
 
 // Use main layout
 definePageMeta({
@@ -41,24 +41,24 @@ const removeProduct = (amount) => {
 			<h1>Vue 3 Animated Number</h1>
 
 			<div class="counter-section">
-				<p class="label">Account Balance:</p>
+				<p class="label">Account balance:</p>
 				<div class="animated-value amount">
 					$<AnimatedNumber :value="accountBalance" :decimals="2" :duration="1500" />
 				</div>
 				<button @click="deposit(50.75)">Deposit $50.75</button>
 				<button @click="withdraw(20.30)">Withdraw $20.30</button>
-				<button @click="resetBalance">Reset Balance</button>
+				<button @click="resetBalance">Reset balance</button>
 			</div>
 
 			<hr>
 
 			<div class="counter-section">
-				<p class="label">Product Quantity:</p>
+				<p class="label">Product quantity:</p>
 				<div class="animated-value quantity">
-					<AnimatedNumber :value="productQuantity" :decimals="0" :duration="800" /> items
+					<AnimatedNumber :value="productQuantity" :decimals="0" :duration="800" />
 				</div>
-				<button @click="addProduct(100)">Add 100 items</button>
-				<button @click="removeProduct(100)">Remove 100 items</button>
+				<button @click="addProduct(100)">Add 100</button>
+				<button @click="removeProduct(100)">Subtract 100</button>
 			</div>
 		</ClientOnly>
   </div>
@@ -101,18 +101,18 @@ h1 {
 .animated-value {
   font-size: 3em;
   font-weight: bold;
-  color: #007bff; /* Default color */
+  color: #007bff;
   margin: 15px 0;
-  min-height: 1.5em; /* Prevent height jumping */
-  display: inline-block; /* Ensure inline styles can be applied */
+  min-height: 1.5em;
+  display: inline-block;
 }
 
 .animated-value.amount {
-  color: #28a745; /* Green for amounts */
+  color: #28a745;
 }
 
 .animated-value.quantity {
-  color: #ffc107; /* Yellow for quantities */
+  color: #ffc107;
 }
 
 button {

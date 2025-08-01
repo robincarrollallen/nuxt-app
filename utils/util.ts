@@ -17,10 +17,10 @@ export async function copy(text: any, isShowSuccessToast = true) {
 }
 
 /**
- * Deep clone
+ * Deep copy
  */
 export function deepClone<T>(obj: T): T {
-	// Handle primitive types and null
+	// Handle basic types and null
 	if (obj === null || typeof obj !== 'object') {
 		return obj
 	}
@@ -58,7 +58,7 @@ export function deepClone<T>(obj: T): T {
 		return newSet as T
 	}
 
-	// Handle plain objects
+	// Handle normal object
 	if (typeof obj === 'object') {
 		const clonedObj = {} as T
 		for (const key in obj) {
@@ -83,19 +83,19 @@ export function paginate(array: any[], pageSize?: number, pageNumber?: number) {
 		pageSize = totalItems
 	}
 
-	if (!pageNumber) { // No pageNumber passed: return 2D pagination array
+	if (!pageNumber) { // If pageNumber is not passed: return a two-dimensional array of pagination
 		const pages = []
 		for (let i = 0; i < totalItems; i += pageSize) {
 			pages.push(array.slice(i, i + pageSize))
 		}
 		return {
-			pages, // 2D array
+			pages, // Two-dimensional array
 			totalPages, // Total pages
 			totalItems // Total items
 		}
 	}
 
-	const currentPage = Math.max(1, Math.min(pageNumber, totalPages)) // Current page number (boundary limited)
+	const currentPage = Math.max(1, Math.min(pageNumber, totalPages)) // Current page number (limited boundary)
 	const start = (currentPage - 1) * pageSize // Start index
 	const end = start + pageSize // End index
 
@@ -106,7 +106,7 @@ export function paginate(array: any[], pageSize?: number, pageNumber?: number) {
 		currentPage, // Current page number
 		totalPages, // Total pages
 		totalItems, // Total items
-		hasPrev: currentPage > 1, // Has previous page
-		hasNext: currentPage < totalPages // Has next page
+		hasPrev: currentPage > 1, // Whether there is a previous page
+		hasNext: currentPage < totalPages // Whether there is a next page
 	}
 }

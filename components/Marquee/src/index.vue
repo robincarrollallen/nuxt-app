@@ -11,12 +11,14 @@ interface Props {
 const props = defineProps<Props>()
 
 const animationDuration = computed(() => { // Calculate animation duration
-	const timePerChar = 0.2 // Assume each character takes 0.2 seconds
-	let totalChars = props.content.reduce((total, item) => total + item.content.length + 32, 0) // Calculate total character count of all content
+	const timePerChar = 0.2 // Assume each character needs 0.2 seconds
+	let totalChars = props.content.reduce((total, item) => total + item.content.length + 32, 0) // Calculate the total number of characters in all content
 	return totalChars * timePerChar // Return animation duration
 })
 
-// Click marquee content
+/**
+ * Click marquee content
+ */
 async function marqueeHandle() {
 
 }
@@ -31,23 +33,23 @@ async function marqueeHandle() {
 </template>
 
 <style>
-.marquee__wrap { /* Marquee container */
+.marquee__wrap {
 	width: 100%;
 	overflow: hidden;
 }
 
-.marquee__content { /* Marquee content */
+.marquee__content {
 	width: max-content;
 	display: flex;
 	animation: marquee var(--animation-duration) linear infinite;
 }
 
-.marquee__item { /* Marquee item */
+.marquee__item {
 	white-space: nowrap;
 	margin-right: 24.375rem;
 }
 
-@keyframes marquee { /* Marquee animation */
+@keyframes marquee {
 0% {
 		transform: translate3d(24.375rem, 0 , 0);
 	}

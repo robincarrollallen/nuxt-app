@@ -45,7 +45,7 @@ const changeLanguage = (lang: any) => {
         </template>
       </van-popover>
     </div>
-		<!-- Left drawer -->
+		<!-- 左侧抽屉 -->
 		<ClientOnly>
 			<van-popup
 				round
@@ -55,7 +55,7 @@ const changeLanguage = (lang: any) => {
 				v-model:show="statusStore.showMainLeftDrawer"
 				:style="{ height: '100%' }"
 			>
-				<Sidebar />
+				<Sidebar/>
 			</van-popup>
 		</ClientOnly>
   </div>
@@ -80,6 +80,12 @@ const changeLanguage = (lang: any) => {
       width: 1.5rem;
       height: 1.5rem;
     }
+
+		@media (min-width: 540px) {
+			.menu-svg {
+				display: none;
+			}
+		}
 
     .logo {
       width: 6.25rem;
@@ -114,12 +120,6 @@ const changeLanguage = (lang: any) => {
       height: 1.5rem;
     }
   }
-}
-
-@media (min-width: 540px) {
-	.navbar-wrap {
-		display: none;
-	}
 }
 
 .change-language-wrap {

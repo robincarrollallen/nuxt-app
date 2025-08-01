@@ -1,10 +1,10 @@
 import { useSystemStore } from '~/stores/system'
 
-// Execute immediately when plugin starts
+// Execute immediately when the plugin starts
 export default defineNuxtPlugin(() => {
 	const systemStore = useSystemStore()
 
-	// Execute logic that needs to wait for Nuxt to be fully initialized
+	// Execute the logic that needs to wait for Nuxt to be fully initialized here
 	onNuxtReady(() => {
 		systemStore.updateScreenSize()
 		window.addEventListener('resize', systemStore.updateScreenSize)

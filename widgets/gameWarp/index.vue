@@ -14,18 +14,19 @@ const props = defineProps({
 
 const systemStore = useSystemStore()
 
-const swiperRef = ref() // Swiper DOM reference
-const showAll = ref(false) // Whether to show all items
+const swiperRef = ref() // Swiper DOM
+const showAll = ref(false) // Whether to show all
 const currentSlide = ref(0) // Current slide index
-const swiperHandler = ref()	// Swiper instance
+const swiperHandler = ref()	// Swiper method
 
 const screenWidth = computed(() => systemStore.screenWidth) // Screen width
-const collapseIconColor = computed(() => { // Collapse icon color
+// Collapse icon color
+const collapseIconColor = computed(() => {
 	return getComputedStyle(document.documentElement).getPropertyValue('--ep-color-background-fill-active-disabled') || ''
 })
-
-const gameCardPaginate = computed(() => {
-	let limit = 16 // Items per page
+// Game card pagination
+const gameCardPagination = computed(() => {
+	let limit = 16 // Number of games per page
 
 	if (showAll.value) {
 		limit = props.list.length
@@ -52,7 +53,7 @@ const hasPrev = computed(() => {
 	return !showAll.value && currentSlide.value > 0
 })
 const hasNext = computed(() => {
-	return !showAll.value && currentSlide.value < gameCardPaginate.value.totalPages - 1
+	return !showAll.value && currentSlide.value < gameCardPagination.value.totalPages - 1
 })
 
 const onSwiper = (swiper: any) => {
@@ -60,7 +61,7 @@ const onSwiper = (swiper: any) => {
 }
 
 /**
- * Slide change event handler
+ * 轮播图切换事件
  */
 const onSlideChange = (e: any) => {
 	currentSlide.value = e.activeIndex
@@ -70,7 +71,7 @@ const onSlideChange = (e: any) => {
 <template>
 	<div class="segment-pane-item">
 		<header class="segment-pane-header">
-			<SvgIcon class="segment-pane-header-icon" :url="platform.logo" :type="platform.type" :name="platform.name" />
+			<SvgIcon class="segment-pane-header-icon" :url="platform.logo" />
 			<div class="segment-pane-header-title">{{ platform.name }}</div>
 			<div class="segment-pane-header-line"></div>
 			<div class="segment-pane-header-count">
@@ -90,19 +91,20 @@ const onSlideChange = (e: any) => {
 			@swiper="onSwiper"
 			@slideChange="onSlideChange"
 		>
-			<SwiperSlide v-for="(item, index) of gameCardPaginate.pages" :key="index">
+			<SwiperSlide v-for="(item, index) of gameCardPagination.pages" :key="index">
 				<div class="game-wrap">
-					<div class="game-card" :style="{backgroundImage: game.logoFlag ? `url(https://game-logo.d-e-7-f.com/pre/style2/en/${game.logoFlag}.jpg)` : game.background}" v-for="game of item" :key="game.id" />
+					<div class="game-card" :style="{ backgroundImage: game.logoFlag ? `url(https://game-logo.d-e-7-f.com/pre/style2/en/${game.logoFlag}.jpg` : game.background}" v-for="game of item" :key="game.id">
+					</div>
 				</div>
 			</SwiperSlide>
 		</Swiper>
 		<footer class="segment-pane-footer">
 			<div class="segment-pane-footer-count">
-				{{ `Displaying ${gameCardPaginate.pages[currentSlide]?.length} of ${list.length} Games` }}
+				{{ `Displaying ${gameCardPagination.pages[currentSlide]?.length} of ${list.length} Games` }}
 			</div>
 			<div class="segment-pane-footer-collapse" @click="showAll = !showAll">
 				{{ showAll ? 'Collapse' : 'Display All' }}
-				<Icon class="segment-pane-footer-collapse-icon" :color="collapseIconColor" :name="showAll ? 'dashicons:arrow-up-alt2' : 'dashicons:arrow-down-alt2'" />
+				<van-icon class="segment-pane-footer-collapse-icon" :color="collapseIconColor" :name="showAll ? 'arrow-up' : 'arrow-down'" />
 			</div>
 		</footer>
 	</div>
@@ -198,28 +200,23 @@ const onSlideChange = (e: any) => {
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
-
-			&:hover {
-				transform: scale(1.05);
-			}
 		}
 	}
 
 	.segment-pane-footer {
 		padding: 1.5rem;
 		display: flex;
-		align-items: center;
 		flex-direction: column;
+		align-items: center;
 		justify-content: center;
 
 		.segment-pane-footer-collapse {
-			gap: .25rem;
-			display: flex;
-			cursor: pointer;
-			align-items: center;
+			text-align: center;
 			color: var(--ep-color-text-brand-primary);
+			cursor: pointer;
 
 			.segment-pane-footer-collapse-icon {
+				margin-left: .25rem;
 				border-radius: 50%;
 				padding: .125rem;
 				background: var(--ep-color-text-brand-primary);

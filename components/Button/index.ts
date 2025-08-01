@@ -1,4 +1,4 @@
-import _Button from './src/Button.vue'
+import _Button from './src/index.vue'
 
 export const Button = _Button
 

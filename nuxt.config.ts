@@ -1,19 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import { LANGUAGE_TYPE, LanguageSupport } from './enums/language'
+import { LANGUAGE_TYPE, LanguageSupport } from './enums'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: '2025-05-15',
 	devtools: { enabled: false },
 	modules: ['@vant/nuxt', '@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/i18n', '@nuxt/icon'],
-	icon: {
-		collections: [
-			{
-				name: 'local',
-				path: './assets/svg'
-			} as any,
-		],
-	},
 	vue: {
 		compilerOptions: {
 			isCustomElement: tag => tag === 'micro-app'

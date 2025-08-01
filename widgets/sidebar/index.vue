@@ -1,33 +1,31 @@
 <script setup lang="ts">
-import { useAppStore } from '~/stores/app'
-import { useStatusStore } from '~/stores/status'
-import { useTenantStore } from '~/stores/tenant'
-
 defineOptions({
 	name: 'SideBar'
 })
 
-const appStore = useAppStore()
-const statusStore = useStatusStore()
-const tenantStore = useTenantStore()
+const appStore = useAppStore() // Application store
+const systemStore = useSystemStore() // System store
+const statusStore = useStatusStore() // Status store
+const tenantStore = useTenantStore() // Tenant store
 
-const showLanguage = ref(false)
+const showLanguage = ref(false) // Whether to show language selection
 
-const locale = computed(() => appStore.locale)
-const tenantInfo = computed(() => tenantStore.tenantInfo)
-const langList = computed(() => tenantStore.tenantInfo.appLanguage)
-const currentLanguage = computed(() => getLanguageName(locale.value, locale.value).split(' ')[0])
+const locale = computed(() => appStore.locale) // Current language
+const tenantInfo = computed(() => tenantStore.tenantInfo) // Tenant information
+const langList = computed(() => tenantStore.tenantInfo.appLanguage) // Language list
+const currentLanguage = computed(() => getLanguageName(locale.value, locale.value).split(' ')[0]) // Current language
+const showLanguageDialog = computed(() => systemStore.screenWidth >= 540 || statusStore.showMainLeftDrawer) // Whether to show language dialog
 
 const changeLanguage = (lang: any) => {
-	appStore.setLocale(lang)
-	showLanguage.value = false
+	appStore.setLocale(lang) // Set language
+	showLanguage.value = false // Close language selection
 }
 </script>
 
 <template>
   <div class="side-bar-wrap">
 		<div class="logo-wrap">
-			<Icon class="close-icon" name="maki:cross" @click="statusStore.setShowMainLeftDrawer()" />
+			<van-icon class="close-icon" name="cross" @click="statusStore.setShowMainLeftDrawer()" />
 			<van-image class="logo" :src="tenantInfo.logo" :show-loading="false" />
 		</div>
     <div class="login-btn-wrap">
@@ -44,17 +42,17 @@ const changeLanguage = (lang: any) => {
         <span class="language-text">{{ currentLanguage }}</span>
       </span>
       <div class="language-btn">
-				<Icon name="dashicons:arrow-down-alt2" />
+        <van-icon name="arrow-down" />
       </div>
     </div>
 
-    <van-dialog v-if="statusStore.showMainLeftDrawer" className="language-dialog" teleport="#__nuxt" v-model:show="showLanguage" :title="$t('common.chooseLanguage')" :show-confirm-button="false" close-on-click-overlay>
+    <van-dialog v-if="showLanguageDialog" className="language-dialog" teleport="#__nuxt" v-model:show="showLanguage" :title="$t('common.chooseLanguage')" :show-confirm-button="false" close-on-click-overlay>
       <div class="language-dialog-list">
         <div v-for="lang in langList" :key="lang" class="change-language-item" @click="changeLanguage(lang)">
           <p class="change-language-item-name">
             {{ getLanguageName(lang, locale) }}
           </p>
-          <van-checkbox v-if="locale.toString() === lang" :checked="true" />
+          <van-checkbox v-if="locale === lang" :checked="true" />
         </div>
       </div>
     </van-dialog>

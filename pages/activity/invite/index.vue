@@ -3,7 +3,7 @@ import { useAgentStore } from '~/stores/agent'
 import TeamLevel from './modules/teamLevel/index.vue'
 
 defineOptions({
-	name: 'InvitePage'
+	name: 'AboutPage'
 })
 
 const agentStore = useAgentStore()
@@ -13,9 +13,9 @@ const agentStore = useAgentStore()
 <template>
 	<div class="about-page">
 		<ClientOnly>
-			<NavigateBar title="My Team" left-arrow/>
+			<NavigateBar title="My team" left-arrow/>
 			<main class="main-container">
-				<!-- My Team -->
+				<!-- My team level -->
 				<TeamLevel />
 			</main>
 		</ClientOnly>

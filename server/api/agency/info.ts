@@ -1,10 +1,10 @@
 export default defineEventHandler(async () => {
-	// Simulate API call
+	// 模拟 API 调用
 	const fetchAgencyInfo = async () => {
-		// Simulate network request
+		// 模拟网络请求
 		await new Promise(resolve => setTimeout(resolve, 100))
 
-		// Simulate random success/failure
+		// 模拟随机成功/失败
 		if (Math.random() > 0.1) {
 			return {
 				"info": {

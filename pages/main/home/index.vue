@@ -17,14 +17,15 @@ definePageMeta({
 
 const gameStore = useGameStore()
 
-const homeHotList = computed(() => gameStore.homeHotList) // Home page hot games list
-const homePlatformList = computed(() => { // Home page platform list
-	const platformList = [...gameStore.homePlatformList]
+const homeHotList = computed(() => gameStore.homeHotList) // Home hot game list
+const homePlatformList = computed(() => { // Home platform list
+	const platformList = deepClone(gameStore.homePlatformList)
 
 	platformList.unshift({
 		id: 0,
-		logo: '~/assets/svg/sort/POPULAR.svg',
+		name: 'POPULAR',
 		code: 'POPULAR',
+		logo: '~/assets/svg/sort/POPULAR.svg',
 		status: 'ON',
 		openType: true,
 		type: 'sort',
@@ -36,33 +37,19 @@ const homePlatformList = computed(() => { // Home page platform list
 
 const active = ref(0)
 
-// Use computed to cache game list for each platform
-const platformGamesMap = computed(() => {
-	const map = new Map<number, any[]>()
-
-	// Preprocess game lists for all platforms
-	homePlatformList.value.forEach(platform => {
-		if (platform.id === 0) {
-			map.set(0, homeHotList.value)
-		} else {
-			const list = gameList.filter(item => item.gameList[0]?.platformId === platform.id)
-			let result = []
-			if (list.length > 1) {
-				list.forEach(item => {
-					result.push(...item.gameList)
-				})
-			} else if (list.length === 1) {
-				result = list[0].gameList
-			}
-			map.set(platform.id, result)
-		}
-	})
-
-	return map
-})
-
 const getGameListByPlatform = (platformId: number) => {
-	return platformGamesMap.value.get(platformId) || []
+	const list = gameList.filter(item => item.gameList[0]?.platformId === platformId)
+
+	let result = []
+	if (list.length > 1) {
+		list.forEach(item => {
+			result.push(...item.gameList)
+		})
+	} else if (list.length === 1) {
+		result = list[0].gameList
+	}
+
+	return result
 }
 </script>
 
@@ -87,7 +74,8 @@ const getGameListByPlatform = (platformId: number) => {
 							</div>
 						</template>
 						<div class="segment-pane-wrap">
-							<GameWarp :platform="platform" :list="getGameListByPlatform(platform.id)"/>
+							<GameWarp :platform="platform" :list="homeHotList" v-if="platform.id === 0"/>
+							<GameWarp :platform="platform" :list="getGameListByPlatform(platform.id)" v-else/>
 						</div>
 					</van-tab>
 				</van-tabs>

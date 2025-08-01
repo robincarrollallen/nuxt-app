@@ -19,4 +19,3 @@ export type ThemeType = typeof THEME_TYPE[keyof typeof THEME_TYPE]
 
 // Supported themes array
 export const ThemeSupport = Object.values(THEME_TYPE)
-

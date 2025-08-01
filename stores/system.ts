@@ -2,12 +2,12 @@
 import { setFontSize } from '~/common/variable'
 
 export const useSystemStore = defineStore('system', () => {
-	const fontSize = ref(16)
+	const fontSize = ref(16) // Font size
 	const screenWidth = ref(window.innerWidth) // Screen width
 	const screenHeight = ref(window.innerHeight) // Screen height
 
 	/**
-	 * Update screen size information
+	 * Update screen information
 	 */
 	const updateScreenSize = () => {
 		screenWidth.value = window.innerWidth
@@ -16,7 +16,7 @@ export const useSystemStore = defineStore('system', () => {
 	}
 
 	/**
-	 * Set rem base value
+	 * Set rem base
 	 */
 	function setRemBase() {
 		const baseWidth = 390 // Design width

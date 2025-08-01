@@ -83,7 +83,7 @@
   --ep-neutral-gray-gray-L10: #8d8d8d;
 
 
-  /* 实际使用的变量 */
+  /* Actual used variables */
   --ep-color-background-fill-body-default: var(--ep-neutral-gray-gray-L02);
   --ep-color-background-fill-surface-raised-L1: var(--ep-neutral-gray-gray-L03);
   --ep-color-background-fill-surface-raised-L2: var(--ep-neutral-gray-gray-L04);

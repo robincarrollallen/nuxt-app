@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const svgContent = ref('')
 
-// 简化的路径处理
+// Simplified path processing
 const processPath = (url: string) => {
 	const cleanPath = url.replace(/^[~@]\/+/, '')
 	const parts = cleanPath.split('/')
@@ -17,9 +17,9 @@ const processPath = (url: string) => {
 	return [...parts, fileName]
 }
 
-// 简化的动态import
+// Simplified dynamic import
 const importSvg = async (pathParts: string[]) => {
-	// 根据路径长度使用不同的导入方式
+	// Use different import methods based on path length
 	const importMap = {
 		1: () => import(`~/${pathParts[0]}.svg?raw`),
 		2: () => import(`~/${pathParts[0]}/${pathParts[1]}.svg?raw`),
@@ -63,7 +63,7 @@ const loadRemoteSvg = async (url: string) => {
  * @param url - The URL of the SVG file
  */
 const loadLocalSvg = async (url: string) => {
-	// 先判断是否以.svg结尾
+	// Check if the URL ends with .svg
 	if (!url.toLowerCase().endsWith('.svg')) {
 		return `<img src="${url}" />`
 	}

@@ -9,9 +9,9 @@ const agentStore = useAgentStore()
 const tenantStore = useTenantStore()
 
 const merchantCy = computed(() => tenantStore.tenantInfo?.merchantCy) // Current merchant currency
-const currentLevel = computed(() => data.value.info?.agencyLevel || 1)
-const totalTeamBet = computed(() => Number(data.value.info?.histBet || 0) / 100)
-const totalTeamCount = computed(() => (data.value.info?.histDirectCnt || 0) + (data.value.info?.histTeamCnt || 0))
+const currentLevel = computed(() => data.value.info?.agencyLevel || 1) // Current level
+const totalTeamBet = computed(() => Number(data.value.info?.histBet || 0) / 100) // Total team bet
+const totalTeamCount = computed(() => (data.value.info?.histDirectCnt || 0) + (data.value.info?.histTeamCnt || 0)) // Total team count
 const agentLevelConfig = computed(() => {
 	try {
 		return JSON.parse(agentStore.agencyConfig.templateInfo.config)
@@ -29,7 +29,7 @@ const totalComm = computed(() => {
 })
 
 /**
- * Calculate first recharge commission
+ * Calculate first recharge rebate
  */
 function computeFirstRechargeComm(level: number) {
 	const config = agentStore.agencyConfig.inviteConfig?.firstRechargeRebateLevelConfig

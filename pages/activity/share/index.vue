@@ -17,12 +17,12 @@ const onShareTabClick = ({ title }) => showToast(title)
 			<main class="main-container">
 				<div class="share-card">
 					<div class="share-url-warp">
-						<div class="url-title">Invitation Link:</div>
+						<div class="url-title">Invite link:</div>
 						<div class="url-link">https://tg3-gray.7-v-s-8.com/?pid=575718350</div>
 						<SvgIcon url="~/assets/svg/copy.svg" class="copy-icon" @click="copy('https://tg3-gray.7-v-s-8.com/?pid=575718350')"/>
 					</div>
 					<div class="quick-share-warp">
-						<div class="share-title">Quick Share</div>
+						<div class="share-title">Quick share</div>
 						<van-tabs class="share-tabs" @click-tab="onShareTabClick">
 							<van-tab v-for="item in agentStore.shareConfig?.software" :key="item.name">
 								<template #title><SvgIcon :url="`~/assets/svg/share/${item.name.toLocaleLowerCase()}.svg`" class="share-icon" /></template>
@@ -44,7 +44,7 @@ const onShareTabClick = ({ title }) => showToast(title)
 				<van-progress
 					stroke-width=".5rem"
 					:percentage="75"
-					pivot-text="Purple"
+					pivot-text="紫色"
 					pivot-color="#7232dd"
 					:show-pivot="false"
 					color="linear-gradient(to right, #be99ff, #7232dd)"

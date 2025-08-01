@@ -10,7 +10,7 @@ class ThemeManager {
 			if (success) {
 				this.loadedThemes.add(theme)
 			} else {
-				// If loading fails and it's not the default theme, fallback to default theme
+				// If the theme fails to load and is not the default theme, fall back to the default theme
 				if (theme !== THEME_TYPE.DEFAULT) {
 					console.warn(`Failed to load theme ${theme}, falling back to default`)
 					return this.setTheme(THEME_TYPE.DEFAULT)
@@ -27,7 +27,7 @@ class ThemeManager {
 
 	private async loadThemeCSS(theme: ThemeType): Promise<boolean> {
 		try {
-			await import(`~/theme/variables/${theme}.css`) // Correct CSS file path
+			await import(`~/theme/variables/${theme}.css`) // Fix CSS file path
 			return true
 		} catch (error) {
 			console.error(`Failed to load theme CSS: ${theme}`, error)
@@ -60,22 +60,22 @@ class ThemeManager {
 		await Promise.all(ThemeSupport.map(theme => this.preloadTheme(theme)))
 	}
 
-	// Check if theme is loaded
+	// Check if the theme is loaded
 	isThemeLoaded(theme: ThemeType): boolean {
 		return this.loadedThemes.has(theme)
 	}
 
-	// Get loaded themes list
+	// Get the list of loaded themes
 	getLoadedThemes(): string[] {
 		return Array.from(this.loadedThemes)
 	}
 
-	// Get current theme
+	// Get the current theme
 	getCurrentTheme(): ThemeType {
 		return this.currentTheme
 	}
 
-	// Validate theme type
+	// Verify theme type
 	private isValidTheme(theme: string): theme is ThemeType {
 		return ThemeSupport.includes(theme as ThemeType)
 	}
