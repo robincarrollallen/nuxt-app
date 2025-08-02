@@ -11,7 +11,8 @@ export default defineEventHandler(async () => {
 					name: 'nuxt-app',
 				},
 				language: 'pt-BR',
-				theme: 'purple'
+				theme: 'purple',
+				merchantCy: 'R$'
 			}
 		} else {
 			throw new Error('API request failed')

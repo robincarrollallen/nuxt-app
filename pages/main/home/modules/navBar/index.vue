@@ -63,6 +63,10 @@ const changeLanguage = (lang: any) => {
 
 <style scoped lang="less">
 .navbar-wrap {
+	@media (min-width: 540px) {
+		display: none;
+	}
+
   padding: 0 1rem;
   width: 100%;
   height: 3.125rem;

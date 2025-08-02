@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
+import { formatMoney } from '~/utils/math'
 
 const props = defineProps({
 	value: {
@@ -20,7 +21,7 @@ let animationFrameId = null // Used to store the ID of requestAnimationFrame, fo
 
 const displayValue = ref(props.value) // The responsive value used to display the component internally
 
-const formattedDisplayValue = computed(() => displayValue.value.toFixed(props.decimals))
+const formattedDisplayValue = computed(() => formatMoney(displayValue.value, props.decimals))
 
 /**
  * Start number animation

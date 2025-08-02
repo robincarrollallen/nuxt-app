@@ -200,6 +200,10 @@ const onSlideChange = (e: any) => {
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
+
+			&:hover {
+				transform: scale(1.05);
+			}
 		}
 	}
 

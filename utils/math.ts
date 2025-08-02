@@ -1,10 +1,16 @@
+// Create a responsive NumberFormat instance
+const numberFormatter = computed(() => {
+	const locale = useAppStore().locale
+	return new Intl.NumberFormat(locale, { useGrouping: true })
+})
+
 /**
  * Format number to thousands and truncate decimals
  * @param {number|string} value The number to be formatted
  * @param {number} decimals The number of decimal places, default 2
  * @returns {string} The formatted string
  */
-const formatMoney = (value: number | string, decimals: number = 2): string => {
+export const formatMoney = (value: number | string, decimals: number = 2): string => {
 	if (value === null || value === undefined || value === '') return '0'
 
 	let num = Number(value)
@@ -22,7 +28,7 @@ const formatMoney = (value: number | string, decimals: number = 2): string => {
 	let [intPart, decimalPart = ''] = num.toString().split('.')
 
 	// Format integer part with Intl.NumberFormat
-	intPart = new Intl.NumberFormat('en-US', { useGrouping: true }).format(Number(intPart))
+	intPart = numberFormatter.value.format(Number(intPart))
 
 	// Handle decimal part
 	if (decimals > 0) {
