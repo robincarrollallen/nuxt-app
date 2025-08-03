@@ -3,14 +3,14 @@ import Sidebar from '~/widgets/sidebar/index.vue'
 </script>
 
 <template>
-	<div class="global-layout">
-		<ClientOnly>
+	<ClientOnly>
+		<div class="global-layout">
 			<Sidebar class="side-bar-wrap" />
-		</ClientOnly>
-		<main class="content-wrapper">
-			<slot />
-		</main>
-	</div>
+			<main class="content-wrapper">
+				<slot />
+			</main>
+		</div>
+	</ClientOnly>
 </template>
 
 <style scoped lang="less">
@@ -31,7 +31,7 @@ import Sidebar from '~/widgets/sidebar/index.vue'
 		flex-direction: column;
 		background: var(--ep-color-background-fill-body-default);
 		position: relative;
-    overflow: hidden auto;
+    overflow: hidden;
     /* Hide scrollbar */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */

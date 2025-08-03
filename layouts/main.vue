@@ -38,8 +38,8 @@ const tabbarList = [
 				<NuxtLink class="tab-item" active-class="active" replace v-for="item in tabbarList" :key="item.path" :to="item.path">
 					<div class="tab-icon-warp" :class="{ 'invite': !item.path }">
 						<div class="invite-icon-warp" v-if="!item.path" @click="navigateTo('/activity/invite')">
-							<van-image class="invite-icon-bg" src="https://yo.qu6.xyz/assets/tab-move1-CuSYYZkd.png" :show-loading="false" />
-							<van-image class="invite-icon" src="https://yo.qu6.xyz/assets/flexible-1-BvyCopiC.png" :show-loading="false" />
+							<div class="invite-icon-bg" />
+							<div class="invite-icon" />
 						</div>
 						<van-image class="tab-icon" v-else :src="item.icon" :show-loading="false" />
 					</div>
@@ -56,6 +56,7 @@ const tabbarList = [
 	padding-bottom: 60px; /* Leave space for tabbar */
 	position: relative;
 	height: 100%;
+	overflow: hidden auto;
 }
 
 .main-content::-webkit-scrollbar {
@@ -120,14 +121,24 @@ const tabbarList = [
 						}
 
 						.invite-icon-bg {
-							position: absolute;
 							inset: 0;
+							position: absolute;
 							animation: inviteRotate 5s linear infinite;
+							background: url('https://yo.qu6.xyz/assets/tab-move1-CuSYYZkd.png');
+							background-position: center center;
+							background-repeat: no-repeat;
+							background-size: 100% 100%;
 						}
 
 						.invite-icon {
+							z-index: 1;
 							width: 80%;
 							height: 80%;
+							position: relative;
+							background: url('https://yo.qu6.xyz/assets/flexible-1-BvyCopiC.png');
+							background-position: center center;
+							background-repeat: no-repeat;
+							background-size: 100% 100%;
 						}
 					}
 				}

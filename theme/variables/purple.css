@@ -87,7 +87,7 @@
   --ep-color-background-fill-body-default: var(--ep-neutral-gray-gray-L02);
   --ep-color-background-fill-surface-raised-L1: var(--ep-neutral-gray-gray-L03);
   --ep-color-background-fill-surface-raised-L2: var(--ep-neutral-gray-gray-L04);
-  --ep-color-background-fill-surface-rowered: var(--ep-neutral-gray-gray-L01);
+  --ep-color-background-fill-surface-lowered: var(--ep-neutral-gray-gray-L01);
   --ep-color-background-fill-top-nav-primary: var(--ep-neutral-gray-gray-L04);
   --ep-color-background-fill-top-nav-secondary: var(--ep-neutral-gray-gray-L04);
   --ep-color-background-fill-foot-bar: var(--ep-neutral-gray-gray-L02);

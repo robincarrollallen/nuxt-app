@@ -5,7 +5,9 @@ export const LANGUAGE_TYPE = {
 	/** English */
 	'en-US': 'English',
 	/** Portuguese */
-	'pt-BR': 'Português'
+	'pt-BR': 'Português',
+	/** Chinese */
+	'zh-CN': '中文'
 } as const
 
 // Supported language type

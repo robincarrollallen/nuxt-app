@@ -1,13 +1,23 @@
 <script setup lang="ts">
 interface Props {
 	url?: string
+	src?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
-	url: ''
+const componentProps = withDefaults(defineProps<Props>(), {
+	url: '',
+	src: ''
 })
 
 const svgContent = ref('')
+
+const props = reactive({
+	url: componentProps.url || componentProps.src
+})
+
+watch([() => componentProps.url, () => componentProps.src], () => {
+	props.url = componentProps.url || componentProps.src
+})
 
 // Simplified path processing
 const processPath = (url: string) => {
@@ -101,18 +111,18 @@ onMounted(async () => {
 <template>
   <span
 		v-if="svgContent"
-    class="svg-icon"
+    class="svg__icon"
     v-html="svgContent"
   />
 </template>
 
 <style scoped>
-.svg-icon {
+.svg__icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-:global(.svg-icon svg) {
+:global(.svg__icon svg) {
   width: 100%;
   height: 100%;
 }

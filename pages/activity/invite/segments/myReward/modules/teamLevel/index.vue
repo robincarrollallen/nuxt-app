@@ -8,10 +8,10 @@ const { data } = await useFetch('/api/agency/info')
 const agentStore = useAgentStore()
 const tenantStore = useTenantStore()
 
-const merchantCy = computed(() => tenantStore.tenantInfo?.merchantCy) // Current merchant currency
+const totalTeamCount = computed(() => (data.value.info?.histDirectCnt || 0) + (data.value.info?.histTeamCnt || 1)) // Total team count
+const totalTeamBet = computed(() => Number(data.value.info?.histBet || 50000)) // Total team bet
 const currentLevel = computed(() => data.value.info?.agencyLevel || 1) // Current level
-const totalTeamBet = computed(() => Number(data.value.info?.histBet || 0) / 100) // Total team bet
-const totalTeamCount = computed(() => (data.value.info?.histDirectCnt || 0) + (data.value.info?.histTeamCnt || 0)) // Total team count
+const merchantCy = computed(() => tenantStore.tenantInfo?.merchantCy) // Current merchant
 const agentLevelConfig = computed(() => {
 	try {
 		return JSON.parse(agentStore.agencyConfig.templateInfo.config)
@@ -65,16 +65,16 @@ function computeFirstRechargeComm(level: number) {
 								<div v-else class="team-progress">
 									<div class="team-content">
 										<span class="team-label">{{ $t('key.teamCount') }}</span>
-										<IonProgressBar :value="totalTeamCount >= item.count ? 1 : totalTeamCount / Number(item.count || 0)" />
+										<van-progress :show-pivot="false" :percentage="totalTeamCount >= item.count ? 100 : totalTeamCount / safeNumber(item.count) * 100" />
 										<div class="team-count-wrap">
 											<span>{{ totalTeamCount }}</span>/<span>{{ item.count || 0 }}</span>
 										</div>
 									</div>
 									<div class="team-content">
 										<span class="team-label">{{ $t('agent.totalBet') }}</span>
-										<IonProgressBar :value="totalTeamBet >= Number((item.totalTeamBet || 0) / 100) ? 1 : totalTeamBet / Number((item.totalTeamBet || 0) / 100)" />
+										<van-progress :show-pivot="false" :percentage="totalTeamBet >= safeNumber(item.totalTeamBet) ? 100 : totalTeamBet / safeNumber((item.totalTeamBet)) * 100" />
 										<div class="team-count-wrap">
-											<span>{{ formatMoneyToLocal(totalTeamBet) }}</span>/<span>{{ (item.totalTeamBet || 0) / 100 }}</span>
+											<span>{{ formatMoneyToLocal(totalTeamBet) }}</span>/<span>{{ safeNumber(item.totalTeamBet) / 100 }}</span>
 										</div>
 									</div>
 								</div>
@@ -114,6 +114,7 @@ function computeFirstRechargeComm(level: number) {
 
 <style lang="less" scoped>
 .swiper {
+	width: 100%;
 	--swiper-pagination-bottom: 0;
 
 	:deep(.swiper-pagination) {
@@ -229,14 +230,14 @@ function computeFirstRechargeComm(level: number) {
 
 								.team-label {
 									width: 6rem;
+									white-space: nowrap;
 									color: rgba(255, 255, 255, 0.4);
 								}
 
-								ion-progress-bar {
-									border-radius: 999px;
-									--background: #ffffff33;
-									--progress-background: var(--ep-agent-color-highlight-primary, var(--ep-color-icon-brand-primary));
-									height: .375rem;
+								.van-progress {
+									--van-progress-height: .375rem;
+									--van-progress-color: var(--ep-agent-color-highlight-primary, var(--ep-color-icon-brand-primary));
+									--van-progress-background: #ffffff33;
 								}
 							}
 						}

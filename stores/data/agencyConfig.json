@@ -38,22 +38,22 @@
       },
       {
         "level": "f481103b921f4ec08b2ccbbdf333023d",
-        "requiredCount": 2,
+        "requiredCount": 3,
         "rewardAmount": 2000
       },
       {
         "level": "5226c0d1271448a5abf71ac3bf8a7a96",
-        "requiredCount": 3,
+        "requiredCount": 5,
         "rewardAmount": 3000
       },
       {
         "level": "03570fa1db0c488387c8ae9535daaa9e",
-        "requiredCount": 4,
+        "requiredCount": 8,
         "rewardAmount": 4000
       },
       {
         "level": "04e9e658a0864a7f8aad2d005cf2312d",
-        "requiredCount": 5,
+        "requiredCount": 10,
         "rewardAmount": 5000
       }
     ],
