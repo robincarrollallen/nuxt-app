@@ -21,10 +21,10 @@ const systemStore = useSystemStore()
 const homeHotList = computed(() => gameStore.homeHotList) // Home hot game list
 const tabsOffsetTop = computed(() => { // Tabs offset top
 	if (systemStore.screenWidth >= 540) {
-		return '3.75rem'
+		return 3.125 * systemStore.fontSize
 	}
 
-	return '6.875rem'
+	return 6.25 * systemStore.fontSize
 })
 const homePlatformList = computed(() => { // Home platform list
 	const platformList = deepClone(gameStore.homePlatformList)

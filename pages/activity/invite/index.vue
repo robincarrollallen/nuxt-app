@@ -9,15 +9,15 @@ defineOptions({
 </script>
 
 <template>
-	<ClientOnly>
-		<div class="invite-page">
+	<div class="invite-page">
+		<ClientOnly>
 			<NavigateBar :title="$t('agent.center')" left-arrow />
 			<van-tabs>
 				<van-tab :title="$t('tags.myReward')"><MyReward /></van-tab>
 				<van-tab :title="$t('tags.inviteReward')"><InviteReward /></van-tab>
 			</van-tabs>
-		</div>
-	</ClientOnly>
+		</ClientOnly>
+	</div>
 </template>
 
 <style lang="less" scoped>

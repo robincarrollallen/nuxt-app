@@ -1,5 +1,3 @@
-import { LanguageSupport, type LanguageType } from '~/enums/language'
-
 export const useStatusStore = defineStore('status', () => {
 	const showMainLeftDrawer = ref(false)
 

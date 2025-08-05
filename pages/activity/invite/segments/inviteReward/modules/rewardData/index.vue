@@ -36,7 +36,7 @@ const totalReward = computed(() => {
 		<div class="reward-item" @click="router.push('/mlmAgent/subordinate')">
 			<div class="reward-content">
 				<div class="reward-amount">
-					<IonIcon src="/first/svg/agent/agent-team.svg" />{{ agentStore.myAgentInfo?.histDirectCnt + agentStore.myAgentInfo?.histTeamCnt }}
+					<SvgIcon url="~/assets/svg/team.svg" />{{ agentStore.myAgentInfo?.histDirectCnt + agentStore.myAgentInfo?.histTeamCnt }}
 				</div>
 			</div>
 			<div class="reward-title">
@@ -95,7 +95,7 @@ const totalReward = computed(() => {
 			align-items: center;
 			gap: 0.25rem;
 
-			ion-icon {
+			> span {
 				width: 1rem;
 				height: 1rem;
 				color: var(--ep-color-text-success);

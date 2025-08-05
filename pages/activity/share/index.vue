@@ -25,7 +25,7 @@ const onShareTabClick = ({ title }) => showToast(title)
 						<div class="share-title">Quick share</div>
 						<van-tabs class="share-tabs" @click-tab="onShareTabClick">
 							<van-tab v-for="item in agentStore.shareConfig?.software" :key="item.name">
-								<template #title><SvgIcon :url="`~/assets/svg/share/${item.name.toLocaleLowerCase()}.svg`" class="share-icon" /></template>
+								<template #title><SvgIcon class="share-icon" :url="`~/assets/svg/share/${item.name.toLocaleLowerCase()}.svg`" /></template>
 							</van-tab>
 						</van-tabs>
 					</div>

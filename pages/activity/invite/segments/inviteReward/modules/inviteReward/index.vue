@@ -26,7 +26,7 @@ const inviteInfo = computed(() => agentStore.inviteInfo) // 邀请信息
 				<span>{{ $t('splice.invitedFriends') }}</span>
 				<span class="invited-reward-amount">{{ merchantCy }} {{ formatMoneyToLocal(inviteConfig?.inviteeAmount) }}</span>
 			</div>
-			<Button class="invite-btn" shiny @click="router.push({ path: '/mlmAgent/invitation' })">
+			<Button class="invite-btn" shiny @click="router.push({ path: '/activity/share' })">
 				{{ $t('activity.inviteFriendsReward') }}
 			</Button>
 			<div class="invite-limit">
