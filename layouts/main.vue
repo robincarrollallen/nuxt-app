@@ -53,10 +53,8 @@ const tabbarList = [
 <style scoped lang="less">
 .main-content {
 	flex: 1;
-	padding-bottom: 60px; /* Leave space for tabbar */
 	position: relative;
 	height: 100%;
-	overflow: hidden auto;
 }
 
 .main-content::-webkit-scrollbar {

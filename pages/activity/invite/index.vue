@@ -3,7 +3,7 @@ import MyReward from './segments/myReward/index.vue'
 import InviteReward from './segments/inviteReward/index.vue'
 
 defineOptions({
-	name: 'AboutPage'
+	name: 'InvitePage'
 })
 
 </script>

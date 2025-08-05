@@ -2,7 +2,7 @@
 import { useAgentStore } from '~/stores/agent'
 
 defineOptions({
-	name: 'AboutPage'
+	name: 'SharePage'
 })
 
 const agentStore = useAgentStore()
@@ -11,7 +11,7 @@ const onShareTabClick = ({ title }) => showToast(title)
 </script>
 
 <template>
-	<div class="about-page">
+	<div class="share-page">
 		<ClientOnly>
 			<NavigateBar title="Invite" left-arrow/>
 			<main class="main-container">
@@ -57,7 +57,7 @@ const onShareTabClick = ({ title }) => showToast(title)
 <style lang="less" scoped>
 @import '~/assets/css/variables.less';
 
-.about-page {
+.share-page {
   height: 100%;
 	display: flex;
 	flex-direction: column;

@@ -16,8 +16,16 @@ definePageMeta({
 })
 
 const gameStore = useGameStore()
+const systemStore = useSystemStore()
 
 const homeHotList = computed(() => gameStore.homeHotList) // Home hot game list
+const tabsOffsetTop = computed(() => { // Tabs offset top
+	if (systemStore.screenWidth >= 540) {
+		return '3.75rem'
+	}
+
+	return '6.875rem'
+})
 const homePlatformList = computed(() => { // Home platform list
 	const platformList = deepClone(gameStore.homePlatformList)
 
@@ -65,7 +73,7 @@ const getGameListByPlatform = (platformId: number) => {
 				<Banner />
 				<Marquee />
 
-				<van-tabs class="segment-tabs" v-model:active="active" scrollspy sticky>
+				<van-tabs class="segment-tabs" v-model:active="active" scrollspy sticky :offset-top="tabsOffsetTop">
 					<van-tab class="segment-pane" v-for="platform of homePlatformList" :key="platform.id">
 						<template #title>
 							<div class="segment-tab">
@@ -86,8 +94,11 @@ const getGameListByPlatform = (platformId: number) => {
 
 <style scoped lang="less">
 .home-page {
+	height: 100%;
 	position: relative;
 	z-index: 0;
+	display: flex;
+	flex-direction: column;
 
 	&::before {
 		content: '';
@@ -120,6 +131,8 @@ const getGameListByPlatform = (platformId: number) => {
 		grid-template-columns: 100%;
 		gap: 1rem;
 		padding: .5rem 1rem 0;
+		flex: 1;
+		overflow: hidden auto;
 
 		.segment-tabs {
 
