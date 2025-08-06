@@ -1,4 +1,4 @@
-# Project Overview
+# Project Overview  [简体中文](README.zh-CN.md)
 
 ## Technology Stack
 
