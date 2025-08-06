@@ -10,21 +10,32 @@ const router = useRouter()
 </script>
 
 <template>
-  <van-nav-bar v-bind="$attrs" @click-left="router.back()" >
-    <template v-slot:left v-if="slots.left">
-      <slot name="left"></slot>
-    </template>
-    <template v-slot:right v-if="slots.right">
-      <slot name="right"></slot>
-    </template>
-    <template v-slot:title v-if="slots.title">
-      <slot name="title"></slot>
-    </template>
-  </van-nav-bar>
+  <header>
+		<van-nav-bar v-bind="$attrs" @click-left="router.back()" >
+			<template v-slot:left v-if="slots.left">
+				<slot name="left"></slot>
+			</template>
+			<template v-slot:right v-if="slots.right">
+				<slot name="right"></slot>
+			</template>
+			<template v-slot:title v-if="slots.title">
+				<slot name="title"></slot>
+			</template>
+		</van-nav-bar>
+	</header>
 </template>
 
 <style scoped lang="less">
+header {
+	width: 100%;
+	min-height: 3.5rem;
+}
+
 .van-nav-bar {
+	top: 0;
+	left: 0;
+	width: 100%;
+	position: fixed;
 	--van-nav-bar-background: var(--ep-color-background-fill-top-nav-secondary);
   --van-nav-bar-title-text-color: var(--ep-color-text-default);
 	--van-nav-bar-icon-color: var(--ep-color-text-default);

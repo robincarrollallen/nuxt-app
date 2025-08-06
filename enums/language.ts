@@ -7,7 +7,13 @@ export const LANGUAGE_TYPE = {
 	/** Portuguese */
 	'pt-BR': 'Português',
 	/** Chinese */
-	'zh-CN': '中文'
+	'zh-CN': '中文',
+	/** Indonesian */
+	'id-ID': 'Bahasa Indonesia',
+	/** Hindi */
+	'hi-IN': 'हिंदी',
+	/** Vietnamese */
+	'vi-VN': 'Tiếng Việt',
 } as const
 
 // Supported language type

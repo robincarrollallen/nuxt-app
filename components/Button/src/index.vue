@@ -1,8 +1,17 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+interface ButtonProps {
+  disabled?: boolean
+  shiny?: boolean
+}
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+	disabled: false,
+	shiny: false
+})
 
 const buttonRef = ref(null)
 const rippleRef = ref(null)
+
 let isPressed = false
 
 function startRipple(event) {
@@ -60,6 +69,8 @@ function endRipple() {
 <template>
   <button
     ref="buttonRef"
+		:disabled="disabled"
+		:class="{ shiny: !disabled && shiny }"
     @mousedown="startRipple"
     @mouseup="endRipple"
     @mouseleave="endRipple"
@@ -76,27 +87,64 @@ function endRipple() {
 
 <style lang="less" scoped>
 button {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius, 0.5rem);
-	padding-inline-start: 1rem;
-	padding-inline-end: 1rem;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-  cursor: pointer;
-  background-color: var(--background, #007aff);
+	width: 100%;
   display: flex;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
   align-items: center;
   justify-content: center;
+  border-radius: var(--radius, 0.5rem);
+  background-color: var(--background, #007aff);
+	padding: var(--padding-top, 0.5rem) var(--padding-start, 1rem) var(--padding-bottom, 0.5rem) var(--padding-end, 1rem);
+
+	&.shiny {
+		overflow: hidden;
+	}
+
+	&.shiny::before {
+		content: '';
+		background: #FFFFFF;
+		display: inline-block;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: -180px;
+		width: 30px;
+		z-index: 99;
+		animation: shiny 4s ease-in-out infinite;
+	}
 }
 
 span {
+  z-index: 1;
+  opacity: 0;
   position: absolute;
   border-radius: 50%;
-  background: var(--ripple-color, rgba(255, 255, 255, 0.3));
   transform: scale(0);
-  opacity: 0;
   pointer-events: none;
-  z-index: 1;
+  background: var(--ripple-color, rgba(255, 255, 255, 0.3));
+}
+
+@keyframes shiny {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(45deg);
+  }
+
+  80% {
+    opacity: 0.5;
+    transform: scale(0) rotate(45deg);
+  }
+
+  81% {
+    opacity: 1;
+    transform: scale(4) rotate(45deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(50) rotate(45deg);
+  }
 }
 </style>

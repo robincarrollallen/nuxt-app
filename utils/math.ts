@@ -108,3 +108,18 @@ export function truncateDecimal(value: string | number, digits = 2, padZero = fa
 
 	return truncated
 }
+
+/**
+ * Fixed number to specified decimal places (no rounding)
+ * @param {string|number} value - The value to process
+ * @param {number} digits - Number of decimal places
+ */
+export function fixedNumber(value?: string | number, digits = 2) {
+	const num = safeNumber(value)
+
+	const str = num.toFixed(digits + 1)
+
+	const [intPart, decimalPart] = str.split('.')
+
+	return `${intPart}.${decimalPart.slice(0, digits)}`
+}

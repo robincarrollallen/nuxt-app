@@ -1,0 +1,113 @@
+{
+  "ruleType": "DEFAULT",
+  "rule": "{\"variablesValue\":{\"highestReward\":8.88,\"multiplier\":1,\"limitType\":\"OFF\",\"limitData\":\"\",\"validBetStatus\":\"ON\",\"limitAgencyType\":\"ALL\",\"limitAgencyData\":\"\",\"awardExpiredDays\":0}}",
+  "startTime": "2025-08-02T10:12:45.000Z",
+  "endTime": "2035-12-30T00:00:00.000Z",
+  "allCount": 0,
+  "validCount": 0,
+  "validUsers": {
+    "firstRechargeAmount": {
+      "amount": 0,
+      "status": "ON"
+    },
+    "recharge": {
+      "amount": 0,
+      "status": "ON"
+    },
+    "bet": {
+      "amount": 0,
+      "status": "ON"
+    },
+    "rechargeDays": {
+      "days": 0,
+      "status": "ON"
+    },
+    "rechargeCount": {
+      "count": 0,
+      "status": "ON"
+    },
+    "type": "ONE",
+    "userLimit": "ALL"
+  },
+  "displayMode": "RED_PACKET",
+  "rewardType": "FIXED",
+  "isShow": true,
+  "rewardList": [],
+  "rewardConfig": [
+    {
+      "uuid": "ca8a91e5b6b440478f4c820b7614ecae",
+      "userCount": 1,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "816cd4e10c4d44e395ed17cba8f34440",
+      "userCount": 2,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "0646986ccb2b4fc8af852639f1edfde9",
+      "userCount": 3,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "e309d7600c8f417584c01d3192e4fba5",
+      "userCount": 4,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "348f5ba485514fccb025fa8ca9258c20",
+      "userCount": 5,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "a647de7931294c0489d192deeb5ff55e",
+      "userCount": 6,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "7dcf45e386f7406c848b1ef811af525f",
+      "userCount": 7,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "e3c7b787e2fb4e13a9b4cffcc303ebf7",
+      "userCount": 8,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "b6bd7446af234650b51dc0a9bc5c693f",
+      "userCount": 9,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "e8b93d0bab9e40eca6eaf0a91075cfa6",
+      "userCount": 10,
+      "min": 0,
+      "max": 555
+    },
+    {
+      "uuid": "62203e90ea2f4e6199a976137161b034",
+      "userCount": 15,
+      "min": 0,
+      "max": 888
+    }
+  ],
+  "multilingual": {
+    "rule": "{\"variablesValue\":{\"highestReward\":8.88,\"multiplier\":1,\"limitType\":\"OFF\",\"limitData\":\"\",\"validBetStatus\":\"ON\",\"limitAgencyType\":\"ALL\",\"limitAgencyData\":\"\",\"awardExpiredDays\":0}}",
+    "ruleType": "DEFAULT",
+    "name": "推荐好友领彩金2",
+    "nameType": "DEFAULT",
+    "nameParams": "{\"variablesValue\":{\"resetType\":\"NONE\",\"rechargeType\":\"FIRST\"}}",
+    "previewText": "{\"variablesValue\":{\"highestType\":\"OTHER\",\"highestReward\":8.88,\"resetType\":\"NONE\",\"expiredAwardType\":\"AUTO\",\"activityType\":\"AgencyTwo\",\"cpfRule\":\"\"}}",
+    "activityDetailSelect": null
+  }
+}
