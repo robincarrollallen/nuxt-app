@@ -1,75 +1,54 @@
-# Nuxt Minimal Starter
+# Project Overview
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Technology Stack
 
-## Setup
+This project is built on Nuxt 3, leveraging a modern frontend stack with excellent scalability and multilingual support, suitable for medium to large web applications.
 
-Make sure to install dependencies:
+### 1. Package Manager
 
-```bash
-# npm
-npm install
+- Supports `npm`, `yarn`, `pnpm`, and `bun`. You can use any mainstream package manager for dependency management and script execution.
 
-# pnpm
-pnpm install
+### 2. Core Framework
 
-# yarn
-yarn install
+- **Nuxt 3**: A Vue 3-based framework for server-side rendering (SSR) and static site generation (SSG), improving SEO and initial load performance.
+- **Vue 3**: Modern reactive component development with Composition API support.
 
-# bun
-bun install
-```
+### 3. UI Component Library
 
-## Development Server
+- **Vant 4**: A high-quality, mobile-first UI component library, integrated via `@vant/nuxt`.
+- **Tailwind CSS**: Utility-first CSS framework for rapid, responsive, and customizable styling (integrated via `@nuxtjs/tailwindcss`).
 
-Start the development server on `http://localhost:3000`:
+### 4. State Management
 
-```bash
-# npm
-npm run dev
+- **Pinia**: The next-generation state management library for Vue, officially recommended, type-safe, and modular (integrated via `@pinia/nuxt`).
 
-# pnpm
-pnpm dev
+### 5. Internationalization (i18n)
 
-# yarn
-yarn dev
+- **@nuxtjs/i18n**: Powerful multilingual plugin supporting lazy loading of language packs, browser language detection, and no-prefix routing.
+- Language packs are located in the `i18n/locales/` directory, supporting multiple languages (e.g., English, Chinese, Vietnamese, Indonesian, Portuguese, Hindi, etc.).
 
-# bun
-bun run dev
-```
+### 6. Other Technologies & Tools
 
-## Production
+- **Swiper**: For carousels and sliding interactions.
+- **Micro App**: Micro-frontend support (`@micro-zoe/micro-app`) for modular system architecture and independent deployment.
+- **ESLint**: Code quality and style enforcement.
+- **Less**: CSS preprocessor for style reuse and variable management.
+- **TypeScript**: Type-safe development for more robust code.
 
-Build the application for production:
+## Directory Structure Overview
 
-```bash
-# npm
-npm run build
+- `pages/`: Page-level components, auto-generated routing.
+- `components/`: Reusable component library.
+- `stores/`: Pinia state management modules.
+- `i18n/`: Internationalization configuration and language packs.
+- `assets/`, `public/`: Static resources and global styles.
+- `plugins/`: Nuxt plugin extensions.
+- `server/`: Backend APIs and server-side logic.
+- `theme/`: Theme and color scheme files.
 
-# pnpm
-pnpm build
+## Getting Started & Build
 
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Install dependencies: `npm install` / `yarn install` / `pnpm install` / `bun install`
+- Local development: `npm run dev` / `yarn dev` / `pnpm dev` / `bun run dev`
+- Production build: `npm run build` / `yarn build` / `pnpm build` / `bun run build`
+- Preview production build: `npm run preview` / `yarn preview` / `pnpm preview` / `bun run preview`
