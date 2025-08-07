@@ -30,8 +30,8 @@ const changeLanguage = (lang: any) => {
 				<van-image class="logo" :src="tenantInfo.logo" :show-loading="false" />
 			</div>
 			<div class="login-btn-wrap">
-				<Button class="login-btn">{{ $t('common.login') }}</Button>
-				<Button class="register-btn">{{ $t('common.register') }}</Button>
+				<Button class="login-btn">{{ $t('main.login') }}</Button>
+				<Button class="register-btn">{{ $t('main.signUp') }}</Button>
 				<van-popover v-model:show="showPopover" :show-arrow="false" placement="bottom-end" trigger="click" overlay :offset="[fontSize, fontSize]" :overlay-style="{background: 'transparent'}">
 					<div class="change-language-wrap">
 						<div v-for="lang in langList" :key="lang" class="change-language-item" :class="{'active': locale.toString() == lang}" @click="changeLanguage(lang)">
@@ -158,8 +158,9 @@ const changeLanguage = (lang: any) => {
 			}
 		}
 	}
+}
 
-	.change-language-wrap {
+.change-language-wrap {
 		width: max-content;
 		color: var(--ep-color-text-default);
 
@@ -179,7 +180,6 @@ const changeLanguage = (lang: any) => {
 			}
 		}
 	}
-}
 
 .sidebar-overlay {
 	backdrop-filter: blur(5px);

@@ -19,13 +19,13 @@ const tenantInfo = computed(() => tenantStore.tenantInfo)
 				:show-loading="false"
 			/>
 			<div class="pwa-title">
-				{{ $t('pwa.downloadTitle') }}
+				{{ $t('viewsTabbar.pwaView1') }}
 			</div>
 			<div class="pwa-btn-wrap">
 				<van-image class="pwa-money" src="/images/pwa-money.png" :show-loading="false" />
 				<Button class="pwa-btn">
 					<SvgIcon url="~/assets/svg/download-new.svg" class="download-svg" />
-					<span class="btn-text">{{ $t('common.install') }}</span>
+					<span class="btn-text">{{ $t('viewsSystem.install') }}</span>
 				</Button>
 			</div>
 		</div>

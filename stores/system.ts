@@ -1,4 +1,4 @@
-
+import { BASE_FONT_SIZE, MOBILE_MAX_WIDTH, MOBILE_DESIGN_WIDTH } from '~/common/constant'
 import { setFontSize } from '~/common/variable'
 
 export const useSystemStore = defineStore('system', () => {
@@ -19,16 +19,15 @@ export const useSystemStore = defineStore('system', () => {
 	 * Set rem base
 	 */
 	function setRemBase() {
-		const baseWidth = 390 // Design width
 		const html = document.documentElement
 		let width = html.clientWidth
-		if (486 < width && width < 769) {
-			width = width - 486 + 390
+		if (MOBILE_MAX_WIDTH < width && width < 769) {
+			width = width - MOBILE_MAX_WIDTH + MOBILE_DESIGN_WIDTH
 		}
-		if (width > 486) {
-			width = 486
+		if (width > MOBILE_MAX_WIDTH) {
+			width = MOBILE_MAX_WIDTH
 		}
-		fontSize.value = (width / baseWidth) * 16
+		fontSize.value = (width / MOBILE_DESIGN_WIDTH) * BASE_FONT_SIZE
 		html.style.fontSize = `${fontSize.value}px`
 
 		setFontSize(fontSize.value)

@@ -44,10 +44,10 @@ onUnmounted(() => {
 		<!-- Login Button -->
     <div class="login-btn-wrap">
       <Button class="login-btn">
-        {{ $t('common.login') }}
+        {{ $t('main.login') }}
       </Button>
       <Button class="register-btn">
-        {{ $t('common.register') }}
+        {{ $t('main.signUp') }}
       </Button>
     </div>
 

@@ -31,9 +31,27 @@ const ruleContent = computed(() => {
 		const rules = JSON.parse(activityStore.agentActivityDetail.rule)
 		variablesValue = rules.variablesValue
 	} catch (error) {}
-	console.log(`variablesValue >>>>>`, variablesValue)
 	return generateAgencyRule(locale.value, variablesValue)
 })
+const rewardList = computed(() => activityStore.agentActivityDetail.rewardConfig.map((item, index) => {
+	const receivedItem = activityStore.agentActivityDetail.rewardList.find((v) => v.levelId === item.uuid)
+	let isTrue = false // 4 和 4的倍数 不显示, 最后一位也不显示
+	if ((index + 1 == 4) || (index + 1) % 4 == 0 || (index + 1) == activityStore.agentActivityDetail.rewardConfig.length) {
+		isTrue = true
+	}
+
+	return {
+		uuid: item.uuid,
+		userCount: item.userCount,
+		min: formatMoneyToLocal(item.min),
+		max: formatMoneyToLocal(item.max),
+		rewardAmount: formatMoneyToLocal(receivedItem?.awardCount ?? 0),
+		isOpen: !!receivedItem,
+		isMeet: activityStore.agentActivityDetail.validCount >= item.userCount && !receivedItem,
+		showOpenAni: false,
+		isTrue
+	}
+}))
 </script>
 
 <template>
@@ -78,6 +96,15 @@ const ruleContent = computed(() => {
 									<Button> {{ `${$t('Details')} >` }}</Button>
 								</div>
 							</div>
+						</div>
+					</div>
+					<!-- 奖励列表 -->
+					<div class="agent-reward-list">
+						<div class="agent-reward-list-title">
+							<span>{{ $t('activity.agent16') }}</span>
+						</div>
+						<div class="agent-reward-list-content">
+
 						</div>
 					</div>
 					<!-- 获取奖励条件 -->
@@ -153,12 +180,15 @@ const ruleContent = computed(() => {
 		padding: 0 1.25rem 1.25rem;
 
 		.agent-content-wrap {
+			gap: 1.5rem;
+			display: flex;
 			position: relative;
-			border: 4px solid #797AF1;
 			border-top-width: 0;
-			box-shadow: 0px 0px 0px 4px #3852EB;
 			padding: 2rem 0 .5rem;
 			background: #2A2371;
+			flex-direction: column;
+			border: 4px solid #797AF1;
+			box-shadow: 0px 0px 0px 4px #3852EB;
 
 			&::after {
 				content: '';
@@ -196,19 +226,25 @@ const ruleContent = computed(() => {
 					background-size: 100% auto;
 					background-repeat: no-repeat;
 					background-position: 0 0;
-					width: 100vw;
-					height: 4.5rem;
+					width: calc(100% + 2.875rem);
+					aspect-ratio: 120/23;
 					position: absolute;
 					top: -3.125rem;
 					left: -1.4375rem;
 					text-align: center;
 					font-weight: 700;
-					padding-top: .875rem;
 					text-shadow:
 						-1px -1px 0 #E64021,
 						1px -1px 0 #E64021,
 						-1px  1px 0 #E64021,
 						1px  1px 0 #E64021;
+
+					span {
+						height: 57%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
 				}
 
 				.agent-media-link {
@@ -296,8 +332,54 @@ const ruleContent = computed(() => {
 									color: var(--ep-color-text-warning);
 								}
 							}
+
+							button {
+								width: auto;
+							}
 						}
 					}
+				}
+			}
+
+			.agent-reward-list {
+				font-size: .625rem;
+				position: relative;
+				padding-top: 20%;
+
+				.agent-reward-list-title {
+					background-image: url('~/assets/images/activity/agent/bar-title.png');
+					background-size: 100% auto;
+					background-repeat: no-repeat;
+					background-position: 0 0;
+					width: calc(100% + 2.875rem);
+					aspect-ratio: 120/23;
+					position: absolute;
+					top: 0;
+					left: -1.4375rem;
+					text-align: center;
+					font-weight: 700;
+					text-shadow:
+						-1px -1px 0 #E64021,
+						1px -1px 0 #E64021,
+						-1px  1px 0 #E64021,
+						1px  1px 0 #E64021;
+
+					span {
+						height: 57%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+				}
+
+				.agent-reward-list-content {
+					width: 107%;
+					height: 10rem;
+					margin-left: -.75rem;
+					background-image: url('~/assets/svg/bg-agent-reward-stage.svg');
+					background-repeat: repeat-y;
+					background-size: 100% 6.25rem;
+					background-position: top left;
 				}
 			}
 
@@ -333,7 +415,7 @@ const ruleContent = computed(() => {
 				.agent-rule-title {
 					gap: .5rem;
 					display: flex;
-					padding: 1rem 0;
+					padding-top: 1rem;
 					align-items: center;
 					justify-content: center;
 
