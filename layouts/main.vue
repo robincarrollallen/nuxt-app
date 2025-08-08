@@ -71,6 +71,7 @@ const tabbarList = [
 		width: 100%;
 		aspect-ratio: 8/1;
 		display: grid;
+		z-index: 9;
 		grid-template-columns: repeat(5, 1fr);
 
 		.tab-item {

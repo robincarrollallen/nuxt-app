@@ -20,4 +20,5 @@ useHead({
 
 <style lang="less">
 @import '~/assets/css/global.css';
+@import '~/assets/css/animate.css';
 </style>

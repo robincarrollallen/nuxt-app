@@ -14,3 +14,7 @@ export const useAgentStore = defineStore('agent', () => {
 
 	return { shareConfig, inviteInfo, agencyConfig, myAgentInfo }
 })
+export type SoftwareType = typeof software
+export type InviteInfoType = typeof inviteInfoData
+export type AgencyConfigType = typeof agencyConfigData
+export type MyAgentInfoType = typeof myAgentInfoData.info

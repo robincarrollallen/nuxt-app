@@ -89,7 +89,7 @@ const onShareTabClick = ({ title }) => showToast(title)
 				}
 
 				.copy-icon {
-					zoom: 0.9;
+					transform: scale(.9);
 				}
 			}
 

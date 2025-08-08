@@ -36,6 +36,7 @@ header {
 	left: 0;
 	width: 100%;
 	position: fixed;
+	z-index: 9;
 	--van-nav-bar-background: var(--ep-color-background-fill-top-nav-secondary);
   --van-nav-bar-title-text-color: var(--ep-color-text-default);
 	--van-nav-bar-icon-color: var(--ep-color-text-default);
