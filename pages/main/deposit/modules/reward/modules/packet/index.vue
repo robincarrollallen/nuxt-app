@@ -1,17 +1,52 @@
 <script setup lang="ts">
+import { ZDisplayMode, ZRewardType } from '../../../../data'
+import { REWARD_ICON } from './data'
+
 const props = defineProps<{
-	rewardList: Record<string, any>
+	rewardList: Recordable[]
+	rewardType: keyof typeof ZRewardType.enum
+	rewardShowMode: keyof typeof ZDisplayMode.enum
 }>()
+
+const list = ref(props.rewardList)
+
+const openBoxHandle = throttle(async (item: Recordable) => {
+	console.log(`🚀 开始获取用户 ${item.uuid} 的数据...`)
+
+	Object.assign(item, {
+		opening: true
+	})
+
+	// 模拟网络延迟
+	await new Promise(resolve => setTimeout(resolve, 800))
+
+	item.showOpenAni = true
+
+	Object.assign(item, {
+		opening: false
+	})
+
+	// 模拟随机失败
+	if (Math.random() < 0.2) {
+		throw new Error(`获取数据失败`)
+	}
+
+	console.log(`✅ 数据获取成功:`, item)
+}, 1000)
 </script>
 
 <template>
 	<div class="agent-reward-list-content">
-		<div class="agent-reward-list-item" v-for="item in props.rewardList" :key="item.uuid">
-			<div class="agent-reward-list-icon">
-				<img src="~/assets/icons/activity/agent/red-package.png" />
+		<div class="agent-reward-list-item" v-for="item in list" :key="item.uuid">
+			<div class="agent-reward-list-icon" :class="{ light: item.isMeet, animate: item.showOpenAni }">
+				<img :class="{ opening: item.opening }" :src="REWARD_ICON[`${props.rewardShowMode}_${item.showOpenAni ? 'animate' : item.isOpen}`]" @click="openBoxHandle(item)"/>
 			</div>
-			<div class="agent-reward-list-amount">
-				{{ item.rewardAmount }}
+			<div class="agent-reward-list-amount" :class="{ light: item.isMeet, random: props.rewardType === ZRewardType.enum.RANDOM && !item.isOpen, opened: item.isOpen, animate: item.showOpenAni }">
+				<span v-if="props.rewardType === ZRewardType.enum.FIXED || item.isOpen">{{ item.rewardAmount }}</span>
+				<div v-else>
+					<p>{{ item.rewardAmount.split('~')[0] }}</p>
+					<p>{{ `~${item.rewardAmount.split('~')[1]}` }}</p>
+				</div>
 			</div>
 			<div class="agent-reward-list-condition">
 				<div>
@@ -33,18 +68,18 @@ const props = defineProps<{
 	background-size: 100% 8.25rem;
 	background-position: top left;
 	display: grid;
-	padding: 0 .75rem;
+	padding: 0 .75rem .25rem;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 2.25rem 0;
 
 	.agent-reward-list-item {
-		color: var(--ep-color-text-weak);
+		color: rgba(255, 255, 255, 0.6);
 		font-size: .625rem;
 		padding: 0 .375rem;
 		margin-top: -1.875rem;
+		aspect-ratio: 15/22;
 
 		.agent-reward-list-icon {
-			width: 100%;
 			height: 4.5rem;
 			display: flex;
 			align-items: flex-end;
@@ -56,25 +91,54 @@ const props = defineProps<{
 			&::after {
 				content: "";
 				position: absolute;
-				top: 88%;
+				top: 86%;
 				width: 40%;
 				aspect-ratio: 7/1;
-				background: rgba(0, 0, 0, 0.4);
+				background: rgba(0, 0, 0, 0.5);
 				border-radius: 50%;
 				filter: blur(.1rem);
 				z-index: -1;
 			}
 
-			&::before {
-				z-index: -1;
-				content: "";
-				position: absolute;
-				bottom: -45%;
-				width: 175%;
-				aspect-ratio: 1/1;
-				background-image: url('~/assets/icons/activity/agent/bg-light-reward.png');
-				background-size: 100% 100%;
-				animation: spin 5s linear infinite;
+			&.light {
+				padding-left: 0.75rem;
+				padding-right: 0.75rem;
+
+				&::before {
+					z-index: -1;
+					content: "";
+					position: absolute;
+					bottom: -45%;
+					width: 175%;
+					aspect-ratio: 1/1;
+					background-image: url('~/assets/icons/activity/agent/bg-light-reward.png');
+					background-size: 100% 100%;
+					animation: spin 5s linear infinite;
+				}
+
+				&.animate {
+					padding-left: 0;
+					padding-right: 0;
+
+					img {
+						transform-origin: center 98%;
+						transform: scale(1.4);
+						animation: none;
+						cursor: default;
+						animation: shake-scale-opening 2s linear forwards;
+					}
+				}
+
+				img {
+					cursor: pointer;
+					animation: shake-status 1s linear infinite;
+
+					&.opening {
+						animation:
+							shake-rotate-start 200ms linear infinite,
+							shake-scale-start 1s linear infinite;
+					}
+				}
 			}
 
 			img {
@@ -89,6 +153,27 @@ const props = defineProps<{
 			background-size: 100% auto;
 			background-repeat: no-repeat;
 			background-position: 0 0;
+
+			&.random {
+				background-image: none;
+			}
+
+			&.light {
+				color: #fff;
+
+				&.animate {
+					color: #fc974c;
+					background-image: url('~/assets/icons/activity/agent/bg-amount-light.png');
+				}
+			}
+
+			&.opened {
+				color: #53C154;
+			}
+
+			p {
+				line-height: normal;
+			}
 		}
 
 		.agent-reward-list-condition {

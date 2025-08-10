@@ -59,8 +59,13 @@ const CONDITION_NAME = {
 		border-top: 1px solid #FFFFFF1A;
 		justify-content: space-between;
 
+		.agent-condition-item-title {
+			color: rgba(255, 255, 255, 0.6);
+		}
+
 		.agent-condition-item-amount {
 			text-align: right;
+			color: #FC974C;
 			width: 5rem;
 		}
 	}

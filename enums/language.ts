@@ -14,6 +14,8 @@ export const LANGUAGE_TYPE = {
 	'hi-IN': 'हिंदी',
 	/** Vietnamese */
 	'vi-VN': 'Tiếng Việt',
+	/** English (Philippines) */
+	'en-PH': 'English (Philippines)',
 } as const
 
 // Supported language type

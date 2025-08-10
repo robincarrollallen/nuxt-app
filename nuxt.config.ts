@@ -31,7 +31,7 @@ export default defineNuxtConfig({
 			iso: code,
 			file: `${code.split('-')[0]}_${code.split('-')[1].toUpperCase()}.json`
 		})),
-		defaultLocale: LanguageSupport[0],
+		defaultLocale: LanguageSupport[0] as any,
 		vueI18n: 'config.ts',
 		strategy: 'no_prefix',
 		detectBrowserLanguage: false,

@@ -102,9 +102,11 @@ export function generateAgencyRule(language: LanguageType, variables: ActivityVa
 	return result
 }
 
-export const REWARD_TYPE = {
-	FIXED: 'FIXED',
-	PERCENTAGE: 'PERCENTAGE'
+export const ZRewardType = {
+	enum: {
+		FIXED: 'FIXED',
+		RANDOM: 'RANDOM'
+	}
 } as const
 
 export const ZDisplayMode = {

@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { ZRewardType, ZDisplayMode } from '../../data'
 import PacketView from './modules/packet/index.vue'
 import ButtonView from './modules/button/index.vue'
 
 const props = defineProps<{
-	rewardList: Record<string, any>
-	rewardShowMode: string
+	rewardList: Recordable[]
+	rewardType: keyof typeof ZRewardType.enum
+	rewardShowMode: keyof typeof ZDisplayMode.enum
 }>()
 
 </script>
@@ -14,7 +16,8 @@ const props = defineProps<{
 		<div class="agent-reward-list-title">
 			<span>{{ $t('activity.agent16') }}</span>
 		</div>
-		<ButtonView :reward-list="props.rewardList" />
+		<ButtonView v-if="props.rewardShowMode === ZDisplayMode.enum.RECEIVE" :reward-list="props.rewardList" />
+		<PacketView v-else :reward-list="props.rewardList" :reward-show-mode="props.rewardShowMode" :reward-type="props.rewardType" />
 	</div>
 </template>
 

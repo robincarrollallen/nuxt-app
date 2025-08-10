@@ -14,7 +14,7 @@ definePageMeta({
 	layout: 'main'
 })
 
-const { agentMediaList, rewardList, conditionType, allConditions, ruleContent, rewardShowMode } = useActivityAgentLogic()
+const { agentMediaList, rewardList, conditionType, allConditions, ruleContent, rewardShowMode, rewardType } = useActivityAgentLogic()
 
 </script>
 
@@ -35,7 +35,7 @@ const { agentMediaList, rewardList, conditionType, allConditions, ruleContent, r
 					<!-- 快速分享 -->
 					<ShareView :agent-media-list="agentMediaList" />
 					<!-- 奖励列表 -->
-					<RewardView :reward-list="rewardList" :reward-show-mode="rewardShowMode" />
+					<RewardView :reward-list="rewardList" :reward-type="rewardType" :reward-show-mode="rewardShowMode" />
 					<!-- 获取奖励条件 -->
 					<ConditionView :condition-type="conditionType" :all-conditions="allConditions" />
 					<!-- 活动规则 -->
@@ -86,6 +86,7 @@ const { agentMediaList, rewardList, conditionType, allConditions, ruleContent, r
 
 		.agent-content-wrap {
 			gap: 1.5rem;
+			color: #fff;
 			display: flex;
 			position: relative;
 			border-top-width: 0;

@@ -1,5 +1,4 @@
-import { BASE_FONT_SIZE, MOBILE_MAX_WIDTH, MOBILE_DESIGN_WIDTH } from '~/common/constant'
-import { setFontSize } from '~/common/variable'
+import { BASE_FONT_SIZE, MOBILE_MAX_WIDTH, MOBILE_DESIGN_WIDTH } from '~/constant'
 
 export const useSystemStore = defineStore('system', () => {
 	const fontSize = ref(16) // Font size
@@ -29,8 +28,6 @@ export const useSystemStore = defineStore('system', () => {
 		}
 		fontSize.value = (width / MOBILE_DESIGN_WIDTH) * BASE_FONT_SIZE
 		html.style.fontSize = `${fontSize.value}px`
-
-		setFontSize(fontSize.value)
 	}
 
 	return { screenWidth, screenHeight, fontSize, updateScreenSize }

@@ -69,8 +69,8 @@ function endRipple() {
 <template>
   <button
     ref="buttonRef"
-		:disabled="disabled"
-		:class="{ shiny: !disabled && shiny }"
+		:disabled="props.disabled"
+		:class="{ shiny: !props.disabled && props.shiny }"
     @mousedown="startRipple"
     @mouseup="endRipple"
     @mouseleave="endRipple"
@@ -111,7 +111,7 @@ button {
 		position: absolute;
 		top: -180px;
 		width: 30px;
-		z-index: 99;
+		z-index: 1;
 		animation: shiny 4s ease-in-out infinite;
 	}
 }

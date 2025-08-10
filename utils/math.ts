@@ -1,8 +1,21 @@
-// Create a responsive NumberFormat instance
-const numberFormatter = computed(() => {
-	const locale = useAppStore().locale
-	return new Intl.NumberFormat(locale, { useGrouping: true })
-})
+const formatterCache = new Map() // Cache formatter
+
+/**
+ * Get cached formatter
+ * @param locale - The locale to use
+ * @param decimals - The number of decimal places
+ */
+function getCachedFormatter(locale: string, decimals: number) {
+	const key = `${locale}-${decimals}`
+	if (!formatterCache.has(key)) {
+		formatterCache.set(key, new Intl.NumberFormat(locale, {
+			useGrouping: true,
+			minimumFractionDigits: decimals,
+			maximumFractionDigits: decimals,
+		}))
+	}
+	return formatterCache.get(key)
+}
 
 /**
  * Format number to thousands and truncate decimals
@@ -10,6 +23,7 @@ const numberFormatter = computed(() => {
  * @param {number} decimals The number of decimal places, default 2
  */
 export const formatMoney = (value: number | string, decimals: number = 2) => {
+	const language = useAppStore().locale
 	let num = safeNumber(value)
 
 	// Handle negative number symbol
@@ -24,7 +38,8 @@ export const formatMoney = (value: number | string, decimals: number = 2) => {
 	const numStr = num.toFixed(decimals)
 
 	// Format integer part with Intl.NumberFormat
-	const formatted = numberFormatter.value.format(safeNumber(numStr))
+	const numberFormatter = getCachedFormatter(language, decimals)
+	const formatted = numberFormatter.format(safeNumber(numStr))
 
 	return `${sign}${formatted}`
 }

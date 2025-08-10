@@ -1,4 +1,6 @@
 <script setup>
+import { useActivityLogic } from './logic'
+
 defineOptions({
 	name: 'ActivityPage'
 })
@@ -7,13 +9,17 @@ defineOptions({
 definePageMeta({
 	layout: 'main'
 })
+
+const { tabList } = useActivityLogic()
 </script>
 
 <template>
   <div class="activity-page">
     <ClientOnly>
-			<van-tabs>
-				<van-tab :title="$t('activity.events')"></van-tab>
+			<van-tabs shrink>
+				<van-tab v-for="item in tabList" :key="item.type" :title="item.name">
+					<component :is="item.component" />
+				</van-tab>
 			</van-tabs>
 		</ClientOnly>
   </div>

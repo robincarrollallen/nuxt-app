@@ -1,7 +1,5 @@
-
 <script setup lang="ts">
 import { useAppStore } from '~/stores/app'
-import { fontSize } from '~/common/variable'
 import { useStatusStore } from '~/stores/status'
 import { useTenantStore } from '~/stores/tenant'
 import Sidebar from '~/widgets/sidebar/index.vue'
@@ -9,12 +7,14 @@ import Sidebar from '~/widgets/sidebar/index.vue'
 const appStore = useAppStore()
 const statusStore = useStatusStore()
 const tenantStore = useTenantStore()
+const systemStore = useSystemStore()
 
 const showPopover = ref(false)
 
-const locale = computed(() => appStore.locale)
-const tenantInfo = computed(() => tenantStore.tenantInfo)
 const langList = computed(() => tenantStore.tenantInfo.appLanguage)
+const tenantInfo = computed(() => tenantStore.tenantInfo)
+const fontSize = computed(() => systemStore.fontSize)
+const locale = computed(() => appStore.locale)
 
 const changeLanguage = (lang: any) => {
 	appStore.setLocale(lang)

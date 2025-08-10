@@ -46,6 +46,7 @@ const props = defineProps<{
 
 	.agent-rule-content {
 		white-space: pre-line;
+		color: rgba(255, 255, 255, 0.6);
 	}
 }
 </style>

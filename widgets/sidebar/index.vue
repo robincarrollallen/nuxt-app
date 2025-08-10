@@ -93,7 +93,7 @@ onUnmounted(() => {
 		<div class="support-wrap">
 			<div class="support-item">
 				<SvgIcon class="support-icon" url="~/assets/svg/support.svg" />
-				<span class="support-text">{{ $t('Supporter') }}</span>
+				<span class="support-text">{{ $t('main.suporte') }}</span>
 			</div>
 			<div class="media-list">
 				<div v-for="media in mainMediaList" :key="media.id" class="media-item">
