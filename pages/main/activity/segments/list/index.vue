@@ -6,7 +6,7 @@ import { ZNameType } from '~/enums'
 
 const activityStore = useActivityStore()
 
-const { activityList, ActivityStatus, language } = useActivityListLogic()
+const { activityList, ActivityStatus, language, toActivity } = useActivityListLogic()
 
 onMounted(() => {
 	activityStore.activityList = ActivityListData.activityList
@@ -38,7 +38,7 @@ onMounted(() => {
 
 <template>
 	<div class="activity-list">
-		<div class="activity-list-item" v-for="item in activityList" :key="item.id">
+		<div class="activity-list-item" v-for="item in activityList" :key="item.id" @click="toActivity(item)">
 			<Button class="activity-list-item-poster" :style="`background: url(${item.bannerBackground}) center/cover`" shiny>
 				<div class="activity-list-item-rule">
 					<p v-for="(text, index) in (item.previewText.split('\n'))" :key="index">

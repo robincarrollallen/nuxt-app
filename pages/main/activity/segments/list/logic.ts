@@ -1,9 +1,4 @@
-import { ZNameType } from '~/enums'
-import { useI18n } from 'vue-i18n'
-import { generatePreviewText, getActivityDefaultName } from './data'
-
 export const useActivityListLogic = () => {
-	const activityStore = useActivityStore()
 	const appStore = useAppStore()
 	const { t } = useI18n()
 
@@ -17,5 +12,15 @@ export const useActivityListLogic = () => {
 
 	const language = computed(() => appStore.locale)
 
-	return { activityList, ActivityStatus, language }
+	/**
+	 * 跳转活动
+	 * @param item 活动信息
+	 */
+	const toActivity = (item: Recordable) => {
+		item.type = item.type === 'AgencyTwo' ? 'Agency' : item.type
+
+		navigateTo(`/activity/${item.type}/${item.id}`)
+	}
+
+	return { activityList, ActivityStatus, language, toActivity }
 }

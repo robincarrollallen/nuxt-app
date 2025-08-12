@@ -1,12 +1,14 @@
 <script setup lang="ts">
 interface ButtonProps {
   disabled?: boolean
+  loading?: boolean
   shiny?: boolean
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
 	disabled: false,
-	shiny: false
+	loading: false,
+	shiny: false,
 })
 
 const buttonRef = ref(null)
@@ -81,7 +83,8 @@ function endRipple() {
     <span
       ref="rippleRef"
     />
-    <slot />
+		<van-loading v-if="props.loading" type="spinner"><slot /></van-loading>
+		<slot v-else />
   </button>
 </template>
 
@@ -113,6 +116,13 @@ button {
 		width: 30px;
 		z-index: 1;
 		animation: shiny 4s ease-in-out infinite;
+	}
+
+	:deep(div) {
+		span:nth-child(1) {
+			width: var(--loading-size, .75rem);
+			height: var(--loading-size, .75rem);
+		}
 	}
 }
 

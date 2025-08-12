@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ZDisplayMode, ZRewardType } from '../../../../data'
+import { useOpenBoxHandle } from '../../logic'
 import { REWARD_ICON } from './data'
 
 const props = defineProps<{
@@ -10,36 +11,15 @@ const props = defineProps<{
 
 const list = ref(props.rewardList)
 
-const openBoxHandle = throttle(async (item: Recordable) => {
-	console.log(`🚀 开始获取用户 ${item.uuid} 的数据...`)
-
-	Object.assign(item, {
-		opening: true
-	})
-
-	// 模拟网络延迟
-	await new Promise(resolve => setTimeout(resolve, 800))
-
-	item.showOpenAni = true
-
-	Object.assign(item, {
-		opening: false
-	})
-
-	// 模拟随机失败
-	if (Math.random() < 0.2) {
-		throw new Error(`获取数据失败`)
-	}
-
-	console.log(`✅ 数据获取成功:`, item)
-}, 1000)
+const { openBoxHandle } = useOpenBoxHandle()
 </script>
 
 <template>
 	<div class="agent-reward-list-content">
 		<div class="agent-reward-list-item" v-for="item in list" :key="item.uuid">
 			<div class="agent-reward-list-icon" :class="{ light: item.isMeet, animate: item.showOpenAni }">
-				<img :class="{ opening: item.opening }" :src="REWARD_ICON[`${props.rewardShowMode}_${item.showOpenAni ? 'animate' : item.isOpen}`]" @click="openBoxHandle(item)"/>
+				<img v-if="item.showOpenAni" :src="REWARD_ICON[`${props.rewardShowMode}_animate`]"/>
+				<img v-else :class="{ opening: item.opening }" :src="REWARD_ICON[`${props.rewardShowMode}_${item.isOpen}`]" @click="openBoxHandle(item, 'agency')"/>
 			</div>
 			<div class="agent-reward-list-amount" :class="{ light: item.isMeet, random: props.rewardType === ZRewardType.enum.RANDOM && !item.isOpen, opened: item.isOpen, animate: item.showOpenAni }">
 				<span v-if="props.rewardType === ZRewardType.enum.FIXED || item.isOpen">{{ item.rewardAmount }}</span>
@@ -121,11 +101,9 @@ const openBoxHandle = throttle(async (item: Recordable) => {
 					padding-right: 0;
 
 					img {
-						transform-origin: center 98%;
-						transform: scale(1.4);
 						animation: none;
 						cursor: default;
-						animation: shake-scale-opening 2s linear forwards;
+						animation: shake-scale-opening 2s ease-out forwards;
 					}
 				}
 

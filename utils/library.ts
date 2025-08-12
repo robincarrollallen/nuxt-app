@@ -1,5 +1,5 @@
 /**
- * 异步节流（只支持 async 定义的函数）
+ * 节流函数（异步只支持 async 定义的函数）
  * @param func 异步或同步函数
  * @param delay 延迟时间（ms）
  */

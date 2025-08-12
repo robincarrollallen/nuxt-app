@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { CONDITION_TYPE } from '../../data'
 
 const props = defineProps<{
@@ -8,9 +7,8 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
-/**
-	* Activity condition type
-	*/
+
+/** Activity condition type */
 const CONDITION_NAME = {
 	firstRechargeAmount: t('activity.agent16'),
 	recharge: t('activity.agent17'),

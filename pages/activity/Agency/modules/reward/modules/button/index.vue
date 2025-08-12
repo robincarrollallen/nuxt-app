@@ -1,12 +1,18 @@
 <script setup lang="ts">
+import { useOpenBoxHandle } from '../../logic'
+
 const props = defineProps<{
 	rewardList: Record<string, any>
 }>()
+
+const { openBoxHandle } = useOpenBoxHandle()
+
+const list = ref(props.rewardList)
 </script>
 
 <template>
 	<div class="agent-reward-list-content">
-		<div class="agent-reward-list-item" v-for="item in props.rewardList" :key="item.uuid">
+		<div class="agent-reward-list-item" v-for="item in list" :key="item.uuid">
 			<div class="agent-reward-list-condition">
 				<div>
 					<p>{{ `≥${item.userCount}` }}</p>
@@ -17,7 +23,7 @@ const props = defineProps<{
 				<p>{{ item.rewardAmount }}</p>
 				{{ $t('activity.agent11') }}
 			</div>
-			<Button>{{ $t('rechargeMultiple.receive') }}</Button>
+			<Button :loading="item.opening" :class="{ light: item.isMeet }" :disabled="item.isOpen || item.showOpenAni" @click="openBoxHandle(item, 'agency')">{{ $t('rechargeMultiple.receive') }}</Button>
 		</div>
 	</div>
 </template>
@@ -63,11 +69,25 @@ const props = defineProps<{
 			}
 		}
 
-		Button {
+		button {
 			width: auto;
+			font-size: .75rem;
 			border-radius: .25rem;
-			padding: .125rem .75rem;
+			padding: .25rem .75rem;
 			opacity: 0;
+
+			&.light {
+				opacity: 1;
+				color: #FFFFFF;
+				background-color: #0A77DA;
+			}
+
+			&[disabled] {
+				opacity: 1;
+				cursor: default;
+				background-color: #183B5F;
+				color: #FFFFFF66;
+			}
 		}
 	}
 }

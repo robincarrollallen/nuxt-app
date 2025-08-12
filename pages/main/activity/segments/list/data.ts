@@ -219,6 +219,30 @@ export function getActivityDefaultName(language: LanguageType, activityType: Act
 export const ActivityListData = {
 	"activityList": [
 		{
+			"id": 661,
+			"name": "代理活动",
+			"nameType": "CUSTOM",
+			"nameParams": "{\"key\":\"value\"}",
+			"condition": "{\"uuid\":\"94d20d0b3229409d968413379f347adb\",\"validUsers\":{\"firstRechargeAmount\":{\"amount\":10000,\"status\":\"ON\"},\"recharge\":{\"amount\":3000,\"status\":\"ON\"},\"bet\":{\"amount\":20000,\"status\":\"ON\"},\"rechargeDays\":{\"days\":3,\"status\":\"ON\"},\"rechargeCount\":{\"count\":5,\"status\":\"ON\"},\"type\":\"ONE\",\"userLimit\":\"ALL\"},\"limitStats\":{\"limitIP\":99999,\"limitDevice\":99999},\"rewardType\":\"FIXED\",\"displayMode\":\"RECEIVE\",\"isShow\":false,\"rewardConfig\":[{\"uuid\":\"447983517093438f8ffb15b4cd6fd0e8\",\"userCount\":1,\"min\":0,\"max\":500},{\"uuid\":\"19b6f5b0dafb41348c362ac0c2a202e8\",\"userCount\":2,\"min\":0,\"max\":500},{\"uuid\":\"ca8c77c889cd451b896485e67cd03a54\",\"userCount\":3,\"min\":0,\"max\":500},{\"uuid\":\"08622248736c4b9c9ef2ddafa9b0b969\",\"userCount\":4,\"min\":0,\"max\":500},{\"uuid\":\"52d2512d17d644dba8ea932ad9cfa2e3\",\"userCount\":5,\"min\":0,\"max\":500},{\"uuid\":\"c581efcf57c249ba96a3cc710974d4ee\",\"userCount\":6,\"min\":0,\"max\":500},{\"uuid\":\"183112296794460995049dfed2ad56e8\",\"userCount\":7,\"min\":0,\"max\":500}],\"gameLimitType\":\"ALL\",\"gameLimit\":[]}",
+			"category": "all",
+			"type": "Agency",
+			"bannerBackground": "https://upload-us.b83.xyz/1717997134935/ACTIVITY_1-1.jpg",
+			"bannerLogo": "https://uploads4sys.po7.xyz/activityStar/iconStar/cards/cards_1.png",
+			"sort": 111,
+			"showStartTime": "2024-06-10T05:26:38.000Z",
+			"showEndTime": "2035-12-30T00:00:00.000Z",
+			"ruleType": "DEFAULT",
+			"rule": "{\"variablesValue\":{\"highestReward\":5,\"multiplier\":1,\"limitType\":\"ON\",\"limitData\":\"Card Game: kk; Slot: ONE_API_Tada, kk\",\"validBetStatus\":\"ON\",\"limitAgencyType\":\"ALL\",\"limitAgencyData\":\"\",\"awardExpiredDays\":0}}",
+			"tenantId": 2852864,
+			"previewText": "",
+			"status": "PROCESSING",
+			"startTime": "2025-04-26T09:27:17.000Z",
+			"endTime": "2035-12-30T00:00:00.000Z",
+			"activityDetailSelect": null,
+			"statusIndex": 1,
+			"top": 1
+		},
+		{
 			"id": 3770,
 			"name": "推荐好友领彩金2",
 			"nameType": "DEFAULT",

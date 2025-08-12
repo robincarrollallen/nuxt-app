@@ -3,6 +3,41 @@ const props = defineProps<{
 	agentMediaList: SoftwareType
 }>()
 
+const shareTabsRef = ref() // 分享图标切换组件
+const disableTab = ref(false) // 定义导航标签禁用状态
+
+let isDown: boolean
+let startX: number
+let scrollLeft: number
+
+/**
+ * @description 鼠标按下事件
+ */
+function handleMouseDown(e: any) {
+	console.log('handleMouseDown', e.pageX, e.currentTarget.offsetLeft)
+	isDown = true
+	startX = e.pageX - e.currentTarget.offsetLeft
+	scrollLeft = e.currentTarget.scrollLeft
+}
+function handleMouseUp() {
+	isDown = false
+	disableTab.value = false
+}
+function handleMouseLeave() {
+	isDown = false
+	disableTab.value = false
+}
+function handleMouseMove(e: any) {
+	if (!isDown)
+		return
+	console.log('>>>>>>>>>>>>>>', e.pageX, e.currentTarget.offsetLeft)
+	e.preventDefault()
+	disableTab.value = true
+	const x = e.pageX - e.currentTarget.offsetLeft
+	const walk = (x - startX)
+	e.currentTarget.scrollLeft = scrollLeft - walk
+}
+
 </script>
 
 <template>
@@ -11,7 +46,7 @@ const props = defineProps<{
 			<span>{{ $t('activity.agent2') }}</span>
 		</div>
 		<div class="agent-media-link">
-			<van-tabs class="share-tabs">
+			<van-tabs ref="shareTabsRef" class="share-tabs" @mousedown="handleMouseDown" @mouseup="handleMouseUp" @mouseleave="handleMouseLeave" @mousemove="handleMouseMove">
 				<van-tab v-for="item in props.agentMediaList" :key="item.name">
 					<template #title><SvgIcon class="share-icon" :url="`~/assets/svg/share/first/${item.name.toLowerCase()}.svg`" /></template>
 				</van-tab>

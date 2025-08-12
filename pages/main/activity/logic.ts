@@ -1,4 +1,3 @@
-import { useI18n } from 'vue-i18n'
 import ActivityList from './segments/list/index.vue'
 import Unclaimed from './segments/unclaimed/index.vue'
 
