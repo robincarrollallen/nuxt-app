@@ -38,7 +38,7 @@ onUnmounted(() => {
 		<!-- Logo -->
 		<div class="logo-wrap">
 			<van-icon class="close-icon" name="cross" @click="setShowMainLeftDrawer" />
-			<van-image class="logo" :src="tenantInfo.logo" :show-loading="false" />
+			<van-image class="logo" :src="tenantInfo.siteLogo" :show-loading="false" />
 		</div>
 
 		<!-- Login Button -->
@@ -103,7 +103,7 @@ onUnmounted(() => {
 		</div>
 
 		<!-- Language Dialog -->
-    <van-dialog v-if="showLanguageDialog" className="language-dialog" teleport="#__nuxt" v-model:show="showLanguage" :title="$t('common.chooseLanguage')" :show-confirm-button="false" close-on-click-overlay>
+    <van-dialog v-if="showLanguageDialog" className="language-dialog" teleport="#__nuxt" v-model:show="showLanguage" :title="$t('label.chooseLanguage')" :show-confirm-button="false" close-on-click-overlay>
       <div class="language-dialog-list">
         <div v-for="lang in langList" :key="lang" class="change-language-item" @click="changeLanguage(lang)">
           <p class="change-language-item-name">

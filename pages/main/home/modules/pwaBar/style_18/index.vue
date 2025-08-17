@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useTenantStore } from '~/stores/tenant'
+import { usePwaBarLogic } from '../logic'
 
-const tenantStore = useTenantStore()
-const tenantInfo = computed(() => tenantStore.tenantInfo)
+const { tenantInfo } = usePwaBarLogic()
 </script>
 
 <template>
@@ -15,7 +14,7 @@ const tenantInfo = computed(() => tenantStore.tenantInfo)
 			/>
 			<van-image
 				class="pwa-icon"
-				:src="tenantInfo.icon"
+				:src="tenantInfo.appIcon"
 				:show-loading="false"
 			/>
 			<div class="pwa-title">

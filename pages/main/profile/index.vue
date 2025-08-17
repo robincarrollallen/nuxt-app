@@ -7,8 +7,10 @@ defineOptions({
 
 // Use main layout
 definePageMeta({
-	layout: 'main'
+	layout: 'main',
+	ssr: false
 })
+
 </script>
 
 <template>

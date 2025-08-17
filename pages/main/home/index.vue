@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { gameList } from './data'
+import { getComponentConfig } from '~/theme/componentConfig'
+import Banner from './modules/banner/style_18/index.vue'
 import Marquee from './modules/marquee/index.vue'
-import GameWarp from '~/widgets/gameWarp/index.vue'
-import Banner from './modules/banner/index.vue'
-import PwaBar from './modules/pwaBar/index.vue'
-import NavBar from './modules/navBar/index.vue'
+import SortTab from './modules/sortTab/index.vue'
+import Sidebar from '~/widgets/sidebar/index.vue'
+import type { ThemeType } from '~/theme'
+
+const tenantStore = useTenantStore()
+const statusStore = useStatusStore()
 
 defineOptions({
 	name: 'HomePage'
@@ -15,79 +18,34 @@ definePageMeta({
 	keepalive: true
 })
 
-const gameStore = useGameStore()
-const systemStore = useSystemStore()
+const homeHeaderComponent = computed(() => getComponentConfig(tenantStore.tenantInfo.skinTwoType as ThemeType, 'HomeHeaderComponent'))
 
-const homeHotList = computed(() => gameStore.homeHotList) // Home hot game list
-const tabsOffsetTop = computed(() => { // Tabs offset top
-	if (systemStore.screenWidth >= 540) {
-		return 3.125 * systemStore.fontSize
-	}
-
-	return 6.25 * systemStore.fontSize
-})
-const homePlatformList = computed(() => { // Home platform list
-	const platformList = deepClone(gameStore.homePlatformList)
-
-	platformList.unshift({
-		id: 0,
-		name: 'POPULAR',
-		code: 'POPULAR',
-		logo: '~/assets/svg/sort/POPULAR.svg',
-		status: 'ON',
-		openType: true,
-		type: 'sort',
-		sort: 12,
-	})
-
-	return platformList
-})
-
-const active = ref(0)
-
-const getGameListByPlatform = (platformId: number) => {
-	const list = gameList.filter(item => item.gameList[0]?.platformId === platformId)
-
-	let result = []
-	if (list.length > 1) {
-		list.forEach(item => {
-			result.push(...item.gameList)
-		})
-	} else if (list.length === 1) {
-		result = list[0].gameList
-	}
-
-	return result
-}
 </script>
 
 <template>
   <div class="home-page">
+		<header>
+			<component v-for="(item, index) in homeHeaderComponent.children" :key="index" :is="defineAsyncComponent(item.component)" v-bind="{...item.options, components: item.children}"/>
+		</header>
+
+		<main class="main-warp">
+			<Banner />
+			<Marquee />
+			<SortTab />
+		</main>
+
+		<!-- 左侧抽屉 -->
 		<ClientOnly>
-			<header>
-				<PwaBar />
-				<NavBar />
-			</header>
-
-			<main class="main-warp">
-				<Banner />
-				<Marquee />
-
-				<van-tabs class="segment-tabs" v-model:active="active" scrollspy sticky :offset-top="tabsOffsetTop">
-					<van-tab class="segment-pane" v-for="platform of homePlatformList" :key="platform.id">
-						<template #title>
-							<div class="segment-tab">
-								<SvgIcon class="segment-tab-icon" :url="platform.logo" />
-								<div>{{ platform.name }}</div>
-							</div>
-						</template>
-						<div class="segment-pane-wrap">
-							<GameWarp :platform="platform" :list="homeHotList" v-if="platform.id === 0"/>
-							<GameWarp :platform="platform" :list="getGameListByPlatform(platform.id)" v-else/>
-						</div>
-					</van-tab>
-				</van-tabs>
-			</main>
+			<van-popup
+				round
+				position="left"
+				teleport="#__main"
+				overlay-class="sidebar-overlay"
+				v-model:show="statusStore.showMainLeftDrawer"
+				:style="{ height: '100%' }"
+			>
+				<Sidebar/>
+			</van-popup>
 		</ClientOnly>
   </div>
 </template>

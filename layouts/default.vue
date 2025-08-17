@@ -3,14 +3,16 @@ import Sidebar from '~/widgets/sidebar/index.vue'
 </script>
 
 <template>
-	<ClientOnly>
-		<div class="global-layout">
+	<div class="global-layout">
+		<ClientOnly>
 			<Sidebar class="side-bar-wrap" />
-			<main class="content-wrapper">
+		</ClientOnly>
+		<main class="content-wrapper">
+			<ClientOnly>
 				<slot />
-			</main>
-		</div>
-	</ClientOnly>
+			</ClientOnly>
+		</main>
+	</div>
 </template>
 
 <style scoped lang="less">

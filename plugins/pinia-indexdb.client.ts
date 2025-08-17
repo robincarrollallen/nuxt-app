@@ -1,4 +1,4 @@
-import { piniaIndexedDBPlugin } from '@/stores/plugin'
+import { piniaIndexedDBPlugin } from '~/stores/plugins/indexdb'
 import type { Pinia } from 'pinia'
 
 export default defineNuxtPlugin((nuxtApp) => {

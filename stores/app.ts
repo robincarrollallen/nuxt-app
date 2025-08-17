@@ -5,6 +5,7 @@ export const useAppStore = defineStore('app', () => {
 
 	/**
 	 * Set language
+	 * @param language - The language to set
 	 */
 	const setLocale = (language: string) => {
 		const { $i18n } = useNuxtApp()

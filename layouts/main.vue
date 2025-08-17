@@ -33,7 +33,6 @@ const tabbarList = [
 		<div class="main-content">
 			<NuxtPage keepalive />
 		</div>
-		<ClientOnly>
 			<div class="tabbar">
 				<NuxtLink class="tab-item" active-class="active" replace v-for="item in tabbarList" :key="item.path" :to="item.path">
 					<div class="tab-icon-warp" :class="{ 'invite': !item.path }">
@@ -46,7 +45,6 @@ const tabbarList = [
 					<span class="tab-label">{{ item.label }}</span>
 				</NuxtLink>
 			</div>
-		</ClientOnly>
   </NuxtLayout>
 </template>
 
@@ -67,8 +65,8 @@ const tabbarList = [
 		background-size: 100% 100%;
 		position: fixed;
 		bottom: 0;
-		max-width: 539px;
 		width: 100%;
+		height: 4.125rem;
 		aspect-ratio: 8/1;
 		display: grid;
 		z-index: 9;
@@ -89,12 +87,13 @@ const tabbarList = [
 
 			.tab-icon-warp {
 				position: relative;
-				width: 1.25rem;
-				height: 1.25rem;
+				width: 2rem;
+				height: 2rem;
 				margin-bottom: 0.125rem;
 
 				&.invite {
-					width: 3rem;
+					width: 70%;
+					max-width: 3.5rem;
 
 					.invite-icon-warp {
 						position: absolute;

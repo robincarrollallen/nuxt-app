@@ -1,36 +1,9 @@
 <script setup lang="ts">
-import { useBannerLogic } from './logic'
-import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
+import { useBannerLogic } from '../logic'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 
-const badgeSrc = new URL('~/assets/svg/badge-banner.svg', import.meta.url).href
-
-const { bannerList, autoplay } = useBannerLogic()
-
-const systemStore = useSystemStore()
-const screenWidth = computed(() => systemStore.screenWidth) // 屏幕宽度
-const slidesPerView = computed(() => {
-	let perView = 1
-	let spaceBetween = 0
-	let initialSlide = 0
-	let centeredSlides = false
-	if (screenWidth.value >= 1344) {
-		perView = 2
-		spaceBetween = 30
-		centeredSlides = true
-	} else if (screenWidth.value >= 540) {
-		perView = 1.3
-		initialSlide = 1
-		spaceBetween = 20
-	}
-
-	return {
-		perView,
-		initialSlide,
-		spaceBetween,
-		centeredSlides,
-	}
-})
+const { bannerList, autoplay, slidesPerView, badgeSrc } = useBannerLogic()
 
 </script>
 

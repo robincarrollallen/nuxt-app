@@ -1,8 +1,37 @@
-import { ThemeSupport, type ThemeType, THEME_TYPE } from '~/enums/theme'
+/** Theme type */
+export const THEME_TYPE = {
+	STYLE_1: 'Layout2:DarkGreen',
+	STYLE_2: 'Layout2:GoldenYellow',
+	STYLE_3: 'Layout2:BluePurple',
+	STYLE_4: 'Layout3:AmberPurple',
+	STYLE_5: 'Layout1:Blue',
+	STYLE_6: 'Layout1:Green',
+	STYLE_7: 'Layout1:BlueV01',
+	STYLE_8: 'Layout1:GreenV01',
+	STYLE_9: 'Layout1:GreenV02',
+	STYLE_10: 'Layout1:Blue_V01',
+	STYLE_11: 'Layout1:AmberPurple',
+	STYLE_12: 'Layout1:PineGreenV01',
+	STYLE_13: 'Layout1:PineGreenV02',
+	STYLE_14: 'Layout1:BlueV02',
+	STYLE_15: 'Layout1:AmberPurpleV01',
+	STYLE_16: 'Layout1:AuroraYellow',
+	STYLE_17: 'Layout2:PhantomBlue',
+	STYLE_18: 'Layout2:NeoBlue',
+	STYLE_19: 'Layout2:MystLightBlue',
+	STYLE_20: 'Layout2:MidnightPurple',
+	STYLE_25: 'Layout2:SupremeGreen'
+} as const
+
+// Theme type
+export type ThemeType = typeof THEME_TYPE[keyof typeof THEME_TYPE]
+
+// Supported themes array
+export const ThemeSupport = Object.values(THEME_TYPE)
 
 class ThemeManager {
 	private loadedThemes = new Set<string>()
-	private currentTheme: ThemeType = THEME_TYPE.DEFAULT
+	private currentTheme: ThemeType = THEME_TYPE.STYLE_18
 
 	async setTheme(theme: ThemeType) {
 		if (!this.loadedThemes.has(theme)) {
@@ -11,9 +40,9 @@ class ThemeManager {
 				this.loadedThemes.add(theme)
 			} else {
 				// If the theme fails to load and is not the default theme, fall back to the default theme
-				if (theme !== THEME_TYPE.DEFAULT) {
+				if (theme !== THEME_TYPE.STYLE_18) {
 					console.warn(`Failed to load theme ${theme}, falling back to default`)
-					return this.setTheme(THEME_TYPE.DEFAULT)
+					return this.setTheme(THEME_TYPE.STYLE_18)
 				}
 				return
 			}
@@ -38,11 +67,7 @@ class ThemeManager {
 	private applyTheme(theme: ThemeType) {
 		const root = document.documentElement
 
-		if (theme === THEME_TYPE.DEFAULT) {
-			root.removeAttribute('data-theme')
-		} else {
-			root.setAttribute('data-theme', theme)
-		}
+		root.setAttribute('data-theme', theme)
 	}
 
 	// Preload theme
@@ -86,7 +111,7 @@ class ThemeManager {
 		if (savedTheme && this.isValidTheme(savedTheme)) {
 			await this.setTheme(savedTheme)
 		} else {
-			await this.setTheme(THEME_TYPE.DEFAULT)
+			await this.setTheme(THEME_TYPE.STYLE_18)
 		}
 	}
 }
