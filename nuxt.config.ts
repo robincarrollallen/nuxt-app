@@ -41,5 +41,10 @@ export default defineNuxtConfig({
 			escapeHtml: true
 		}
 	},
+	vant: {
+		lazyload: {
+			lazyComponent: true,
+		}
+	},
 	css: ['swiper/css', 'swiper/css/autoplay']
 })

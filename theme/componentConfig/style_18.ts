@@ -1,12 +1,12 @@
 import { Components } from "../components"
 
 /** pwa栏组件配置 */
-const PwaBarComponent = {
+export const PwaBarComponent = {
 	component: Components.pwaBar,
 }
 
 /** 导航栏组件配置 */
-const NavBarComponent = {
+export const NavBarComponent = {
 	component: Components.navBar,
 	options: {
 		class: 'nav-bar',
@@ -44,7 +44,7 @@ const NavBarComponent = {
 			component: Components.navBarLogin,
 		},
 		{
-			component: Components.navBarLanguage,
+			component: Components.navBarLanguage(18),
 			options: {
 				icon: '~/assets/svg/earth.svg',
 			}
@@ -52,10 +52,34 @@ const NavBarComponent = {
 	]
 }
 
+/** 首页轮播图组件配置 */
+export const BannerComponent = {
+	component: Components.banner,
+}
+
+/** 首页跑马灯组件配置 */
+export const MarqueeComponent = {
+	component: Components.marquee(18),
+}
+
+/** 首页分类组件配置 */
+export const SortTabComponent = {
+	component: Components.mainSortTab(18),
+}
+
 /** 首页头部组件配置 */
 export const HomeHeaderComponent= {
 	children: [
 		PwaBarComponent,
 		NavBarComponent
+	]
+}
+
+/** 首页轮播图组件配置 */
+export const HomeContentComponent = {
+	children: [
+		BannerComponent,
+		MarqueeComponent,
+		SortTabComponent,
 	]
 }

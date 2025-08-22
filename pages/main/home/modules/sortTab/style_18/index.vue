@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSortTabLogic } from './logic'
+import { useSortTabLogic } from '../logic'
 import GameWarp from '~/widgets/gameWarp/index.vue'
 
 const { active, homeHotList, homePlatformList, tabsOffsetTop, getGameListByPlatform } = useSortTabLogic()

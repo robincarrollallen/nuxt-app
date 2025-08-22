@@ -29,6 +29,11 @@ export type ThemeType = typeof THEME_TYPE[keyof typeof THEME_TYPE]
 // Supported themes array
 export const ThemeSupport = Object.values(THEME_TYPE)
 
+// 主题样式
+export const THEME_STYLE = Object.fromEntries(
+	Object.entries(THEME_TYPE).map(([key, value]) => [value, key.toLowerCase()])
+)
+
 class ThemeManager {
 	private loadedThemes = new Set<string>()
 	private currentTheme: ThemeType = THEME_TYPE.STYLE_18
@@ -56,7 +61,7 @@ class ThemeManager {
 
 	private async loadThemeCSS(theme: ThemeType): Promise<boolean> {
 		try {
-			await import(`~/theme/variables/${theme}.css`) // Fix CSS file path
+			await import(`~/theme/variables/${THEME_STYLE[theme]}.css`) // Fix CSS file path
 			return true
 		} catch (error) {
 			console.error(`Failed to load theme CSS: ${theme}`, error)

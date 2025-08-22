@@ -1,11 +1,7 @@
 <script setup lang="ts">
+import { useMarqueeLogic } from '../logic'
 
-const marqueeList = ref([
-	{
-		name: 'marquee1',
-		content: 'current domain zhu-1.w-x-2-c.com'
-	}
-])
+const { marqueeList } = useMarqueeLogic()
 </script>
 
 <template>

@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { getComponentConfig } from '~/theme/componentConfig'
-import Banner from './modules/banner/style_18/index.vue'
-import Marquee from './modules/marquee/index.vue'
-import SortTab from './modules/sortTab/index.vue'
 import Sidebar from '~/widgets/sidebar/index.vue'
 import type { ThemeType } from '~/theme'
 
@@ -18,7 +15,8 @@ definePageMeta({
 	keepalive: true
 })
 
-const homeHeaderComponent = computed(() => getComponentConfig(tenantStore.tenantInfo.skinTwoType as ThemeType, 'HomeHeaderComponent'))
+const homeHeaderComponent = computed(() => getComponentConfig(tenantStore.tenantInfo.skinTwoType as ThemeType, 'HomeHeaderComponent')) // 首页头部组件配置
+const homeContentComponent = computed(() => getComponentConfig(tenantStore.tenantInfo.skinTwoType as ThemeType, 'HomeContentComponent')) // 首页内容组件配置
 
 </script>
 
@@ -29,9 +27,7 @@ const homeHeaderComponent = computed(() => getComponentConfig(tenantStore.tenant
 		</header>
 
 		<main class="main-warp">
-			<Banner />
-			<Marquee />
-			<SortTab />
+			<component v-for="(item, index) in homeContentComponent.children" :key="index" :is="defineAsyncComponent(item.component)" v-bind="{...item.options, components: item.children}"/>
 		</main>
 
 		<!-- 左侧抽屉 -->

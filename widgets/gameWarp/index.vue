@@ -93,8 +93,7 @@ const onSlideChange = (e: any) => {
 		>
 			<SwiperSlide v-for="(item, index) of gameCardPagination.pages" :key="index">
 				<div class="game-wrap">
-					<div class="game-card" :style="{ backgroundImage: game.logoFlag ? `url(https://game-logo.d-e-7-f.com/pre/style2/en/${game.logoFlag}.jpg` : game.background}" v-for="game of item" :key="game.id">
-					</div>
+					<van-image class="game-card" lazy-load v-for="game of item" :key="game.id" :src="game.logoFlag ? `https://game-logo.d-e-7-f.com/pre/style2/en/${game.logoFlag}.jpg` : game.background" />
 				</div>
 			</SwiperSlide>
 		</Swiper>
@@ -195,11 +194,8 @@ const onSlideChange = (e: any) => {
 		}
 
 		.game-card {
-			aspect-ratio: 3/4;
+			overflow: hidden;
 			border-radius: .5rem;
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
 
 			&:hover {
 				transform: scale(1.05);
