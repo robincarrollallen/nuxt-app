@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import Sidebar from '~/widgets/sidebar/index.vue'
+import { HomeDrawerComponent } from '~/theme/componentConfig/style_18'
 </script>
 
 <template>
 	<div class="global-layout">
 		<ClientOnly>
-			<Sidebar class="side-bar-wrap" />
+			<Sidebar class="side-bar-wrap" :components="HomeDrawerComponent.children" />
 		</ClientOnly>
 		<main class="content-wrapper">
 			<ClientOnly>

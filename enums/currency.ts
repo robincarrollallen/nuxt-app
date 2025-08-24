@@ -52,3 +52,8 @@ export type CURRENCY_TYPE = typeof CURRENCY[keyof typeof CURRENCY]
 
 export const CurrencySupport = Object.values(CURRENCY)
 export const CurrencyCodes = Object.keys(CURRENCY) as CURRENCY_CODE[]
+
+/** get currency */
+export const getCurrency = (currencyCode?: string): string => {
+	return (currencyCode && currencyCode in CURRENCY) ? CURRENCY[currencyCode] : CURRENCY.USD
+}

@@ -2,7 +2,6 @@
 import { useRouter } from 'vue-router'
 import { formatMoneyToLocal } from '@/utils/math'
 import { SvgIcon } from '#components'
-import { CURRENCY } from '~/enums/currency'
 
 const { $i18n } = useNuxtApp()
 const router = useRouter() // 路由实例
@@ -10,7 +9,6 @@ const agentStore = useAgentStore() // 代理store
 const tenantStore = useTenantStore() // 商户store
 
 const levelConfig = computed(() => agentStore.agencyConfig.inviteConfig?.commissionLevelConfig || []) // 奖励等级配置
-const merchantCy = computed(() => CURRENCY[tenantStore.tenantInfo?.region?.currency] || CURRENCY.USD) // 当前商户货币
 const rewardCount = computed(() => agentStore.inviteInfo?.reward?.count || 0) // 已邀请奖励人数
 const inviteComm = computed(() => agentStore.inviteInfo?.commission || []) // 邀请成就奖励列表
 const totalReward = computed(() => { // 总奖励金额
@@ -39,7 +37,7 @@ const totalPendingReward = computed(() => { // 待领取奖励金额
 			amount += Number(item.amount)
 		}
 	})
-	return `${merchantCy.value} ${formatMoneyToLocal(amount)}`
+	return `${tenantStore.merchantCy} ${formatMoneyToLocal(amount)}`
 })
 
 /**
@@ -72,13 +70,13 @@ async function handleStepClick(amount: number) {
 				{{ $t('splice.inviteFriendsNum', { num: maxInviteCount }) }}
 			</div>
 			<div class="get-reward-amount">
-				{{ merchantCy }} {{ totalReward }}
+				{{ tenantStore.merchantCy }} {{ totalReward }}
 			</div>
 			<div class="get-reward-steps">
 				<div v-for="(step, index) of levelConfig" :key="step.level" class="get-reward-steps-item" :class="{ active: rewardCount >= step.requiredCount }" @click="handleStepClick(index)">
 					<div class="get-reward-steps-icon" />
 					<div class="get-reward-steps-amount">
-						{{ `${merchantCy}${formatMoneyToLocal(step.rewardAmount)}` }}
+						{{ `${tenantStore.merchantCy}${formatMoneyToLocal(step.rewardAmount)}` }}
 					</div>
 					<div class="get-reward-steps-circle" :class="{ start: index === 0, end: index === levelConfig.length - 1 }">
 						<van-icon class="get-reward-steps-circle-icon" v-if="inviteComm[index]?.status === 'RECEIVED'" name="success" />

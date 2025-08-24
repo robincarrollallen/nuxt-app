@@ -8,7 +8,6 @@ const router = useRouter()
 const agentStore = useAgentStore() // 代理store
 const tenantStore = useTenantStore() // 商户store
 
-const merchantCy = computed(() => tenantStore.tenantInfo?.merchantCy) // 当前商户货币
 const totalReward = computed(() => {
 	let amount = Number(agentStore.inviteInfo?.reward?.amount || 0)
 	agentStore.inviteInfo?.commission.forEach((item: any) => {
@@ -16,7 +15,7 @@ const totalReward = computed(() => {
 			amount += Number(item.amount)
 		}
 	})
-	return `${merchantCy.value} ${formatMoneyToLocal(amount)}`
+	return `${tenantStore.merchantCy} ${formatMoneyToLocal(amount)}`
 })
 </script>
 

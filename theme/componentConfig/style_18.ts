@@ -73,4 +73,50 @@ export const HomeContentComponent = {
 /** 首页抽屉组件配置 */
 export const HomeDrawerComponent = {
 	component: Components.drawer,
+	children: [
+		{
+			component: Components.drawerHeader,
+			children: [
+				{
+					component: Components.drawerHeaderLogo,
+				},
+				{
+					component: Components.drawerHeaderLogin,
+				}
+			]
+		},
+		{
+			component: Components.drawerContent,
+			options: {
+				class: 'flex-1 scroll-y column',
+				style: {
+					gap: '1rem',
+				}
+			},
+			children: [
+				{
+					component: Components.drawerHeaderLanguage,
+					children: [
+						{
+							component: Components.drawerContentLanguageDialog,
+						}
+					]
+				},
+				{
+					component: Components.drawerContentActivity,
+				},
+				{
+					component: Components.drawerContentCategory,
+				}
+			]
+		},
+		{
+			component: Components.drawerFooter,
+			children: [
+				{
+					component: Components.drawerContentSupport,
+				}
+			]
+		}
+	]
 }

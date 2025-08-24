@@ -1,3 +1,5 @@
+import { CURRENCY } from "~/enums/currency"
+
 export const useSidebarLogic = () => {
 	const appStore = useAppStore() // Application store
 	const gameStore = useGameStore() // Game store
@@ -13,10 +15,10 @@ export const useSidebarLogic = () => {
 	const tenantInfo = computed(() => tenantStore.tenantInfo) // Tenant information
 	const mainMediaList = computed(() => tenantStore.mainMediaList) // Main media list
 	const langList = computed(() => tenantStore.tenantInfo.appLanguage) // Language list
-	const merchantCy = computed(() => tenantStore.tenantInfo.merchantCy) // Merchant currency
 	const activityList = computed(() => activityStore.sideBarActivityList.slice(0, 12)) // Activity list
 	const gameCategoryList = computed(() => gameStore.homeList.map(item => item.gameType)) // Game category list
 	const currentLanguage = computed(() => getLanguageName(locale.value, locale.value).split(' ')[0]) // Current language Name
+	const merchantCy = computed(() => tenantStore.merchantCy) // Merchant currency
 	const showLanguageDialog = computed(() => systemStore.screenWidth >= 540 || statusStore.showMainLeftDrawer) // Whether to show language dialog
 
 	/**

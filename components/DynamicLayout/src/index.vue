@@ -11,14 +11,14 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="dynamic-layout">
+  <section>
     <component
       v-for="(item, index) in props.components"
       :key="index"
       :is="defineAsyncComponent(item.component)"
-      v-bind="item.options"
+      v-bind="{...item.options, components: item.children}"
     />
-  </div>
+  </section>
 </template>
 
 <style scoped lang="less">
@@ -28,4 +28,23 @@ const props = defineProps({
 	}
 }
 
+section {
+	&.column {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&.row {
+		display: flex;
+		align-items: center;
+	}
+
+	&.scroll-y {
+		overflow-y: auto;
+	}
+
+	&.flex-1 {
+		flex: 1;
+	}
+}
 </style>

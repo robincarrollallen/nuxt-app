@@ -22,6 +22,26 @@ export const Components = {
 	/** 分类组件 */
 	mainSortTab: (style: string) => () => import(`~/pages/main/home/modules/sortTab/${style}/index.vue`),
 
-	/** 抽屉组件 */
+	/** 首页侧边栏组件 */
 	drawer: () => import('~/pages/main/home/modules/drawer/index.vue'),
+	/** 首页侧边栏头部组件 */
+	drawerHeader: () => import('~/components/DynamicLayout'),
+	/** 首页侧边栏头部组件: Logo */
+	drawerHeaderLogo: () => import('~/widgets/sidebar/modules/logo/index.vue'),
+	/** 首页侧边栏头部组件: Login */
+	drawerHeaderLogin: () => import('~/widgets/sidebar/modules/login/index.vue'),
+	/** 首页侧边栏内容组件 */
+	drawerContent: () => import('~/components/DynamicLayout'),
+	/** 首页侧边栏内容组件: Language */
+	drawerHeaderLanguage: () => import('~/widgets/sidebar/modules/language/index.vue'),
+	/** 首页侧边栏内容组件: Language Dialog */
+	drawerContentLanguageDialog: () => import('~/widgets/languageDialog/index.vue'),
+	/** 首页侧边栏内容组件: Activity */
+	drawerContentActivity: () => import('~/widgets/sidebar/modules/activity/index.vue'),
+	/** 首页侧边栏内容组件: Category */
+	drawerContentCategory: () => import('~/widgets/sidebar/modules/category/index.vue'),
+	/** 首页侧边栏底部组件 */
+	drawerFooter: () => import('~/components/DynamicLayout'),
+	/** 首页侧边栏底部组件: Support */
+	drawerContentSupport: () => import('~/widgets/sidebar/modules/support/index.vue'),
 }

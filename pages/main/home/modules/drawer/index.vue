@@ -1,7 +1,15 @@
 <script setup lang="ts">
-import Sidebar from '~/widgets/sidebar/index.vue'
+import type { ComponentConfig } from '~/theme/componentConfig'
+import SideBar from '~/widgets/sidebar/index.vue'
 
 const statusStore = useStatusStore()
+
+const props = defineProps({
+	components: {
+		type: Array as PropType<ComponentConfig[]>,
+		default: () => []
+	},
+})
 </script>
 
 <template>
@@ -13,7 +21,7 @@ const statusStore = useStatusStore()
 		v-model:show="statusStore.showMainLeftDrawer"
 		:style="{ height: '100%' }"
 	>
-		<Sidebar/>
+		<SideBar :components="props.components" />
 	</van-popup>
 </template>
 

@@ -7,7 +7,6 @@ const agentStore = useAgentStore() // 代理store
 const tenantStore = useTenantStore() // 商户store
 
 const inviteConfig = computed(() => agentStore.agencyConfig.inviteConfig) // 邀请配置
-const merchantCy = computed(() => tenantStore.tenantInfo?.merchantCy) // 当前商户货币
 const inviteInfo = computed(() => agentStore.inviteInfo) // 邀请信息
 </script>
 
@@ -20,11 +19,11 @@ const inviteInfo = computed(() => agentStore.inviteInfo) // 邀请信息
 				{{ $t('splice.inviteFriends') }}
 			</div>
 			<div class="invite-reward">
-				{{ merchantCy }} {{ formatMoneyToLocal(inviteConfig?.inviterAmount) }}
+				{{ tenantStore.merchantCy }} {{ formatMoneyToLocal(inviteConfig?.inviterAmount) }}
 			</div>
 			<div class="invited-reward">
 				<span>{{ $t('splice.invitedFriends') }}</span>
-				<span class="invited-reward-amount">{{ merchantCy }} {{ formatMoneyToLocal(inviteConfig?.inviteeAmount) }}</span>
+				<span class="invited-reward-amount">{{ tenantStore.merchantCy }} {{ formatMoneyToLocal(inviteConfig?.inviteeAmount) }}</span>
 			</div>
 			<Button class="invite-btn" shiny @click="router.push({ path: '/activity/share' })">
 				{{ $t('activity.inviteFriendsReward') }}
