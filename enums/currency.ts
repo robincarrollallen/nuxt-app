@@ -47,4 +47,8 @@ export const CURRENCY = {
 	VND: '₫',
 } as const
 
+export type CURRENCY_CODE = keyof typeof CURRENCY;
 export type CURRENCY_TYPE = typeof CURRENCY[keyof typeof CURRENCY]
+
+export const CurrencySupport = Object.values(CURRENCY)
+export const CurrencyCodes = Object.keys(CURRENCY) as CURRENCY_CODE[]

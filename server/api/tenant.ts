@@ -1,4 +1,4 @@
-import TenantInfoData from '~/stores/data/tenantInfo.json'
+import TenantInfoData from 'public/data/tenantInfo.json'
 
 export default defineEventHandler(async () => {
 	// 模拟 API 调用

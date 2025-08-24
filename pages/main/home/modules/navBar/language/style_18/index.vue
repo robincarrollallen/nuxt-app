@@ -47,14 +47,4 @@ const { showPopover, langList, fontSize, locale, changeLanguage } = useNavBarLan
 		}
 	}
 }
-
-.sidebar-overlay {
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
-	background: linear-gradient(
-		45deg,
-		var(--ep-color-background-fill-glow-primary-opacity-40),
-		var(--ep-color-background-fill-glow-secondary-opacity-40)
-	);
-}
 </style>

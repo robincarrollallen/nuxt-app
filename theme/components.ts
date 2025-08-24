@@ -9,7 +9,7 @@ export const Components = {
 	/** 导航栏logo组件 */
 	navBarLogo: () => import('~/pages/main/home/modules/navBar/logo/style_18/index.vue'),
 	/** 导航栏语言组件 */
-	navBarLanguage: (index: number) => () => import(`~/pages/main/home/modules/navBar/language/style_${index}/index.vue`),
+	navBarLanguage: (style: string) => () => import(`~/pages/main/home/modules/navBar/language/${style}/index.vue`),
 	/** 导航栏登录组件 */
 	navBarLogin: () => import('~/pages/main/home/modules/navBar/login/style_18/index.vue'),
 
@@ -17,8 +17,11 @@ export const Components = {
 	banner: () => import('~/pages/main/home/modules/banner/style_18/index.vue'),
 
 	/** 跑马灯组件 */
-	marquee: (index: number) => () => import(`~/pages/main/home/modules/marquee/style_${index}/index.vue`),
+	marquee: (style: string) => () => import(`~/pages/main/home/modules/marquee/${style}/index.vue`),
 
 	/** 分类组件 */
-	mainSortTab: (index: number) => () => import(`~/pages/main/home/modules/sortTab/style_${index}/index.vue`),
+	mainSortTab: (style: string) => () => import(`~/pages/main/home/modules/sortTab/${style}/index.vue`),
+
+	/** 抽屉组件 */
+	drawer: () => import('~/pages/main/home/modules/drawer/index.vue'),
 }

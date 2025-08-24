@@ -1,4 +1,5 @@
-import { themeManager, ThemeSupport } from "~/theme"
+import { themeManager } from "~/theme"
+import { ThemeSupport } from "~/theme/type"
 import { LanguageSupport } from "~/enums/language"
 
 // Global plugin, used to set website information <Execute once when the page is first loaded>

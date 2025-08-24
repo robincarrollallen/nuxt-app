@@ -1,5 +1,5 @@
-import agentActivityDetailData from "./data/agentActivityDetail.json"
-import lobbySidebarBannerListData from "./data/lobbySidebarBannerList.json"
+import agentActivityDetailData from "public/data/agentActivityDetail.json"
+import lobbySidebarBannerListData from "public/data/lobbySidebarBannerList.json"
 
 export const useActivityStore = defineStore('activity', () => {
 	const sideBarActivityList = ref(lobbySidebarBannerListData)

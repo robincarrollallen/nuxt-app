@@ -1,7 +1,7 @@
-import software from "./data/software.json"
-import inviteInfoData from "./data/inviteInfo.json"
-import myAgentInfoData from "./data/myAgentInfo.json"
-import agencyConfigData from "./data/agencyConfig.json"
+import software from "public/data/software.json"
+import inviteInfoData from "public/data/inviteInfo.json"
+import myAgentInfoData from "public/data/myAgentInfo.json"
+import agencyConfigData from "public/data/agencyConfig.json"
 
 export const useAgentStore = defineStore('agent', () => {
 	const shareConfig = ref({

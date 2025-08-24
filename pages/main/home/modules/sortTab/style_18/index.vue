@@ -3,6 +3,7 @@ import { useSortTabLogic } from '../logic'
 import GameWarp from '~/widgets/gameWarp/index.vue'
 
 const { active, homeHotList, homePlatformList, tabsOffsetTop, getGameListByPlatform } = useSortTabLogic()
+
 </script>
 
 <template>

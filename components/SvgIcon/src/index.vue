@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getOrSetSvgCacheAsync } from './data'
+
 interface Props {
 	url?: string
 	src?: string
@@ -72,18 +74,20 @@ const loadRemoteSvg = async (url: string) => {
  * @param url - The URL of the SVG file
  */
 const loadLocalSvg = async (url: string) => {
-	// Check if the URL ends with .svg
-	if (!url.toLowerCase().endsWith('.svg')) {
-		return `<img src="${url}" />`
-	}
+	return getOrSetSvgCacheAsync(url, async () => {
+		// Check if the URL ends with .svg
+		if (!url.toLowerCase().endsWith('.svg')) {
+			return `<img src="${url}" />`
+		}
 
-	try {
-		const pathParts = processPath(url)
-		return await importSvg(pathParts)
-	} catch (error) {
-		console.error(`Failed to load SVG from path: ${url}`, error)
-		throw error
-	}
+		try {
+			const pathParts = processPath(url)
+			return await importSvg(pathParts)
+		} catch (error) {
+			console.error(`Failed to load SVG from path: ${url}`, error)
+			throw error
+		}
+	})
 }
 
 onMounted(async () => {

@@ -1,4 +1,4 @@
-import { THEME_TYPE, type ThemeType } from "~/theme"
+import { THEME_TYPE, type ThemeType } from "~/theme/type"
 import * as STYLE_18 from './style_18'
 import type { AsyncComponentLoader } from "vue"
 

@@ -32,19 +32,24 @@ export const useSortTabLogic = () => {
 		return platformList
 	})
 
+	/** get game list by platform */
 	const getGameListByPlatform = (platformId: number) => {
-		const list = gameList.filter(item => item.gameList[0]?.platformId === platformId)
+		return getOrSetCache('game', `platform_${platformId}`, () => {
+			const list = gameList.filter(item =>
+				item.gameList[0]?.platformId === platformId
+			)
 
-		let result = []
-		if (list.length > 1) {
-			list.forEach(item => {
-				result.push(...item.gameList)
-			})
-		} else if (list.length === 1) {
-			result = list[0].gameList
-		}
+			let result = []
+			if (list.length > 1) {
+				list.forEach(item => {
+					result.push(...item.gameList)
+				})
+			} else if (list.length === 1) {
+				result = list[0].gameList
+			}
 
-		return result
+			return result
+		})
 	}
 
 	let navComplete: HTMLElement | null = null

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { getComponentConfig } from '~/theme/componentConfig'
-import Sidebar from '~/widgets/sidebar/index.vue'
-import type { ThemeType } from '~/theme'
+import type { ThemeType } from '~/theme/type'
 
 const tenantStore = useTenantStore()
-const statusStore = useStatusStore()
 
 defineOptions({
 	name: 'HomePage'
@@ -15,9 +13,10 @@ definePageMeta({
 	keepalive: true
 })
 
-const homeHeaderComponent = computed(() => getComponentConfig(tenantStore.tenantInfo.skinTwoType as ThemeType, 'HomeHeaderComponent')) // 首页头部组件配置
-const homeContentComponent = computed(() => getComponentConfig(tenantStore.tenantInfo.skinTwoType as ThemeType, 'HomeContentComponent')) // 首页内容组件配置
-
+const skinTwoType = computed(() => tenantStore.tenantInfo.skinTwoType as ThemeType)
+const homeHeaderComponent = computed(() => getComponentConfig(skinTwoType.value, 'HomeHeaderComponent')) // 首页头部组件配置
+const homeContentComponent = computed(() => getComponentConfig(skinTwoType.value, 'HomeContentComponent')) // 首页内容组件配置
+const homeDrawerComponent = computed(() => getComponentConfig(skinTwoType.value, 'HomeDrawerComponent')) // 首页抽屉组件配置
 </script>
 
 <template>
@@ -32,16 +31,7 @@ const homeContentComponent = computed(() => getComponentConfig(tenantStore.tenan
 
 		<!-- 左侧抽屉 -->
 		<ClientOnly>
-			<van-popup
-				round
-				position="left"
-				teleport="#__main"
-				overlay-class="sidebar-overlay"
-				v-model:show="statusStore.showMainLeftDrawer"
-				:style="{ height: '100%' }"
-			>
-				<Sidebar/>
-			</van-popup>
+			<component :is="defineAsyncComponent(homeDrawerComponent.component)" v-bind="{...homeDrawerComponent.options, components: homeDrawerComponent.children}"/>
 		</ClientOnly>
   </div>
 </template>

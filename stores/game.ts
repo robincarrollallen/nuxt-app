@@ -1,6 +1,6 @@
-import hotList from './data/hotList.json'
-import homeListData from './data/homeList.json'
-import platformList from './data/platformList.json'
+import hotList from 'public/data/hotList.json'
+import homeListData from 'public/data/homeList.json'
+import platformList from 'public/data/platformList.json'
 
 export const useGameStore = defineStore('game', () => {
 	const homeList = ref<Recordable[]>(homeListData) // Home list
