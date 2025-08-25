@@ -4,8 +4,12 @@ class ThemeManager {
 	private loadedThemes = new Set<string>()
 	private currentTheme: ThemeType | null = null
 
-	async setTheme(theme: ThemeType) {
+	async setTheme(theme: ThemeType, isInit: boolean = false) {
 		if (this.currentTheme === theme) return
+
+		this.currentTheme = theme
+
+		if (isInit) return
 
 		if (!this.loadedThemes.has(theme)) {
 			const success = await this.loadThemeCSS(theme) // Lazy load theme CSS
@@ -23,13 +27,12 @@ class ThemeManager {
 
 		this.applyTheme(theme) // Apply theme
 
-		this.currentTheme = theme
-		localStorage.setItem('theme', theme)
+		localStorage.setItem('theme', theme) // Save theme to localStorage
 	}
 
 	private async loadThemeCSS(theme: ThemeType): Promise<boolean> {
 		try {
-			await import(`~/theme/variables/${THEME_STYLE[theme]}.css`) // Fix CSS file path
+			await import(`@/theme/variables/${THEME_STYLE[theme]}.css`) // Fix CSS file path
 			return true
 		} catch (error) {
 			console.error(`Failed to load theme CSS: ${theme}`, error)
@@ -82,9 +85,9 @@ class ThemeManager {
 	async init() {
 		const savedTheme = localStorage.getItem('theme')
 		if (savedTheme && this.isValidTheme(savedTheme)) {
-			await this.setTheme(savedTheme)
+			await this.setTheme(savedTheme, true)
 		} else {
-			await this.setTheme(THEME_TYPE.STYLE_18)
+			await this.setTheme(THEME_TYPE.STYLE_18, true)
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import { BASE_FONT_SIZE, MOBILE_MAX_WIDTH, MOBILE_DESIGN_WIDTH } from '~/constant'
+import { BASE_FONT_SIZE, MOBILE_MAX_WIDTH, MOBILE_DESIGN_WIDTH } from '@/constant'
 
 export const useSystemStore = defineStore('system', () => {
 	const fontSize = ref(16) // Font size

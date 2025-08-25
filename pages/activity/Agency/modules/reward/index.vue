@@ -29,7 +29,7 @@ const props = defineProps<{
 	text-align: center;
 
 	.agent-reward-list-title {
-		background-image: url('~/assets/images/activity/agent/bar-title.png');
+		background-image: url('@/assets/images/activity/agent/bar-title.png');
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: 0 0;

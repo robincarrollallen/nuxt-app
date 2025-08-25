@@ -1,5 +1,5 @@
-import type { LanguageType, ActivityType, ResetType, RechargeType } from "~/enums"
-import { getLanguageCode, getRechargeActivityName, getRescueFundActivityName, getLuckyWheelActivityName, getCommissionRewardActivityName } from "~/i18n/libs/activity"
+import type { LanguageType, ActivityType, ResetType, RechargeType } from "@/enums"
+import { getLanguageCode, getRechargeActivityName, getRescueFundActivityName, getLuckyWheelActivityName, getCommissionRewardActivityName } from "@/i18n/libs/activity"
 
 /**Generate activity name
  * @param language - Language type

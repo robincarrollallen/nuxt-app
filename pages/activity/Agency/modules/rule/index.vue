@@ -33,7 +33,7 @@ const props = defineProps<{
 		.agent-rule-title-line {
 			width: 1.875rem;
 			height: .625rem;
-			background-image: url('~/assets/icons/activity/agent/rule-title-line.png');
+			background-image: url('@/assets/icons/activity/agent/rule-title-line.png');
 			background-size: 100% auto;
 			background-repeat: no-repeat;
 			background-position: 0 0;

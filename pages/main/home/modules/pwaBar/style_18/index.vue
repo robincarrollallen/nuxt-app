@@ -23,7 +23,7 @@ const { tenantInfo } = usePwaBarLogic()
 			<div class="pwa-btn-wrap">
 				<van-image class="pwa-money" src="/images/pwa-money.png" :show-loading="false" />
 				<Button class="pwa-btn">
-					<SvgIcon url="~/assets/svg/download-new.svg" class="download-svg" />
+					<SvgIcon url="@/assets/svg/download-new.svg" class="download-svg" />
 					<span class="btn-text">{{ $t('viewsSystem.install') }}</span>
 				</Button>
 			</div>

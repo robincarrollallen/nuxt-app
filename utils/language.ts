@@ -1,5 +1,3 @@
-import { useAppStore } from '~/stores/app'
-
 /**
  * @description 获取指定语言的语言名称
  * @param language 语言标记

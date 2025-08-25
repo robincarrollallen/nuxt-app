@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ComponentConfig } from '~/theme/componentConfig'
-import SideBar from '~/widgets/sidebar/index.vue'
+import type { ComponentConfig } from '@/theme/componentConfig'
+import SideBar from '@/widgets/sidebar/index.vue'
 
 const statusStore = useStatusStore()
 

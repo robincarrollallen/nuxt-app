@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IndexedDBExample } from '~/storage/indexdb'
+import { IndexedDBExample } from '@/storage/indexdb'
 
 defineOptions({
 	name: 'ProfilePage'

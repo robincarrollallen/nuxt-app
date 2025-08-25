@@ -12,7 +12,7 @@ const inviteInfo = computed(() => agentStore.inviteInfo) // 邀请信息
 
 <template>
 	<div class="invite-wrap">
-		<SvgIcon class="invite-tip" url="~/assets/svg/hint.svg" @click="router.push('/mlmAgent/inviteRule/commission')" />
+		<SvgIcon class="invite-tip" url="@/assets/svg/hint.svg" @click="router.push('/mlmAgent/inviteRule/commission')" />
 		<div class="title-img" />
 		<div class="invite-title-warp">
 			<div class="invite-title">
@@ -54,7 +54,7 @@ const inviteInfo = computed(() => agentStore.inviteInfo) // 邀请信息
 		top: -1.75rem;
 		height: 5rem;
 		width: 8.125rem;
-		background: url('~/assets/images/activity/invite/title-reward.png') no-repeat center center;
+		background: url('@/assets/images/activity/invite/title-reward.png') no-repeat center center;
 		background-size: 100% 100%;
 	}
 

@@ -1,5 +1,4 @@
-import { THEME_TYPE, type ThemeType } from "~/theme/type"
-import * as STYLE_18 from './style_18'
+import { THEME_TYPE, type ThemeType, type ThemeKEY } from "@/theme/type"
 import type { AsyncComponentLoader } from "vue"
 
 export type ComponentConfig = {
@@ -8,10 +7,21 @@ export type ComponentConfig = {
 	children?: ComponentConfig[]
 }
 
-// 静态导入映射，确保构建时能正确分析
-const configMap = {
-	[THEME_TYPE.STYLE_18]: STYLE_18,
-}
+/** 动态导入组件配置 */
+const modules: Recordable = import.meta.glob('./style_*', { eager: true })
+
+/** 组件配置映射 */
+const configMap: Record<ThemeKEY, any> = {} as Record<ThemeKEY, any>
+
+/** 遍历导入的模块 */
+Object.entries(modules).forEach(([path, module]) => {
+	const match = path.match(/\.\/style_(\d+)/)
+	if (match) {
+		const styleSerial = match[1]
+		const themeType = THEME_TYPE[`STYLE_${styleSerial}`] as ThemeType
+		configMap[themeType] = module
+	}
+})
 
 /** 获取组件配置 */
 export const getComponentConfig = (skinTwoType: ThemeType, componentName: string): ComponentConfig => {

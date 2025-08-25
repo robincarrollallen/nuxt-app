@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ComponentConfig } from '~/theme/componentConfig'
+import type { ComponentConfig } from '@/theme/componentConfig'
 
 defineOptions({
 	name: 'SideBar'

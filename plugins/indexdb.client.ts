@@ -1,4 +1,4 @@
-import { useIndexedDB } from '~/storage/indexdb/useIndexedDB'
+import { useIndexedDB } from '@/storage/indexdb/useIndexedDB'
 
 export default defineNuxtPlugin(() => {
 	// Only execute on client side

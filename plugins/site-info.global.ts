@@ -1,6 +1,6 @@
-import { themeManager } from "~/theme"
-import { ThemeSupport } from "~/theme/type"
-import { LanguageSupport } from "~/enums/language"
+import { themeManager } from "@/theme"
+import { ThemeSupport } from "@/theme/type"
+import { LanguageSupport } from "@/enums/language"
 
 // Global plugin, used to set website information <Execute once when the page is first loaded>
 export default defineNuxtPlugin(async (_to) => {
@@ -13,7 +13,8 @@ export default defineNuxtPlugin(async (_to) => {
 		const appStore = useAppStore()
 		siteInfo = useState('tenantInfo')
 		appStore.locale = siteInfo.value.appDefaultLanguage
-		themeManager.setTheme(siteInfo.value.skinTwoType)
+		const savedTheme = localStorage.getItem('theme')
+		themeManager.setTheme(savedTheme || siteInfo.value.skinTwoType)
 	} else {
 		const { data: tenant } = await useFetch('/api/tenant')
 		console.log('tenant', tenant.value)

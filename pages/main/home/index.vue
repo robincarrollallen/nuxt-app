@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getComponentConfig } from '~/theme/componentConfig'
-import type { ThemeType } from '~/theme/type'
+import { getComponentConfig } from '@/theme/componentConfig'
+import type { ThemeType } from '@/theme/type'
 
 const tenantStore = useTenantStore()
 
@@ -44,32 +44,6 @@ const homeDrawerComponent = computed(() => getComponentConfig(skinTwoType.value,
 	display: flex;
 	flex-direction: column;
 
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 6.25rem;
-		z-index: -1;
-		width: 4.0625rem;
-		height: 15rem;
-		transform: rotate(-57.248deg);
-		background: var(--ep-color-background-fill-glow-primary-opacity-40);
-		filter: blur(4.375rem);
-	}
-
-	&::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		right: 0;
-		z-index: -1;
-		width: 6.3125rem;
-		height: 10.8125rem;
-		transform: rotate(-39.331deg);
-		background: var(--ep-color-background-fill-unusual-primary-opacity-40);
-		filter: blur(3rem);
-	}
-
 	.main-warp {
 		display: grid;
 		grid-template-columns: 100%;
@@ -77,59 +51,6 @@ const homeDrawerComponent = computed(() => getComponentConfig(skinTwoType.value,
 		padding: .5rem 1rem 0;
 		flex: 1;
 		overflow: hidden auto;
-
-		.segment-tabs {
-
-			:deep(.van-sticky) {
-				background: var(--ep-color-background-fill-body-default);
-
-				.van-tabs__wrap {
-					--van-tabs-line-height: 4rem;
-
-					.van-tabs__nav.van-tabs__nav--line.van-tabs__nav--complete {
-						background: url('~/assets/images/bgTrapezoid.png') no-repeat;
-						background-size: 100% 50%;
-						background-position: center 80%;
-						padding: 0 0 .5rem 0;
-
-						.van-tabs__line {
-							background: var(--ep-color-icon-success);
-							bottom: .5rem;
-						}
-
-						.segment-tab {
-							font-size: .75rem;
-							text-align: center;
-
-							.segment-tab-icon {
-								width: 2.5rem;
-								height: 2.5rem;
-							}
-						}
-
-						.van-tab--active {
-							.segment-tab {
-								color: var(--ep-color-text-default);
-
-								.segment-tab-icon {
-									color: var(--ep-color-icon-danger);
-								}
-							}
-						}
-					}
-				}
-			}
-
-			:deep(.van-tabs__content) {
-				.segment-pane {
-					padding: .5rem 0 0;
-
-					.segment-pane-wrap {
-						border: none;
-					}
-				}
-			}
-		}
 	}
 }
 

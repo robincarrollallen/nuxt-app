@@ -51,7 +51,7 @@ section {
 		.activity-recommend-highly-icon {
 			width: 3rem;
 			height: 3rem;
-			background: url('~/assets/images/highly.png') no-repeat center center;
+			background: url('@/assets/images/highly.png') no-repeat center center;
 			background-size: 100% 100%;
 		}
 

@@ -6,9 +6,9 @@ const { marqueeList } = useMarqueeLogic()
 
 <template>
 	<div class="marquee-view">
-		<SvgIcon url="~/assets/svg/broadcast.svg" class="broadcast-icon" />
+		<SvgIcon url="@/assets/svg/broadcast.svg" class="broadcast-icon" />
 		<Marquee class="marquee-content" :content="marqueeList" />
-		<SvgIcon url="~/assets/svg/message.svg" class="message-icon" />
+		<SvgIcon url="@/assets/svg/message.svg" class="message-icon" />
 	</div>
 </template>
 

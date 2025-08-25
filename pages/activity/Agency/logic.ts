@@ -1,5 +1,5 @@
 import { generateAgencyRule, ZRewardType, ZDisplayMode } from './data'
-import { formatMoneyToLocal } from '~/utils/math'
+import { formatMoneyToLocal } from '@/utils/math'
 
 export const useActivityAgentLogic = () => {
 	const route = useRoute()

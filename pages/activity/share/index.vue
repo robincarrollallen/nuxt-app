@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAgentStore } from '~/stores/agent'
+import { useAgentStore } from '@/stores/agent'
 
 defineOptions({
 	name: 'SharePage'
@@ -19,13 +19,13 @@ const onShareTabClick = ({ title }) => showToast(title)
 					<div class="share-url-warp">
 						<div class="url-title">Invite link:</div>
 						<div class="url-link">https://tg3-gray.7-v-s-8.com/?pid=575718350</div>
-						<SvgIcon url="~/assets/svg/copy.svg" class="copy-icon" @click="copy('https://tg3-gray.7-v-s-8.com/?pid=575718350')"/>
+						<SvgIcon url="@/assets/svg/copy.svg" class="copy-icon" @click="copy('https://tg3-gray.7-v-s-8.com/?pid=575718350')"/>
 					</div>
 					<div class="quick-share-warp">
 						<div class="share-title">Quick share</div>
 						<van-tabs class="share-tabs" @click-tab="onShareTabClick">
 							<van-tab v-for="item in agentStore.shareConfig?.software" :key="item.name">
-								<template #title><SvgIcon class="share-icon" :url="`~/assets/svg/share/${item.name.toLocaleLowerCase()}.svg`" /></template>
+								<template #title><SvgIcon class="share-icon" :url="`@/assets/svg/share/${item.name.toLocaleLowerCase()}.svg`" /></template>
 							</van-tab>
 						</van-tabs>
 					</div>
@@ -55,7 +55,7 @@ const onShareTabClick = ({ title }) => showToast(title)
 </template>
 
 <style lang="less" scoped>
-@import '~/assets/css/variables.less';
+@import '@/assets/css/variables.less';
 
 .share-page {
   height: 100%;

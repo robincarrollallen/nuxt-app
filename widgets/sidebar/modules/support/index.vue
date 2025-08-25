@@ -5,7 +5,7 @@ const tenantStore = useTenantStore()
 <template>
 	<section>
 		<div class="support-item">
-			<SvgIcon class="support-icon" url="~/assets/svg/support.svg" />
+			<SvgIcon class="support-icon" url="@/assets/svg/support.svg" />
 			<span class="support-text">{{ $t('main.suporte') }}</span>
 		</div>
 		<div class="media-list">

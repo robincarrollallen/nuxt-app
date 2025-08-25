@@ -43,7 +43,7 @@ const { openBoxHandle } = useOpenBoxHandle()
 .agent-reward-list-content {
 	width: calc(100% + 1.5rem);
 	margin-left: -.75rem;
-	background-image: url('~/assets/svg/bg-agent-reward-stage.svg');
+	background-image: url('@/assets/svg/bg-agent-reward-stage.svg');
 	background-repeat: repeat-y;
 	background-size: 100% 8.25rem;
 	background-position: top left;
@@ -91,7 +91,7 @@ const { openBoxHandle } = useOpenBoxHandle()
 					bottom: -45%;
 					width: 175%;
 					aspect-ratio: 1/1;
-					background-image: url('~/assets/icons/activity/agent/bg-light-reward.png');
+					background-image: url('@/assets/icons/activity/agent/bg-light-reward.png');
 					background-size: 100% 100%;
 					animation: spin 5s linear infinite;
 				}
@@ -127,7 +127,7 @@ const { openBoxHandle } = useOpenBoxHandle()
 		.agent-reward-list-amount {
 			width: 100%;
 			line-height: 1.5rem;
-			background-image: url('~/assets/icons/activity/agent/bg-amount.png');
+			background-image: url('@/assets/icons/activity/agent/bg-amount.png');
 			background-size: 100% auto;
 			background-repeat: no-repeat;
 			background-position: 0 0;
@@ -141,7 +141,7 @@ const { openBoxHandle } = useOpenBoxHandle()
 
 				&.animate {
 					color: #fc974c;
-					background-image: url('~/assets/icons/activity/agent/bg-amount-light.png');
+					background-image: url('@/assets/icons/activity/agent/bg-amount-light.png');
 				}
 			}
 

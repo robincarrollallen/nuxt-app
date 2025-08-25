@@ -1,4 +1,4 @@
-import { LanguageSupport } from "~/enums/language"
+import { LanguageSupport } from "@/enums/language"
 
 export default defineI18nConfig(() => ({
 	legacy: false,

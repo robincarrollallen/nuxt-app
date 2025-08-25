@@ -34,27 +34,27 @@ const { agentNavigationList } = useNavigationData()
 		background-position: right center;
 
 		&:nth-child(1) {
-			background-image: url('~/assets/images/activity/invite/jump-bg1.png');
+			background-image: url('@/assets/images/activity/invite/jump-bg1.png');
 		}
 
 		&:nth-child(2) {
-			background-image: url('~/assets/images/activity/invite/jump-bg2.png');
+			background-image: url('@/assets/images/activity/invite/jump-bg2.png');
 		}
 
 		&:nth-child(3) {
-			background-image: url('~/assets/images/activity/invite/jump-bg6.png');
+			background-image: url('@/assets/images/activity/invite/jump-bg6.png');
 		}
 
 		&:nth-child(4) {
-			background-image: url('~/assets/images/activity/invite/jump-bg3.png');
+			background-image: url('@/assets/images/activity/invite/jump-bg3.png');
 		}
 
 		&:nth-child(5) {
-			background-image: url('~/assets/images/activity/invite/jump-bg4.png');
+			background-image: url('@/assets/images/activity/invite/jump-bg4.png');
 		}
 
 		&:nth-child(6) {
-			background-image: url('~/assets/images/activity/invite/jump-bg6.png');
+			background-image: url('@/assets/images/activity/invite/jump-bg6.png');
 		}
 
 		.van-icon {

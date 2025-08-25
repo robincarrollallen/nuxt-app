@@ -1,11 +1,11 @@
-import { useTenantStore } from '~/stores/tenant'
+import { useTenantStore } from '@/stores/tenant'
 
 export const useBannerLogic = () => {
 	const tenantStore = useTenantStore()
 	const systemStore = useSystemStore()
 	const autoplay = { delay: 2500, disableOnInteraction: false } as any
 
-	const badgeSrc = new URL('~/assets/svg/badge-banner.svg', import.meta.url).href
+	const badgeSrc = new URL('@/assets/svg/badge-banner.svg', import.meta.url).href
 
 	const bannerList = computed(() => tenantStore.bannerList)
 	const slidesPerView = computed(() => {

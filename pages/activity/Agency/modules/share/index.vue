@@ -48,13 +48,13 @@ function handleMouseMove(e: any) {
 		<div class="agent-media-link">
 			<van-tabs ref="shareTabsRef" class="share-tabs" @mousedown="handleMouseDown" @mouseup="handleMouseUp" @mouseleave="handleMouseLeave" @mousemove="handleMouseMove">
 				<van-tab v-for="item in props.agentMediaList" :key="item.name">
-					<template #title><SvgIcon class="share-icon" :url="`~/assets/svg/share/first/${item.name.toLowerCase()}.svg`" /></template>
+					<template #title><SvgIcon class="share-icon" :url="`@/assets/svg/share/first/${item.name.toLowerCase()}.svg`" /></template>
 				</van-tab>
 			</van-tabs>
 			<div class="share-url-warp">
 				<div class="url-title">Invite link ：</div>
 				<div class="url-link">https://tg3-gray.7-v-s-8.com/?pid=575718350</div>
-				<SvgIcon url="~/assets/svg/copy.svg" class="copy-icon" @click="copy('https://tg3-gray.7-v-s-8.com/?pid=575718350')"/>
+				<SvgIcon url="@/assets/svg/copy.svg" class="copy-icon" @click="copy('https://tg3-gray.7-v-s-8.com/?pid=575718350')"/>
 			</div>
 			<div class="details-warp">
 				<div class="details-content">
@@ -78,7 +78,7 @@ function handleMouseMove(e: any) {
 	position: relative;
 
 	.agent-media-title {
-		background-image: url('~/assets/images/activity/agent/bar-title.png');
+		background-image: url('@/assets/images/activity/agent/bar-title.png');
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: 0 0;

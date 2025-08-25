@@ -1,5 +1,3 @@
-import { CURRENCY } from "~/enums/currency"
-
 export const useSidebarLogic = () => {
 	const appStore = useAppStore() // Application store
 	const gameStore = useGameStore() // Game store

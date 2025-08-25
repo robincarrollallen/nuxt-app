@@ -22,7 +22,7 @@ export const useSortTabLogic = () => {
 			id: 0,
 			name: 'POPULAR',
 			code: 'POPULAR',
-			logo: '~/assets/svg/sort/POPULAR.svg',
+			logo: '@/assets/svg/sort/POPULAR.svg',
 			status: 'ON',
 			openType: true,
 			type: 'sort',

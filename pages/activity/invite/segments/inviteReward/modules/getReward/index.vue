@@ -64,7 +64,7 @@ async function handleStepClick(amount: number) {
 
 <template>
 	<div class="get-reward-wrap">
-		<SvgIcon class="get-reward-tip" src="~/assets/svg/hint.svg" @click="router.push('/mlmAgent/inviteRule/reward')" />
+		<SvgIcon class="get-reward-tip" src="@/assets/svg/hint.svg" @click="router.push('/mlmAgent/inviteRule/reward')" />
 		<div class="get-reward-explain-warp">
 			<div class="get-reward-title">
 				{{ $t('splice.inviteFriendsNum', { num: maxInviteCount }) }}
@@ -83,7 +83,7 @@ async function handleStepClick(amount: number) {
 						<div class="get-reward-steps-circle-inner" v-else />
 					</div>
 					<div class="get-reward-steps-progress">
-						<SvgIcon url="~/assets/svg/team.svg" />
+						<SvgIcon url="@/assets/svg/team.svg" />
 						<div>
 							<span>{{ rewardCount >= step.requiredCount ? step.requiredCount : rewardCount }}</span>
 							<span class="get-reward-steps-progress-total">{{ `/${step.requiredCount}` }}</span>
@@ -168,7 +168,7 @@ async function handleStepClick(amount: number) {
 					background-size: 100% 100%;
 					background-repeat: no-repeat;
 					background-position: center center;
-					background-image: url('~/assets/images/activity/invite/money4.png');
+					background-image: url('@/assets/images/activity/invite/money4.png');
 				}
 
 				.get-reward-steps-amount {
@@ -225,7 +225,7 @@ async function handleStepClick(amount: number) {
 						aspect-ratio: 1/1;
 						position: absolute;
 						animation: spin 5s linear infinite;
-						background: url('~/assets/images/activity/invite/light-claim.png') no-repeat;
+						background: url('@/assets/images/activity/invite/light-claim.png') no-repeat;
 						background-size: 100% 100%;
 					}
 				}

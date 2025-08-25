@@ -33,11 +33,11 @@ const processPath = (url: string) => {
 const importSvg = async (pathParts: string[]) => {
 	// Use different import methods based on path length
 	const importMap = {
-		2: () => import(`~/${pathParts[0]}/${pathParts[1]}.svg?raw`),
-		3: () => import(`~/${pathParts[0]}/${pathParts[1]}/${pathParts[2]}.svg?raw`),
-		4: () => import(`~/${pathParts[0]}/${pathParts[1]}/${pathParts[2]}/${pathParts[3]}.svg?raw`),
-		5: () => import(`~/${pathParts[0]}/${pathParts[1]}/${pathParts[2]}/${pathParts[3]}/${pathParts[4]}.svg?raw`),
-		6: () => import(`~/${pathParts[0]}/${pathParts[1]}/${pathParts[2]}/${pathParts[3]}/${pathParts[4]}/${pathParts[5]}.svg?raw`)
+		2: () => import(`@/${pathParts[0]}/${pathParts[1]}.svg?raw`),
+		3: () => import(`@/${pathParts[0]}/${pathParts[1]}/${pathParts[2]}.svg?raw`),
+		4: () => import(`@/${pathParts[0]}/${pathParts[1]}/${pathParts[2]}/${pathParts[3]}.svg?raw`),
+		5: () => import(`@/${pathParts[0]}/${pathParts[1]}/${pathParts[2]}/${pathParts[3]}/${pathParts[4]}.svg?raw`),
+		6: () => import(`@/${pathParts[0]}/${pathParts[1]}/${pathParts[2]}/${pathParts[3]}/${pathParts[4]}/${pathParts[5]}.svg?raw`)
 	}
 
 	const importFn = importMap[pathParts.length as keyof typeof importMap]

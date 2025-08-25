@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import Sidebar from '~/widgets/sidebar/index.vue'
-import { HomeDrawerComponent } from '~/theme/componentConfig/style_18'
+import Sidebar from '@/widgets/sidebar/index.vue'
+import { HomeDrawerComponent } from '@/theme/componentConfig/style_18'
 </script>
 
 <template>
-	<div class="global-layout">
+	<div id="__layout">
 		<ClientOnly>
-			<Sidebar class="side-bar-wrap" :components="HomeDrawerComponent.children" />
+			<Sidebar :components="HomeDrawerComponent.children" />
 		</ClientOnly>
-		<main class="content-wrapper">
+		<section>
 			<ClientOnly>
 				<slot />
 			</ClientOnly>
-		</main>
+		</section>
 	</div>
 </template>
 
 <style scoped lang="less">
-.global-layout {
+#__layout {
   height: 100svh;
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@ import { HomeDrawerComponent } from '~/theme/componentConfig/style_18'
 	color: var(--ep-color-text-default);
 	font-size: .75rem;
 
-  .content-wrapper {
+  > section {
     flex: 1;
     max-width: 539px;
 		display: flex;
@@ -40,25 +40,21 @@ import { HomeDrawerComponent } from '~/theme/componentConfig/style_18'
     -ms-overflow-style: none; /* IE and Edge */
   }
 
-  .content-wrapper::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-  }
-
   @media (max-width: 539px) {
-    .side-bar-wrap {
+    > aside {
       display: none;
     }
   }
 
   @media (min-width: 540px) {
-    .content-wrapper {
+    > section {
       min-width: 375px;
       max-width: 912px;
     }
   }
 
   @media (min-width: 1024px) {
-    .content-wrapper {
+    > section {
       min-width: 490px;
       max-width: none;
     }

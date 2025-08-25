@@ -46,7 +46,7 @@ const list = ref(props.rewardList)
 		align-items: center;
 		color: var(--ep-color-text-weak);
 		background-color: var(--ep-color-background-fill-glow-primary-opacity-40);
-		background-image: url('~/assets/svg/bg-agent-reward-condition.svg');
+		background-image: url('@/assets/svg/bg-agent-reward-condition.svg');
 		background-repeat: no-repeat;
 		background-size: auto 100%;
 		padding: 0 .75rem;

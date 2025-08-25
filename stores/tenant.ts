@@ -1,7 +1,7 @@
 import tenantInfoData from 'public/data/tenantInfo.json'
 import mainMediaListData from 'public/data/mainMediaList.json'
 import bannerListData from 'public/data/bannerList.json'
-import { getCurrency } from '~/enums/currency'
+import { getCurrency } from '@/enums/currency'
 
 export const useTenantStore = defineStore('tenant', () => {
 	const tenantInfo = ref(tenantInfoData)

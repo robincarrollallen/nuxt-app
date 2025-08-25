@@ -21,7 +21,7 @@ defineOptions({
 </template>
 
 <style lang="less" scoped>
-@import '~/assets/css/variables.less';
+@import '@/assets/css/variables.less';
 
 .invite-page {
 	height: 100%;

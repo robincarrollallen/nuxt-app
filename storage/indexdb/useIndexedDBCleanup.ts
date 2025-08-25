@@ -1,4 +1,4 @@
-import { EXPIRATION_TIME } from '~/enums'
+import { EXPIRATION_TIME } from '@/enums'
 import { useIndexedDB } from './useIndexedDB'
 
 export const useIndexedDBCleanup = () => {

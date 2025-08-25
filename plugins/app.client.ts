@@ -1,4 +1,4 @@
-import { useSystemStore } from '~/stores/system'
+import { useSystemStore } from '@/stores/system'
 
 // Execute immediately when the plugin starts
 export default defineNuxtPlugin(() => {

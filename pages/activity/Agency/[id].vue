@@ -27,7 +27,7 @@ const rewardMode = computed(() => {
     <ClientOnly>
 			<NavigateBar :title="$t('agent.center')" left-arrow>
 				<template #right>
-					<SvgIcon url="~/assets/svg/record.svg" class="agent-nav-record" />
+					<SvgIcon url="@/assets/svg/record.svg" class="agent-nav-record" />
 				</template>
 			</NavigateBar>
 			<div class="agent-poster">
@@ -61,7 +61,7 @@ const rewardMode = computed(() => {
 	.agent-poster {
 		width: 100%;
 		min-height: 18.25rem;
-		background-image: url('~/assets/images/activity/agent/bg-poster.png');
+		background-image: url('@/assets/images/activity/agent/bg-poster.png');
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -69,7 +69,7 @@ const rewardMode = computed(() => {
 		.agent-poster-gift {
 			width: 100%;
 			height: 100%;
-			background-image: url('~/assets/images/activity/agent/gift-poster.png');
+			background-image: url('@/assets/images/activity/agent/gift-poster.png');
 			background-size: auto 9.875rem;
 			background-repeat: no-repeat;
 			background-position: center 7.75rem;
@@ -78,7 +78,7 @@ const rewardMode = computed(() => {
 		.agent-poster-treasure {
 			width: 100%;
 			height: 100%;
-			background-image: url('~/assets/images/activity/agent/treasure-poster.png');
+			background-image: url('@/assets/images/activity/agent/treasure-poster.png');
 			background-size: auto 10rem;
 			background-repeat: no-repeat;
 			background-position: center 7.75rem;
@@ -105,7 +105,7 @@ const rewardMode = computed(() => {
 				position: absolute;
 				bottom: -.75rem;
 				left: -1rem;
-				background-image: url('~/assets/svg/agent-corner.svg');
+				background-image: url('@/assets/svg/agent-corner.svg');
 				background-size: 100% auto;
 				background-repeat: no-repeat;
 				background-position: center;
@@ -119,7 +119,7 @@ const rewardMode = computed(() => {
 				position: absolute;
 				bottom: -.75rem;
 				right: -1rem;
-				background-image: url('~/assets/svg/agent-corner.svg');
+				background-image: url('@/assets/svg/agent-corner.svg');
 				background-size: 100% auto;
 				background-repeat: no-repeat;
 				background-position: center;

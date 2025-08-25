@@ -79,8 +79,8 @@ const onSlideChange = (e: any) => {
 				<div class="segment-pane-header-count-text">All</div>
 			</div>
 			<div class="segment-pane-header-more">
-				<SvgIcon class="segment-pane-header-more-icon" :class="{ 'disabled': !hasPrev }" url="~/assets/svg/arrow-left.svg" @click="swiperHandler.slidePrev()" />
-				<SvgIcon class="segment-pane-header-more-icon" :class="{ 'disabled': !hasNext }" url="~/assets/svg/arrow-right.svg" @click="swiperHandler.slideNext()" />
+				<SvgIcon class="segment-pane-header-more-icon" :class="{ 'disabled': !hasPrev }" url="@/assets/svg/arrow-left.svg" @click="swiperHandler.slidePrev()" />
+				<SvgIcon class="segment-pane-header-more-icon" :class="{ 'disabled': !hasNext }" url="@/assets/svg/arrow-right.svg" @click="swiperHandler.slideNext()" />
 			</div>
 		</header>
 		<Swiper
@@ -118,7 +118,7 @@ const onSlideChange = (e: any) => {
 		padding: 0.5rem 1rem;
 		display: flex;
 		align-items: center;
-		background: url('~/assets/images/headerTextBg.png') no-repeat left top / auto 100%;
+		background: url('@/assets/images/headerTextBg.png') no-repeat left top / auto 100%;
 
 		.segment-pane-header-icon {
 			color: var(--ep-color-background-fill-glow-primary-opacity-40);

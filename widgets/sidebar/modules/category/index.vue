@@ -24,7 +24,7 @@ section {
 	.game-category-icon {
 		width: 3rem;
 		height: 3rem;
-		background: url('~/assets/images/category.png') no-repeat center center;
+		background: url('@/assets/images/category.png') no-repeat center center;
 		background-size: 100% 100%;
 	}
 
@@ -37,7 +37,7 @@ section {
 			width: 1.25rem;
 			height: 1.25rem;
 			background-size: auto 100%;
-			background-image: url('~/assets/images/sort.png');
+			background-image: url('@/assets/images/sort.png');
 		}
 
 		.game-category-item-title {

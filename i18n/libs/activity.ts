@@ -1,4 +1,4 @@
-import type { LanguageType, ResetType, RechargeType } from "~/enums"
+import type { LanguageType, ResetType, RechargeType } from "@/enums"
 
 /**
  * Get language code

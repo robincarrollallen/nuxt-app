@@ -1,4 +1,4 @@
-import type { LanguageType } from "~/enums"
+import type { LanguageType } from "@/enums"
 
 export interface ActivityVariables {
 	[key: string]: string | number

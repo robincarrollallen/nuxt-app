@@ -26,9 +26,11 @@ export const THEME_TYPE = {
 /** Theme type */
 export type ThemeType = typeof THEME_TYPE[keyof typeof THEME_TYPE]
 
+export type ThemeKEY = Lowercase<keyof typeof THEME_TYPE>;
+
 /** Theme style map type */
 export type ThemeStyleMapType = {
-  readonly [K in ThemeType]: keyof typeof THEME_TYPE
+  readonly [K in ThemeType]: Lowercase<keyof typeof THEME_TYPE>
 }
 
 /** Theme key map type */
@@ -45,6 +47,6 @@ export const THEME_STYLE = Object.fromEntries(
 ) as ThemeStyleMapType
 
 /** Theme key */
-export const THEME_KEY: ThemeKeyMapType = Object.fromEntries(
+export const THEME_KEY = Object.fromEntries(
 	Object.entries(THEME_TYPE).map(([key, _value]) => [key, key.toLowerCase()])
 ) as ThemeKeyMapType

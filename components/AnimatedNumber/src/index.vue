@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-import { formatMoney } from '~/utils/math'
+import { formatMoney } from '@/utils/math'
 
 const props = defineProps({
 	value: {

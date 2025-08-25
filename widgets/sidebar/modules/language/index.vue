@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { showLanguage } from '~/widgets/languageDialog/data'
-import type { ComponentConfig } from '~/theme/componentConfig'
+import { showLanguage } from '@/widgets/languageDialog/data'
+import type { ComponentConfig } from '@/theme/componentConfig'
 
 const appStore = useAppStore() // Application store
 

@@ -2,7 +2,7 @@
 import { generatePreviewText, getActivityDefaultName } from './data'
 import { useActivityListLogic } from './logic'
 import { ActivityListData } from './data'
-import { ZNameType } from '~/enums'
+import { ZNameType } from '@/enums'
 
 const activityStore = useActivityStore()
 

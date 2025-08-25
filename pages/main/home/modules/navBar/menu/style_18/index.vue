@@ -4,7 +4,7 @@ import { useNavBarMenuLogic } from '../logic'
 const props = defineProps({
 	icon: {
 		type: String,
-		default: () => '~/assets/svg/menu.svg'
+		default: () => '@/assets/svg/menu.svg'
 	}
 })
 
