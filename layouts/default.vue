@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import Sidebar from '@/widgets/sidebar/index.vue'
-import { HomeDrawerComponent } from '@/theme/componentConfig/style_18'
+import { getComponentConfig } from '@/theme/componentConfig'
+
+const tenantStore = useTenantStore()
+const homeDrawerComponent = computed(() => getComponentConfig(tenantStore.theme, 'HomeDrawerComponent')) // 首页抽屉组件配置
 </script>
 
 <template>
 	<div id="__layout">
 		<ClientOnly>
-			<Sidebar :components="HomeDrawerComponent.children" />
+			<Sidebar :components="homeDrawerComponent.children" />
 		</ClientOnly>
 		<section>
 			<ClientOnly>

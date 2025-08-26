@@ -4,11 +4,11 @@ import { tabbarList } from '../data'
 
 <template>
 	<nav>
-		<NuxtLink class="tab-item" active-class="active" replace v-for="item in tabbarList" :key="item.path" :to="item.path">
+		<NuxtLink active-class="active" replace v-for="item in tabbarList" :key="item.path" :to="item.path">
 			<div class="tab-icon-warp" :class="{ 'invite': !item.path }">
-				<a v-if="!item.path" @click="navigateTo('/activity/invite')">
+				<u v-if="!item.path" @click="navigateTo('/activity/invite')">
 					<i />
-				</a>
+				</u>
 				<van-image class="tab-icon" v-else :src="item.icon" :show-loading="false" />
 			</div>
 			<span class="tab-label">{{ item.label }}</span>
@@ -19,7 +19,7 @@ import { tabbarList } from '../data'
 <style scoped lang="less">
 @media (max-width: 539px) {
 	nav {
-		background: url('@/assets/svg/tabbar-bg-phantom-blue.svg') no-repeat;
+		background: url('@/assets/svg/tabbar/bg-18.svg') no-repeat;
 		background-size: 100% 100%;
 		position: fixed;
 		bottom: 0;
@@ -30,7 +30,7 @@ import { tabbarList } from '../data'
 		z-index: 9;
 		grid-template-columns: repeat(5, 1fr);
 
-		.tab-item {
+		a {
 			height: 100%;
 			display: flex;
 			flex-direction: column;
@@ -53,7 +53,7 @@ import { tabbarList } from '../data'
 					width: 70%;
 					max-width: 3.5rem;
 
-					a {
+					u {
 						position: absolute;
 						display: flex;
 						align-items: center;

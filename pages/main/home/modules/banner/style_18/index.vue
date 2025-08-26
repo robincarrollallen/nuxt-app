@@ -3,7 +3,14 @@ import { Autoplay } from 'swiper/modules'
 import { useBannerLogic } from '../logic'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
-const { bannerList, autoplay, slidesPerView, badgeSrc } = useBannerLogic()
+const props = defineProps({
+	badgeSrc: {
+		type: String,
+		default: ''
+	}
+})
+
+const { bannerList, autoplay, slidesPerView } = useBannerLogic()
 
 </script>
 
@@ -23,7 +30,7 @@ const { bannerList, autoplay, slidesPerView, badgeSrc } = useBannerLogic()
 				<van-image :src="item.imageUrl" :show-loading="false"/>
 			</SwiperSlide>
 		</Swiper>
-		<van-image class="swiper-badge" :src="badgeSrc" :show-loading="false"/>
+		<van-image class="swiper-badge" v-if="props.badgeSrc" :src="props.badgeSrc" :show-loading="false"/>
 	</div>
 </template>
 
@@ -45,7 +52,7 @@ const { bannerList, autoplay, slidesPerView, badgeSrc } = useBannerLogic()
 
 		.swiper-slide {
 			width: 100%;
-			aspect-ratio: 5/2;
+			aspect-ratio: 366/228;
 
 			:deep(.van-image) {
 				width: 100%;

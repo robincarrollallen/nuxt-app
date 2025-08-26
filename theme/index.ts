@@ -4,12 +4,15 @@ class ThemeManager {
 	private loadedThemes = new Set<string>()
 	private currentTheme: ThemeType | null = null
 
+	/**
+	 * Set the theme
+	 * @param theme - The theme to set
+	 * @param isInit - Whether the theme is being set on initialization
+	 */
 	async setTheme(theme: ThemeType, isInit: boolean = false) {
 		if (this.currentTheme === theme) return
 
 		this.currentTheme = theme
-
-		if (isInit) return
 
 		if (!this.loadedThemes.has(theme)) {
 			const success = await this.loadThemeCSS(theme) // Lazy load theme CSS
@@ -27,9 +30,15 @@ class ThemeManager {
 
 		this.applyTheme(theme) // Apply theme
 
-		localStorage.setItem('theme', theme) // Save theme to localStorage
+		if (!isInit) {
+			localStorage.setItem('theme', theme) // Save theme to localStorage
+		}
 	}
 
+	/**
+	 * Load the theme CSS
+	 * @param theme - The theme to load
+	 */
 	private async loadThemeCSS(theme: ThemeType): Promise<boolean> {
 		try {
 			await import(`@/theme/variables/${THEME_STYLE[theme]}.css`) // Fix CSS file path
@@ -40,13 +49,20 @@ class ThemeManager {
 		}
 	}
 
+	/**
+	 * Apply the theme
+	 * @param theme - The theme to apply
+	 */
 	private applyTheme(theme: ThemeType) {
 		const root = document.documentElement
 
 		root.setAttribute('data-theme', theme)
 	}
 
-	// Preload theme
+	/**
+	 * Preload the theme
+	 * @param theme - The theme to preload
+	 */
 	async preloadTheme(theme: ThemeType) {
 		if (!this.loadedThemes.has(theme)) {
 			const success = await this.loadThemeCSS(theme)
@@ -56,32 +72,38 @@ class ThemeManager {
 		}
 	}
 
-	// Preload all themes
+	/** Preload all themes */
 	async preloadAllThemes() {
 		await Promise.all(ThemeSupport.map(theme => this.preloadTheme(theme)))
 	}
 
-	// Check if the theme is loaded
+	/**
+	 * Check if the theme is loaded
+	 * @param theme - The theme to check
+	 */
 	isThemeLoaded(theme: ThemeType): boolean {
 		return this.loadedThemes.has(theme)
 	}
 
-	// Get the list of loaded themes
-	getLoadedThemes(): string[] {
+	/** Get the list of loaded themes */
+	getLoadedThemes() {
 		return Array.from(this.loadedThemes)
 	}
 
-	// Get the current theme
-	getCurrentTheme(): ThemeType {
+	/** Get the current theme */
+	getCurrentTheme() {
 		return this.currentTheme
 	}
 
-	// Verify theme type
+	/**
+	 * Verify theme type
+	 * @param theme - The theme to verify
+	 */
 	private isValidTheme(theme: string): theme is ThemeType {
 		return ThemeSupport.includes(theme as ThemeType)
 	}
 
-	// Initialize
+	/** Initialize the theme manager */
 	async init() {
 		const savedTheme = localStorage.getItem('theme')
 		if (savedTheme && this.isValidTheme(savedTheme)) {
@@ -92,7 +114,7 @@ class ThemeManager {
 	}
 }
 
-// Factory function
+/** Factory function */
 const createThemeManager = () => {
 	if (import.meta.client) {
 		const manager = new ThemeManager()

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { getComponentConfig } from '@/theme/componentConfig'
-import type { ThemeType } from '@/theme/type'
 
 const tenantStore = useTenantStore()
 
@@ -13,19 +12,18 @@ definePageMeta({
 	keepalive: true
 })
 
-const skinTwoType = computed(() => tenantStore.tenantInfo.skinTwoType as ThemeType)
-const homeHeaderComponent = computed(() => getComponentConfig(skinTwoType.value, 'HomeHeaderComponent')) // 首页头部组件配置
-const homeContentComponent = computed(() => getComponentConfig(skinTwoType.value, 'HomeContentComponent')) // 首页内容组件配置
-const homeDrawerComponent = computed(() => getComponentConfig(skinTwoType.value, 'HomeDrawerComponent')) // 首页抽屉组件配置
+const homeHeaderComponent = computed(() => getComponentConfig(tenantStore.theme, 'HomeHeaderComponent')) // 首页头部组件配置
+const homeContentComponent = computed(() => getComponentConfig(tenantStore.theme, 'HomeContentComponent')) // 首页内容组件配置
+const homeDrawerComponent = computed(() => getComponentConfig(tenantStore.theme, 'HomeDrawerComponent')) // 首页抽屉组件配置
 </script>
 
 <template>
-  <div class="home-page">
+  <div class="home-page" v-bind="homeContentComponent.options">
 		<header>
 			<component v-for="(item, index) in homeHeaderComponent.children" :key="index" :is="defineAsyncComponent(item.component)" v-bind="{...item.options, components: item.children}"/>
 		</header>
 
-		<main class="main-warp">
+		<main class="main-warp" v-bind="homeContentComponent.options">
 			<component v-for="(item, index) in homeContentComponent.children" :key="index" :is="defineAsyncComponent(item.component)" v-bind="{...item.options, components: item.children}"/>
 		</main>
 

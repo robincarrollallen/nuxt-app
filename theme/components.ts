@@ -1,4 +1,7 @@
 export const Components = {
+	/** 布局组件 */
+	layout: () => import('@/components/DynamicLayout'),
+
 	/** 底部导航栏组件 */
 	tabbar: (style: string) => () => import(`@/widgets/tabbar/${style}/index.vue`),
 
@@ -8,7 +11,7 @@ export const Components = {
 	/** 导航栏组件 */
 	navBar: () => import('@/components/DynamicLayout'),
 	/** 导航栏菜单组件 */
-	navBarMenu: () => import('@/pages/main/home/modules/navBar/menu/style_18/index.vue'),
+	navBarMenu: (style: string) => () => import(`@/pages/main/home/modules/navBar/menu/${style}/index.vue`),
 	/** 导航栏logo组件 */
 	navBarLogo: () => import('@/pages/main/home/modules/navBar/logo/style_18/index.vue'),
 	/** 导航栏语言组件 */
@@ -16,8 +19,11 @@ export const Components = {
 	/** 导航栏登录组件 */
 	navBarLogin: () => import('@/pages/main/home/modules/navBar/login/style_18/index.vue'),
 
+	/** 登录组件 */
+	login: (style: string) => () => import(`@/pages/main/home/modules/sign/login/${style}/index.vue`),
+
 	/** 轮播图组件 */
-	banner: () => import('@/pages/main/home/modules/banner/style_18/index.vue'),
+	banner: (style: string) => () => import(`@/pages/main/home/modules/banner/${style}/index.vue`),
 
 	/** 跑马灯组件 */
 	marquee: (style: string) => () => import(`@/pages/main/home/modules/marquee/${style}/index.vue`),

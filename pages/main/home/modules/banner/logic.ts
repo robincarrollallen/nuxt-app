@@ -5,8 +5,6 @@ export const useBannerLogic = () => {
 	const systemStore = useSystemStore()
 	const autoplay = { delay: 2500, disableOnInteraction: false } as any
 
-	const badgeSrc = new URL('@/assets/svg/badge-banner.svg', import.meta.url).href
-
 	const bannerList = computed(() => tenantStore.bannerList)
 	const slidesPerView = computed(() => {
 		let perView = 1
@@ -32,7 +30,6 @@ export const useBannerLogic = () => {
 	})
 
 	return {
-		badgeSrc,
 		bannerList,
 		autoplay,
 		slidesPerView,

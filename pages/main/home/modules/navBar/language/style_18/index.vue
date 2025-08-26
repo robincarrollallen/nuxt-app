@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useNavBarLanguageLogic } from '../logic'
 
+const props = defineProps<{
+	icon: string
+}>()
+
 const { showPopover, langList, fontSize, locale, changeLanguage } = useNavBarLanguageLogic()
 </script>
 
@@ -15,36 +19,11 @@ const { showPopover, langList, fontSize, locale, changeLanguage } = useNavBarLan
 			</div>
 		</div>
 		<template #reference>
-			<SvgIcon url="@/assets/svg/earth.svg" class="earth-svg" v-bind="$attrs"/>
+			<SvgIcon :src="props.icon" class="earth-svg" v-bind="$attrs"/>
 		</template>
 	</van-popover>
 </template>
 
 <style scoped lang="less">
-.earth-svg {
-	width: 1.5rem;
-	height: 1.5rem;
-	cursor: pointer;
-}
-
-.change-language-wrap {
-	width: max-content;
-	color: var(--ep-color-text-default);
-
-	.change-language-item {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 1rem;
-		background: rgba(20, 24, 37, 1);
-
-		&.active {
-			background: #1b202f;
-		}
-
-		.flag-icon {
-			border-radius: 50%;
-		}
-	}
-}
+@import '../index.less';
 </style>

@@ -40,6 +40,7 @@ section {
 	}
 
 	&.scroll-y {
+		overflow-x: hidden;
 		overflow-y: auto;
 	}
 

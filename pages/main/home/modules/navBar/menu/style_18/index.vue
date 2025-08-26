@@ -18,5 +18,6 @@ const { showMainLeftDrawer } = useNavBarMenuLogic()
 <style scoped lang="less">
 .menu-svg {
 	cursor: pointer;
+	border-radius: var(--ep-border-radius-s, .25rem);
 }
 </style>

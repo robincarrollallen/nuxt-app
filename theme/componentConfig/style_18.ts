@@ -28,7 +28,7 @@ export const HomeHeaderComponent= {
 			},
 			children: [
 				{
-					component: Components.navBarMenu, // 导航栏菜单组件
+					component: Components.navBarMenu(THEME_KEY.STYLE_18), // 导航栏菜单组件
 					options: {
 						icon: '@/assets/svg/menu.svg',
 						style: {
@@ -64,7 +64,10 @@ export const HomeHeaderComponent= {
 export const HomeContentComponent = {
 	children: [
 		{
-			component: Components.banner, // 轮播图组件
+			component: Components.banner(THEME_KEY.STYLE_18), // 轮播图组件
+			options: {
+				badgeSrc: new URL('@/assets/svg/badge-banner.svg', import.meta.url).href
+			}
 		},
 		{
 			component: Components.marquee(THEME_KEY.STYLE_18), // 跑马灯组件

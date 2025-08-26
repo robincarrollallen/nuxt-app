@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { TabbarComponent } from '@/theme/componentConfig/style_18'
+import { getComponentConfig } from '@/theme/componentConfig'
+
+const tenantStore = useTenantStore()
+
+const tabbarComponent = computed(() => getComponentConfig(tenantStore.theme, 'TabbarComponent')) // 底部导航栏组件配置
 </script>
 
 <template>
@@ -7,7 +11,7 @@ import { TabbarComponent } from '@/theme/componentConfig/style_18'
 		<div id="__main">
 			<NuxtPage keepalive />
 		</div>
-		<component :is="defineAsyncComponent(TabbarComponent.component)" />
+		<component :is="defineAsyncComponent(tabbarComponent.component)" />
   </NuxtLayout>
 </template>
 

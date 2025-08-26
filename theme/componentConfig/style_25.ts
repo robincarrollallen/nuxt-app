@@ -3,7 +3,7 @@ import { THEME_KEY } from "../type"
 
 /** 底部导航栏组件配置 */
 export const TabbarComponent = {
-	component: Components.tabbar(THEME_KEY.STYLE_18),
+	component: Components.tabbar(THEME_KEY.STYLE_25),
 }
 
 /** 首页头部组件配置 */
@@ -13,31 +13,18 @@ export const HomeHeaderComponent= {
 			component: Components.pwaBar, // pwa栏组件
 		},
 		{
-			component: Components.navBar, // 导航栏组件
+			component: Components.layout, // 导航栏组件
 			options: {
-				class: 'nav-bar',
+				class: 'nav-bar, row',
 				style: {
 					width: '100%',
 					height: '3.125rem',
-					display: 'flex',
-					alignItems: 'center',
 					padding: '0 .75rem',
 					gap: '.5rem',
-					background: 'var(--ep-color-background-fill-active-disabled)',
+					background: 'linear-gradient(125deg, #121713 0%, #121713 8%, rgba(255, 255, 255, 0.06) 8%, rgba(255, 255, 255, 0.00) 20%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.00) 32%, rgba(255, 255, 255, 0.04) 32%, rgba(255, 255, 255, 0.0) 44%, rgba(255, 255, 255, 0.03) 44%, rgba(255, 255, 255, 0.00) 56%, rgba(255, 255, 255, 0.02) 56%, rgba(255, 255, 255, 0.00) 68%, rgba(255, 255, 255, 0.01) 68%, rgba(255, 255, 255, 0.00) 80% ), #121713',
 				}
 			},
 			children: [
-				{
-					component: Components.navBarMenu, // 导航栏菜单组件
-					options: {
-						icon: '@/assets/svg/menu.svg',
-						style: {
-							padding: '.125rem',
-							width: '1.5rem',
-							height: '1.5rem',
-						}
-					}
-				},
 				{
 					component: Components.navBarLogo, // 导航栏logo组件
 					options: {
@@ -47,12 +34,24 @@ export const HomeHeaderComponent= {
 					}
 				},
 				{
-					component: Components.navBarLogin, // 导航栏登录组件
-				},
-				{
 					component: Components.navBarLanguage(THEME_KEY.STYLE_18), // 导航栏语言组件
 					options: {
 						icon: '@/assets/svg/earth.svg',
+						class: 'style-25',
+					}
+				},
+				{
+					component: Components.navBarMenu(THEME_KEY.STYLE_18), // 导航栏菜单组件
+					options: {
+						icon: '@/assets/svg/menu.svg',
+						style: {
+							padding: '.5rem',
+							width: '2.125rem',
+							height: '2.125rem',
+							color: 'var(--ep-color-icon-default)',
+							border: '.0625rem solid var(--ep-color-border-default)',
+							background: 'var(--ep-color-background-fill-surface-raised-L2)',
+						}
 					}
 				}
 			]
@@ -64,7 +63,29 @@ export const HomeHeaderComponent= {
 export const HomeContentComponent = {
 	children: [
 		{
-			component: Components.banner, // 轮播图组件
+			component: Components.layout, // 登录与用户信息组件
+			options: {
+				class: 'row',
+				style: {
+					gap: '0.5rem',
+					display: 'flex',
+					alignItems: 'center',
+					borderRadius: '.75rem',
+					padding: '.6875rem .75rem',
+					transform: 'skew(-12deg)',
+					justifyContent: 'space-between',
+					margin: '.375rem 1.375rem .375rem 2.5rem',
+					border: '.125rem solid var(--ep-color-border-default)',
+				}
+			},
+			children: [
+				{
+					component: Components.login(THEME_KEY.STYLE_25), // 登录组件
+				},
+			]
+		},
+		{
+			component: Components.banner(THEME_KEY.STYLE_18), // 轮播图组件
 		},
 		{
 			component: Components.marquee(THEME_KEY.STYLE_18), // 跑马灯组件
@@ -78,6 +99,9 @@ export const HomeContentComponent = {
 /** 首页抽屉组件配置 */
 export const HomeDrawerComponent = {
 	component: Components.drawer,
+	options: {
+		position: 'right',
+	},
 	children: [
 		{
 			component: Components.drawerHeader,

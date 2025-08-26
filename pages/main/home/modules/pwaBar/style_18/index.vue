@@ -46,14 +46,14 @@ const { tenantInfo } = usePwaBarLogic()
 		align-items: center;
 		padding: 0 1rem 0 0;
 		justify-content: space-between;
-		background: var(--ep-color-background-fill-active-disabled);
+		background: var(--ep-color-background-fill-surface-lowered);
 
 		.close-btn-bg {
 			position: absolute;
 			height: 3.875rem;
 			width: 3.875rem;
 			border-radius: 50%;
-			background: var(--ep-color-background-fill-glow-primary-opacity-40);
+			background: var(--ep-neutral-white-white-10);
 			transform: translate(-50%, -50%);
 		}
 
@@ -95,7 +95,7 @@ const { tenantInfo } = usePwaBarLogic()
 				padding: .5rem .625rem;
 				box-sizing: border-box;
 				border-radius: .375rem;
-				background: linear-gradient(90deg, var(--ep-color-background-fill-gradients-tertiary-a, #3A8EE3) -27.5%, var(--ep-color-background-fill-gradients-tertiary-b, #CF3F5B) 127.5%);
+				background: var(--ep-dynamic-tertiary);
 				margin-left: .75rem;
 
 				.download-svg {
