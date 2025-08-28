@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formatMoneyToLocal } from '@/utils/math'
+import { formatMoneyToLocal } from '~/utils/format'
 import { useRouter } from 'vue-router'
 
 const router = useRouter() // 路由实例

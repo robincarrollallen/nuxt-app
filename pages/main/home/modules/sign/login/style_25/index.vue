@@ -1,55 +1,64 @@
 <script setup lang="ts">
-const props = defineProps({
-	loadImage: {
-		type: Object,
-		default: () => ({}),
-	},
-	layoutType: {
-		type: String,
-		default: 'layout1',
-	},
-})
-
-const basicAvatar = '/svg/user-defluat-avatar.svg'
+import { loginApi } from '@/api/user'
 
 const userStore = useUserStore()
 
-const userPhoto = computed(() => userStore.user?.avatar || userStore.defaultAvatar || basicAvatar)
+const loginHandler = async () => {
+	try {
+		const res = await loginApi({
+			username: '11999990000',
+			password: '123456',
+		})
+		console.log(res)
+
+		// 登录成功后的处理逻辑
+		if (res.success) {
+			// 设置 token
+			const { setToken } = useAuth()
+			setToken(res.data.token)
+
+			// 更新用户信息
+			await userStore.setUser()
+		}
+	} catch (error) {
+		console.error('Login failed:', error)
+		// 添加错误处理
+	}
+}
 </script>
 
 <template>
-	<div v-if="userStore.user?.userId" class="log-in-box" :class="[props.layoutType]">
-		<ProgressiveImages
-			class="account-icon"
-			:src="userPhoto"
-		/>
+	<div v-if="userStore.user?.userId">
+		<Button>{{ $t("main.entrar") }}</Button>
 	</div>
-	<div v-else-if="!isEmpty(props.loadImage)" class="log-out-box">
-		<van-image class="log-out-icon" :src="basicAvatar" :show-loading="false" />
-		<label>
-			Welcome
-		</label>
+	<div v-else class="login-out-box">
+		<Button @click="loginHandler">{{ $t("main.login") }}</Button>
+		<Button class="register">{{ $t("main.signUp") }}</Button>
 	</div>
 </template>
 
 <style scoped lang="less">
-.log-out-box {
-	gap: .5rem;
+.login-out-box {
 	display: flex;
+	gap: .5rem;
+	justify-content: center;
 	align-items: center;
+}
 
-	.log-out-icon {
-		padding: 0.5rem;
-		width: 1.125rem;
-		height: 1.125rem;
-		border-radius: 43%;
-		background: var(--ep-dynamic-primary);
-		box-shadow: 4px 0px 11px 0px var(--ep-color-background-fill-glow-primary-opacity-40);
-	}
+button {
+	--padding-top: .25rem;
+	--padding-bottom: .25rem;
+	--padding-start: .75rem;
+	--padding-end: .75rem;
 
-	label {
-		font-size: var(--label-font-size, 1rem);
-		font-weight: var(--label-font-weight, 600);
+	font-weight: var(--ep-font-weight-medium, 600);
+	background: var(--ep-dynamic-primary);
+	border-radius: var(--ep-border-radius-s, .25rem);
+	border: var(--ep-border-width-surface-default, .125rem) var(--ep-border-style-surface-default, solid) var(--ep-color-btn-level-2-border, #19CC10);
+
+	&.register {
+		background: var(--ep-color-btn-level-3-bg);
+		border-color: var(--ep-color-btn-level-3-border, #FFC754);
 	}
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { interval, setAmountInterval } from '../../data'
+import { interval, setAmountInterval } from '../../../data'
 
 const tenantStore = useTenantStore()
 const activityStore = useActivityStore()

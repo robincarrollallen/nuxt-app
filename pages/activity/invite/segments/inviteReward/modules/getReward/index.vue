@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { formatMoneyToLocal } from '@/utils/math'
+import { formatMoneyToLocal } from '~/utils/format'
 import { SvgIcon } from '#components'
 
 const { $i18n } = useNuxtApp()

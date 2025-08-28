@@ -1,5 +1,6 @@
-import { Components } from "../components"
+import { Assets } from "../assets"
 import { THEME_KEY } from "../type"
+import { Components } from "../components"
 
 /** 底部导航栏组件配置 */
 export const TabbarComponent = {
@@ -80,15 +81,31 @@ export const HomeContentComponent = {
 			},
 			children: [
 				{
-					component: Components.login(THEME_KEY.STYLE_25), // 登录组件
+					component: Components.info(THEME_KEY.STYLE_25), // 用户信息组件
+					options: {
+						outAvatar: '@/assets/svg/person-25.svg',
+						style: {
+							marginLeft: '-1.875rem',
+							transform: 'skew(12deg)',
+						}
+					}
 				},
+				{
+					component: Components.login(THEME_KEY.STYLE_25), // 登录组件
+				}
 			]
 		},
 		{
 			component: Components.banner(THEME_KEY.STYLE_18), // 轮播图组件
 		},
 		{
-			component: Components.marquee(THEME_KEY.STYLE_18), // 跑马灯组件
+			component: Components.marquee(THEME_KEY.STYLE_25), // 跑马灯组件
+		},
+		{
+			component: Components.jackpot(THEME_KEY.STYLE_25), // 首页Jackpot组件
+			options: {
+				icon: Assets.jackpot_25,
+			}
 		},
 		{
 			component: Components.mainSortTab(THEME_KEY.STYLE_18), // 分类组件
@@ -108,6 +125,11 @@ export const HomeDrawerComponent = {
 			children: [
 				{
 					component: Components.drawerHeaderLogo,
+					options: {
+						style: {
+							flexDirection: 'row-reverse',
+						}
+					}
 				},
 				{
 					component: Components.drawerHeaderLogin,
@@ -124,6 +146,12 @@ export const HomeDrawerComponent = {
 			},
 			children: [
 				{
+					component: Components.drawerBanner,
+					options: {
+						icon: Assets.promo_25,
+					}
+				},
+				{
 					component: Components.drawerHeaderLanguage,
 					children: [
 						{
@@ -132,7 +160,7 @@ export const HomeDrawerComponent = {
 					]
 				},
 				{
-					component: Components.drawerContentActivity,
+					component: Components.drawerContentActivity(THEME_KEY.STYLE_25),
 				},
 				{
 					component: Components.drawerContentCategory,

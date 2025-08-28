@@ -3,8 +3,7 @@ export const useUserStore = defineStore('user', () => {
 	const defaultAvatar = ref('') // 默认头像
 
 	// 监听 token 变化
-	const appStore = useAppStore()
-	const { token } = storeToRefs(appStore)
+	const { token } = useAuth()
 
 	watch(token, (newToken) => {
 		if (!newToken) {

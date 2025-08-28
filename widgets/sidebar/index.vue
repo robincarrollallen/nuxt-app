@@ -22,7 +22,7 @@ const props = defineProps({
 <style scoped lang="less">
 aside {
 	gap: 1rem;
-  width: 16rem;
+  width: 20rem;
 	height: 100%;
   padding: 1rem;
 	display: flex;

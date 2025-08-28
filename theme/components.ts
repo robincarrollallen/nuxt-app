@@ -19,6 +19,9 @@ export const Components = {
 	/** 导航栏登录组件 */
 	navBarLogin: () => import('@/pages/main/home/modules/navBar/login/style_18/index.vue'),
 
+	/** 用户信息组件 */
+	info: (style: string) => () => import(`@/pages/main/home/modules/sign/info/${style}/index.vue`),
+
 	/** 登录组件 */
 	login: (style: string) => () => import(`@/pages/main/home/modules/sign/login/${style}/index.vue`),
 
@@ -27,6 +30,9 @@ export const Components = {
 
 	/** 跑马灯组件 */
 	marquee: (style: string) => () => import(`@/pages/main/home/modules/marquee/${style}/index.vue`),
+
+	/** 首页Jackpot组件 */
+	jackpot: (style: string) => () => import(`@/pages/main/home/modules/jackpot/${style}/index.vue`),
 
 	/** 分类组件 */
 	mainSortTab: (style: string) => () => import(`@/pages/main/home/modules/sortTab/${style}/index.vue`),
@@ -41,12 +47,14 @@ export const Components = {
 	drawerHeaderLogin: () => import('@/widgets/sidebar/modules/login/index.vue'),
 	/** 首页侧边栏内容组件 */
 	drawerContent: () => import('@/components/DynamicLayout'),
+	/** 首页侧边栏内容组件: Banner */
+	drawerBanner: () => import('@/widgets/sidebar/modules/banner/index.vue'),
 	/** 首页侧边栏内容组件: Language */
 	drawerHeaderLanguage: () => import('@/widgets/sidebar/modules/language/index.vue'),
 	/** 首页侧边栏内容组件: Language Dialog */
 	drawerContentLanguageDialog: () => import('@/widgets/languageDialog/index.vue'),
 	/** 首页侧边栏内容组件: Activity */
-	drawerContentActivity: () => import('@/widgets/sidebar/modules/activity/index.vue'),
+	drawerContentActivity: (style: string) => () => import(`@/widgets/sidebar/modules/activity/${style}/index.vue`),
 	/** 首页侧边栏内容组件: Category */
 	drawerContentCategory: () => import('@/widgets/sidebar/modules/category/index.vue'),
 	/** 首页侧边栏底部组件 */

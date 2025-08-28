@@ -1,12 +1,8 @@
 <script setup lang="ts">
 const props = defineProps({
-	loadImage: {
-		type: Object,
-		default: () => ({}),
-	},
-	layoutType: {
+	outAvatar: {
 		type: String,
-		default: 'layout1',
+		default: '',
 	},
 })
 
@@ -18,14 +14,14 @@ const userPhoto = computed(() => userStore.user?.avatar || userStore.defaultAvat
 </script>
 
 <template>
-	<div v-if="userStore.user?.userId" class="log-in-box" :class="[props.layoutType]">
-		<ProgressiveImages
+	<div v-if="userStore.user?.userId" class="log-in-box">
+		<van-image
 			class="account-icon"
 			:src="userPhoto"
 		/>
 	</div>
-	<div v-else-if="!isEmpty(props.loadImage)" class="log-out-box">
-		<van-image class="log-out-icon" :src="basicAvatar" :show-loading="false" />
+	<div v-else-if="!isEmpty(props.outAvatar)" class="log-out-box">
+		<SvgIcon class="log-out-icon" :src="props.outAvatar"/>
 		<label>
 			Welcome
 		</label>
@@ -40,8 +36,8 @@ const userPhoto = computed(() => userStore.user?.avatar || userStore.defaultAvat
 
 	.log-out-icon {
 		padding: 0.5rem;
-		width: 1.125rem;
-		height: 1.125rem;
+		width: 2rem;
+		height: 2rem;
 		border-radius: 43%;
 		background: var(--ep-dynamic-primary);
 		box-shadow: 4px 0px 11px 0px var(--ep-color-background-fill-glow-primary-opacity-40);

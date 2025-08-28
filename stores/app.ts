@@ -1,7 +1,6 @@
 import { LanguageSupport, type LanguageType } from '@/enums/language'
 
 export const useAppStore = defineStore('app', () => {
-	const token = ref('')
 	const locale = ref<LanguageType>(LanguageSupport[0])
 
 	/**
@@ -19,13 +18,5 @@ export const useAppStore = defineStore('app', () => {
 		useCookie('lang').value = locale.value
 	}
 
-	const setToken = (value: string = '') => {
-		token.value = value
-	}
-
-	const getToken = () => {
-		return token.value
-	}
-
-	return { token, locale, setLocale, setToken, getToken }
+	return { locale, setLocale }
 })

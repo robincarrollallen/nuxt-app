@@ -111,7 +111,7 @@ export const HomeDrawerComponent = {
 					]
 				},
 				{
-					component: Components.drawerContentActivity,
+					component: Components.drawerContentActivity(THEME_KEY.STYLE_18),
 				},
 				{
 					component: Components.drawerContentCategory,

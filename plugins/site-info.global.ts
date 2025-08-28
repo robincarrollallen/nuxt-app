@@ -2,7 +2,7 @@ import { themeManager } from "@/theme"
 import { ThemeSupport } from "@/theme/type"
 import { LanguageSupport } from "@/enums/language"
 
-// Global plugin, used to set website information <Execute once when the page is first loaded>
+/** Global plugin, used to set website information <Execute once when the page is first loaded> */
 export default defineNuxtPlugin(async (_to) => {
 	const { $i18n } = useNuxtApp()
 	const cookieLocale = useCookie('lang')

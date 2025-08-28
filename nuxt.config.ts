@@ -46,5 +46,10 @@ export default defineNuxtConfig({
 			lazyComponent: true,
 		}
 	},
-	css: ['swiper/css', 'swiper/css/autoplay']
+	css: ['swiper/css', 'swiper/css/autoplay', 'swiper/css/pagination'],
+	runtimeConfig: {
+		public: {
+			apiBase: '', // 对应 NUXT_PUBLIC_API_BASE
+		}
+	}
 })

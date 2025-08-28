@@ -39,6 +39,11 @@ section {
 		align-items: center;
 	}
 
+	&.row-reverse {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
 	&.scroll-y {
 		overflow-x: hidden;
 		overflow-y: auto;
@@ -46,6 +51,10 @@ section {
 
 	&.flex-1 {
 		flex: 1;
+	}
+
+	&.space-between {
+		justify-content: space-between;
 	}
 }
 </style>

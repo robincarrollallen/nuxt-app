@@ -36,3 +36,13 @@ export function throttle(func, delay) {
 	}
 }
 
+/**
+ * @description 驼峰命名
+ * @param str 字符串
+ */
+export function camelCase(str: string = ""): string {
+	if (!str || typeof str !== "string") return ""
+	return str
+		.replace(/[^a-zA-Z0-9]+(.)/g, (_match, chr) => chr.toUpperCase())
+		.replace(/^[A-Z]/, char => char.toLowerCase())
+}
