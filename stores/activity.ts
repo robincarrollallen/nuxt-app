@@ -51,16 +51,16 @@ export const useActivityStore = defineStore('activity', () => {
  * @description 翻译活动名称
  */
 const translateActivityName = (type: string, val: string | number) => {
-	const { t } = useI18n()
+	const { $i18n } = useNuxtApp()
 	const activityStore = useActivityStore()
 
 	if (type == 'ACTIVITY') {
 		const { type: activeType, name } = activityStore.activityList.find((item: any) => item.id == val) || {}
 		if (activeType === 'Custom') return name
-		return activeType ? t(`activity1.${activeType}`) : ''
+		return activeType ? $i18n.t(`activity1.${activeType}`) : ''
 	}
 	if (type == 'CODE') {
 		const code = camelCase(`${val}`) || 'mainInicio'
-		return t(`activity1.${code}`) || ''
+		return $i18n.t(`activity1.${code}`) || ''
 	}
 }

@@ -50,13 +50,13 @@ export const Components = {
 	/** 首页侧边栏内容组件: Banner */
 	drawerBanner: () => import('@/widgets/sidebar/modules/banner/index.vue'),
 	/** 首页侧边栏内容组件: Language */
-	drawerHeaderLanguage: () => import('@/widgets/sidebar/modules/language/index.vue'),
+	drawerHeaderLanguage: (style: string) => () => import(`@/widgets/sidebar/modules/language/${style}/index.vue`),
 	/** 首页侧边栏内容组件: Language Dialog */
 	drawerContentLanguageDialog: () => import('@/widgets/languageDialog/index.vue'),
 	/** 首页侧边栏内容组件: Activity */
 	drawerContentActivity: (style: string) => () => import(`@/widgets/sidebar/modules/activity/${style}/index.vue`),
 	/** 首页侧边栏内容组件: Category */
-	drawerContentCategory: () => import('@/widgets/sidebar/modules/category/index.vue'),
+	drawerContentCategory: (style: string) => () => import(`@/widgets/sidebar/modules/category/${style}/index.vue`),
 	/** 首页侧边栏底部组件 */
 	drawerFooter: () => import('@/components/DynamicLayout'),
 	/** 首页侧边栏底部组件: Support */

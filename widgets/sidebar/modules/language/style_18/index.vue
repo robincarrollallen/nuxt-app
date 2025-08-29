@@ -32,32 +32,5 @@ const currentLanguage = computed(() => getLanguageName(locale.value, locale.valu
 </template>
 
 <style scoped lang="less">
-section {
-	display: flex;
-	cursor: pointer;
-	padding: 0.5rem;
-	align-items: center;
-	border-radius: 0.75rem;
-	border: .5px solid var(--ep-color-border-default);
-
-	>span {
-		flex: 1;
-		display: flex;
-		gap: 0.5rem;
-
-		>span {
-			--flag-size: 1rem;
-			border-radius: 50%;
-		}
-
-		.language-text {
-			font-size: 0.625rem;
-			font-weight: 700;
-		}
-	}
-
-	>div {
-		display: inline-block;
-	}
-}
+@import '../index.less';
 </style>

@@ -1,12 +1,14 @@
 import { gameList } from '../../data'
 
-export const useSortTabLogic = () => {
-
+export const useSortTabLogic = (props: Recordable) => {
+	const { t } = useI18n()
 	const gameStore = useGameStore()
 	const systemStore = useSystemStore()
+	const tenantStore = useTenantStore()
 
 	const active = ref(0)
 
+	const isGameCategory = computed(() => tenantStore.tenantInfo?.homeNavType === 'GameType')
 	const homeHotList = computed(() => gameStore.homeHotList) // Home hot game list
 	const tabsOffsetTop = computed(() => { // Tabs offset top
 		if (systemStore.screenWidth >= 540) {
@@ -14,6 +16,32 @@ export const useSortTabLogic = () => {
 		}
 
 		return 6.25 * systemStore.fontSize
+	})
+	const hotTab = computed(() => {
+		const total = gameStore.homeHotList.length
+		return {
+			id: 'POPULAR',
+			name: t('sort.POPULAR'),
+			code: "ONE_API_HOT",
+			iconStyle: props.getCategoryIconStyle('ONE_API_HOT'),
+			total,
+		}
+	})
+	const homeList = computed(() => {
+		const list = gameStore.homeList.sort((a, b) => (b.gameTypeSort ?? 0) - (a.gameTypeSort ?? 0)).map((item) => {
+			const { gameType } = item
+			return {
+				...item,
+				id: gameType,
+				code: gameType,
+				name: t(`sort.${gameType}`),
+				iconStyle: props.getCategoryIconStyle(gameType),
+			}
+		})
+		if (props.noHot) {
+			return list
+		}
+		return [hotTab.value, ...list]
 	})
 	const homePlatformList = computed(() => { // Home platform list
 		const platformList = deepClone(gameStore.homePlatformList)
@@ -27,7 +55,7 @@ export const useSortTabLogic = () => {
 			openType: true,
 			type: 'sort',
 			sort: 12,
-		})
+		} as any)
 
 		return platformList
 	})
@@ -147,8 +175,10 @@ export const useSortTabLogic = () => {
 
 	return {
 		active,
+		homeList,
 		homeHotList,
 		tabsOffsetTop,
+		isGameCategory,
 		homePlatformList,
 		getGameListByPlatform,
 	}

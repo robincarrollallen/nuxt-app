@@ -27,6 +27,10 @@ section {
 		padding: .5rem;
 		border-radius: var(--ep-border-radius-xl, .625rem);
 		background-color: var(--ep-color-background-fill-surface-raised-L2);
+
+		@media (min-width: 540px) {
+			opacity: 0;
+		}
 	}
 
 	div {

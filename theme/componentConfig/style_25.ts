@@ -1,6 +1,7 @@
 import { Assets } from "../assets"
 import { THEME_KEY } from "../type"
 import { Components } from "../components"
+import { sprite } from "../sprite"
 
 /** 底部导航栏组件配置 */
 export const TabbarComponent = {
@@ -16,7 +17,7 @@ export const HomeHeaderComponent= {
 		{
 			component: Components.layout, // 导航栏组件
 			options: {
-				class: 'nav-bar, row',
+				class: 'nav-bar row',
 				style: {
 					width: '100%',
 					height: '3.125rem',
@@ -108,7 +109,11 @@ export const HomeContentComponent = {
 			}
 		},
 		{
-			component: Components.mainSortTab(THEME_KEY.STYLE_18), // 分类组件
+			component: Components.mainSortTab(THEME_KEY.STYLE_25), // 分类组件
+			options: {
+				getCategoryIconStyle: sprite.game_category_25,
+				getPlatformIconStyle: sprite.platform_category_25,
+			}
 		}
 	]
 }
@@ -152,7 +157,7 @@ export const HomeDrawerComponent = {
 					}
 				},
 				{
-					component: Components.drawerHeaderLanguage,
+					component: Components.drawerHeaderLanguage(THEME_KEY.STYLE_18),
 					children: [
 						{
 							component: Components.drawerContentLanguageDialog,
@@ -163,7 +168,12 @@ export const HomeDrawerComponent = {
 					component: Components.drawerContentActivity(THEME_KEY.STYLE_25),
 				},
 				{
-					component: Components.drawerContentCategory,
+					component: Components.drawerContentCategory(THEME_KEY.STYLE_25),
+					options: {
+						getCategoryIconStyle: sprite.game_category_25,
+						getPlatformIconStyle: sprite.platform_category_25,
+						gameCategoryBgImages: Assets.bg_game_category_25,
+					}
 				}
 			]
 		},

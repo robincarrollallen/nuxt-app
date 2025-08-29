@@ -1,8 +1,6 @@
 .activity-title {
 	font-size: var(--ep-font-size-m, 0.875rem);
 	color: var(--ep-color-text-weak);
-	margin-top: 1rem;
-	margin-bottom: .5rem;
 }
 
 .activity-list {
@@ -55,6 +53,15 @@
 				border: 1px solid var(--ep-color-border-brand);
 				border-radius: var(--ep-border-radius-m, 0.375rem);
 			}
+		}
+	}
+}
+
+@media (min-width: 540px) and (max-width: 1023px) {
+	.activity-list {
+
+		.activity-box {
+			flex: 0 0 100%;
 		}
 	}
 }
